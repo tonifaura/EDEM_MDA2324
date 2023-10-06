@@ -1,0 +1,1 @@
+La fecha de hoy es 6 de octubre de 2023.
