@@ -20,7 +20,7 @@ Ejercicio de comandos en la consola de linux.
   
   4.Listar todos los archivos del directorio dev que empiecen por tty.
     
-    ls /dev
+    ls /dev/tty*
     
   5.Listar todos los archivos del directorio dev que empiecen por tty y acaben en 3.
     
@@ -36,7 +36,7 @@ Ejercicio de comandos en la consola de linux.
     
   8.Listar todos los archivos del directorio etc que no empiecen por t.
     
-    ls /etc/[^t]*
+    ls /etc/[^t]* //Se que no está bien, pero aun no se como resolverlo
 
   9.Listar todos los archivos del directorio usr y sus subdirectorios.
     
@@ -57,7 +57,7 @@ Ejercicio de comandos en la consola de linux.
 
   13.Con un solo comando posicionarse en el directorio $HOME.
     
-    cd
+    cd ~
  
   14.Verificar que se está en él.
     
@@ -65,7 +65,7 @@ Ejercicio de comandos en la consola de linux.
 
   15.Listar todos los ficheros del directorio HOME mostrando sus permisos.
     
-    ls -l $HOME
+    ls -l ~
 
   16.Borrar todos los archivos y directorios visibles de vuestro directorio PRUEBA.
     
