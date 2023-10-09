@@ -8,35 +8,42 @@ Ejercicio de comandos en la consola de linux.
 
   1.Listar todos los archivos del directorio bin.
     
-     
+    cd bin
+    ls -l
     
   2.Listar todos los archivos del directorio tmp.
    
-    
+    cd ..
+    cd tmp
+    ls -l
     
   3.Listar todos los archivos del directorio etc que empiecen por t 
     
-    
+    cd ..
+    ls -l t*
   
   4.Listar todos los archivos del directorio dev que empiecen por tty.
     
-    
+    cd ..
+    ls tty*
     
   5.Listar todos los archivos del directorio dev que empiecen por tty y acaben en 3.
     
-    
+    ls tty*3
     
   6.Listar todos los archivos del directorio dev que empiecen por t y acaben en C1.
     
-    
+    ls t*C1
 
   7.Listar todos los archivos, incluidos los ocultos, del directorio raíz.
     
-    
+    cd ..
+    ls -a
     
   8.Listar todos los archivos del directorio etc que no empiecen por t.
     
-    
+    cd etc
+    ls [!t]*
 
   9.Listar todos los archivos del directorio usr y sus subdirectorios.
     
