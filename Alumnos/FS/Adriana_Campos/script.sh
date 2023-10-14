@@ -1,5 +1,4 @@
 # Ejercicio
-
 #docker ps
 #docker exec -it unix /bin/bash
 
