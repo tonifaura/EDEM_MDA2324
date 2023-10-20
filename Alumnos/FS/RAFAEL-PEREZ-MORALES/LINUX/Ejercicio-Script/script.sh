@@ -1,3 +1,7 @@
+# Rafael Pérez Morales
+# Master en Data Analytics
+# Script para crear por línea de comandos una serie de directorios y archivos indicados.
+
 mkdir C1 C2
 cd C1
 touch hola.csv
