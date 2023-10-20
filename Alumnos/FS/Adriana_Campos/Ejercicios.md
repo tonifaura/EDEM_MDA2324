@@ -41,7 +41,6 @@ mkdir PRUEBA/dir1/dir11 PRUEBA/dir3/dir31
 mkdir PRUEBA/dir3/dir31/dir311 PRUEBA/dir3/dir31/dir312
 # 18.Copiar el archivo /etc/motd a un archivo llamado mensaje de vuestro directorio PRUEBA.
 touch motd
-
 # 19.Copiar mensaje en dir1, dir2 y dir3.
 cp tmp/PRUEBA/mensaje tmp/PRUEBAdir1
 cp tmp/PRUEBA/mensaje tmp/PRUEBAdir2 
