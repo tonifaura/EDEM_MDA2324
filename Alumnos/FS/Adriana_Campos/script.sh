@@ -1,6 +1,6 @@
-# Ejercicio
-#docker ps
-#docker exec -it unix /bin/bash
+#Ejercicio
+bin/bash
+
 cd
 mkdir C1
 touch C1/hola.csv
