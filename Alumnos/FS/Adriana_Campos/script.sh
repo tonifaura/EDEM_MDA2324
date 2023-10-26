@@ -1,5 +1,3 @@
-# Ejercicio
-#docker ps
 docker exec -it unix /bin/bash
 cd
 mkdir C1
