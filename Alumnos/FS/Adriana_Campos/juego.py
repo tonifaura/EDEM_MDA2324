@@ -1,6 +1,4 @@
-import pandas as pd
-
-import time
+import time 
 
 listaPalabras= ['remedio', 'pronunciar', 'manejar', 'ley','elefante']
 

@@ -1,8 +1,8 @@
 FROM python
 
-RUN apt-get update
-RUN apt-get install -y pandas
-
+COPY requirements.txt / 
 COPY juego.py / 
+
+RUN pip install -r requirements.txt
 
 ENTRYPOINT ["python" , "juego.py"]
