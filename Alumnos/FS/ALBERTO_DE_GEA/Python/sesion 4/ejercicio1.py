@@ -1,5 +1,4 @@
-#EJERCICIO NUMERO 1 - NÚMEROS PRIMOS
-
+#EJERCICIO 1.1
 listaNumeroPrimo = []
 listaNumeroCompuesto = []
 
@@ -19,21 +18,23 @@ print('Primos:')
 for primos in listaNumeroPrimo:
   print(f'-{primos}')
 
-#EJERCICIO NUMERO 2 - año bisiesto
+#EJERCICIO 1.2
+numero = 10
+if primo(numero):
+    print(f"{numero} es un número primo.")
+else:
+    print(f"{numero} no es un número primo.")
 
-listaAnyoBisiesto = []
-listaAnyoNormal = []
 
+#EJERCICIO 1.3
 def bisiesto(num):
   if num % 4 == 0:
    if num % 100 != 0:
     return True
   return False
 
-for numero in range (2000,2110):
-  if bisiesto(numero) is True:
-    listaAnyoBisiesto.append(numero)
-    
-print('Bisiesto:')
-for bisiesto in listaAnyoBisiesto:
-  print(f'-{bisiesto}')
+anio = 2024
+if bisiesto(anio):
+    print(f"{anio} es bisiesto.")
+else:
+    print(f"{anio} no es bisiesto.")
