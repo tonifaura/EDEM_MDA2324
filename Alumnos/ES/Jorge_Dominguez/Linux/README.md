@@ -8,7 +8,7 @@ Ejercicio de comandos en la consola de linux.
 
   1.Listar todos los archivos del directorio bin.
     
-    cd ..
+    cd /
     ls /bin
     
   2.Listar todos los archivos del directorio tmp.
