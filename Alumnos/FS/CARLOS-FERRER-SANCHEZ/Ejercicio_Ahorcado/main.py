@@ -20,7 +20,7 @@ import time
 
 abecedario = ['e', 't', 'a', 'o', 'i', 'n', 's', 'h', 'r', 'd', 'l', 'u', 'c', 'm', 'f', 'w', 'y', 'g', 'p', 'b', 'v', 'k', 'x', 'j', 'q', 'z', 'ñ']
 
-palabras = pd.read_csv("/Users/maccharlie/Desktop/GitHub/EDEM_MDA2324/Alumnos/FS/CARLOS-FERRER-SANCHEZ/Ejercicio_Ahorcado/palabras.txt")
+palabras = pd.read_csv("palabras.txt")
 inicio = time.time()
 
 def ahorcado(palabras):
