@@ -1,19 +1,18 @@
 #Juego
 #elegir palabras 
 
-palabras =  ['hola' ,'manzana', 'sanwich' ]
-print (palabras[1])
+listaPalabras =  ['manzana']
+import string
+abecedario = string.ascii_lowercase
+intentoMal = 1
 
-# Tiempo
-# Intentos
-intento = 0
+for palabra in listaPalabras:
+   print (palabra)
+   for letra in abecedario:
+     if (letra in palabra):
+        intentoMal += intentoMal
+     else:
+        intentoMal += intentoMal
 
-for x in range(0,3):
-   palabra = palabras[x]
-   for i in palabra:
-    letra = input("Escribe una letra:")
-    if (letra in palabra):
-        print('Has acertado')
-    else:
-        print('No has acertado')
-        intento += intento
+print(intentoMal)
+
