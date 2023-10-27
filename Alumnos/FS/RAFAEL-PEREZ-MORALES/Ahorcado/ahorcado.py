@@ -33,6 +33,9 @@ def extraer_palabra(adivinado):
     global abecedario
     abecedario = list("WKXÑJZFHQYVGBPMUTCLDINRSOAE")
     if lista_palabras[-1] == lista_palabras[contador]:
+        tiempo_utilizado = finalizar_tiempo()
+        print(tiempo_utilizado)
+        print("Numero de intentos " + str(contador_intentos))
         sys.exit()
     else:
         adivinado = False
@@ -45,7 +48,8 @@ def comprobar_palabra(letra, incognita, adivinado):
     for i,letra_p in enumerate(palabra):
         if letra == letra_p:
             incognita_lista[i] = letra
-        if "".join(incognita_lista) == palabra:
+        incognita_lista_correcta = incognita_lista[2:-2]
+        if "".join(incognita_lista_correcta) == palabra[2:-2]:
             adivinado = True
     return adivinado
 
@@ -54,13 +58,14 @@ def nueva_letra():
     return letra
 
 def crear_incognita(palabra_actual):
-    incognita = "-" * (len(palabra_actual) -4)
+    incognita = "-" * (len(palabra_actual))
     global incognita_lista
     incognita_lista = list(incognita)
     return incognita
 
+
+empezar_tiempo()
 while contador<15 :
-    empezar_tiempo()
     adivinado = extraer_palabra(adivinado)
     contador = contador + 1
     incognita = crear_incognita(palabra)
@@ -68,6 +73,3 @@ while contador<15 :
         letra_actual = nueva_letra()
         contador_intentos = contador_intentos + 1
         adivinado = comprobar_palabra(letra_actual, incognita, adivinado)
-    tiempo_utilizado = finalizar_tiempo()
-    print(tiempo_utilizado)
-    print("Numero de intentos" + contador_intentos)
