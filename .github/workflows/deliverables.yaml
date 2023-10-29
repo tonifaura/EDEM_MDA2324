@@ -3,7 +3,7 @@ name: "Entregables"
 on:  # yamllint disable-line rule:truthy
   push:
     branches:
-      - deliverables
+      - main
 jobs:
   entregables:
     runs-on: ubuntu-latest
