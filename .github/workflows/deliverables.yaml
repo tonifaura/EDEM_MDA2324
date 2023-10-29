@@ -17,4 +17,4 @@ jobs:
       - name: Run Deliverables
         run: |
           ls -la .github
-          python3 .github/code/deliverables.py
+          python3 .github/code/check.py
