@@ -5,7 +5,7 @@ on:  # yamllint disable-line rule:truthy
     branches:
       - deliverables
 jobs:
-  yaml:
+  entregables:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -16,4 +16,5 @@ jobs:
           lfs: true
       - name: Run Deliverables
         run: |
+          ls -la
           python3 .github/code/deliverables.py
