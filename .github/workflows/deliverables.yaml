@@ -1,4 +1,4 @@
-name: "Prediction"
+name: "Entregables"
 
 on:  # yamllint disable-line rule:truthy
   push:
@@ -16,4 +16,4 @@ jobs:
           lfs: true
       - name: Run Deliverables
         run: |
-          python3 PetProject/quinielas.py
+          python3 .github/code/deliverables.py
