@@ -16,5 +16,5 @@ jobs:
           lfs: true
       - name: Run Deliverables
         run: |
-          ls -la
+          ls -la .github
           python3 .github/code/deliverables.py
