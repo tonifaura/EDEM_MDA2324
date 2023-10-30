@@ -1,5 +1,4 @@
-docker exec -it unix /bin/bash
-cd
+#!/bin/bash
 mkdir C1
 touch C1/hola.csv
 mkdir C2 C2/C3
