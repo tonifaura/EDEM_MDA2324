@@ -1,5 +1,6 @@
-#Proyecto Final - Curso Python - EDEM_MDA2324
-#Una empresa de formación quiere gestionar su cartera de alumnos.
+# Proyecto Final 
+# Curso Python - EDEM_MDA2324
+# Una empresa de formación quiere gestionar su cartera de alumnos.
 
 
 alumnos = [
