@@ -1,5 +1,4 @@
 #Proyecto Final - Curso Python - EDEM_MDA2324
-
 #Una empresa de formación quiere gestionar su cartera de alumnos.
 
 
@@ -35,7 +34,8 @@ while True:
     ActualizarAlumno= input('Dime el nombre del alumno que quieres actualizar: ')
     for x in alumnos:
       if(x['nombre'] == ActualizarAlumno):
-        x['Email']=='No es el email correcto'
+        print('yes')
+        x ['Email'] = 'No es el email correcto'
 
   elif  opcion == '4':
     MostrarAlumnoNIF= input('Dime el NIF del cliente que quieres mostrar: ')
