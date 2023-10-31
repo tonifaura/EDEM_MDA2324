@@ -8,13 +8,13 @@ Ejercicio de comandos en la consola de linux.
 
   1.Listar todos los archivos del directorio bin.
 
-cd /bin
-ls
+ls /bin
+
     
   2.Listar todos los archivos del directorio tmp.
    
-cd /tmp
-ls
+ls /tmp
+
     
   3.Listar todos los archivos del directorio etc que empiecen por t 
 
