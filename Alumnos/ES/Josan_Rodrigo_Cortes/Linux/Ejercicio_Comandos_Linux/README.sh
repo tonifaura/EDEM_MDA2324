@@ -26,7 +26,7 @@ echo "Ejercicio de comandos en la consola de linux."
   ls -a /dev/t*c1
   # Hay alguno?
   echo "7.Listar todos los archivos, incluidos los ocultos, del directorio raíz."
-  ls -a/
+  ls -a /
 
   echo "8.Listar todos los archivos del directorio etc que no empiecen por t."
   ls -d /etc/[^t]*
