@@ -18,11 +18,10 @@ Ejercicio de comandos en la consola de linux.
   3.Listar todos los archivos del directorio etc que empiecen por t 
     
     ls /etc/t*
-    
   
   4.Listar todos los archivos del directorio dev que empiecen por tty.
     
-    ls /etc/tty*
+    ls /dev/tty*
     
   5.Listar todos los archivos del directorio dev que empiecen por tty y acaben en 3.
     
