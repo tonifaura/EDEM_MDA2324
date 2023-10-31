@@ -32,11 +32,29 @@ while True:
         alumnos.pop(posicion)
 
   elif opcion == '3':
-    ActualizarAlumno= input('Dime el nombre del alumno que quieres actualizar: ')
+    ActualizarAlumno= input('Dime el NIF del alumno que quieres actualizar: ')
     for x in alumnos:
-      if(x['nombre'] == ActualizarAlumno):
-        print('yes')
-        x ['Email'] = 'No es el email correcto'
+      if(x['NIF'] == ActualizarAlumno):
+        print(' ¿Que quiere actualizar de este alumno? \n(1) NIF \n(2) Nombre \n(3) Apellidos\n(4) Telefono \n(5) Email \n(6) Aprobado')
+        opcionActualizar = input('Elija que quiere actualizar de este alumno:')
+        if (opcionActualizar == '1'):
+          email = input('Escriba el nuevo NIF:')
+          x['NIF'] = email
+        if (opcionActualizar == '2'):
+          nombre = input('Escriba el nuevo nombre:')
+          x['nombre'] = nombre
+        if (opcionActualizar == '3'):
+          apellidos = input('Escriba el nuevo apellidos:')
+          x['Apellidos'] = apellidos
+        if (opcionActualizar == '4'):
+          telefono = input('Escriba el nuevo telefono:')
+          x['Telefono'] = telefono
+        if (opcionActualizar == '5'):
+          email = input('Escriba el nuevo email:')
+          x['Email'] = email
+        if (opcionActualizar == '6'):
+          aprobado = input('Escriba el nuevo aprobado:')
+          x['Aprobado'] = aprobado
 
   elif  opcion == '4':
     MostrarAlumnoNIF= input('Dime el NIF del cliente que quieres mostrar: ')
