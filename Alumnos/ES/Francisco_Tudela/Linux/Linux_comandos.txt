@@ -12,20 +12,19 @@ Ejercicio de comandos en la consola de linux.
     
   3.Listar todos los archivos del directorio etc que empiecen por t 
     
-    ls /etc t*
+    ls /etc/t*
   
   4.Listar todos los archivos del directorio dev que empiecen por tty.
-     ls /dev -d tty*
+     ls /dev/tty*
     
     
   5.Listar todos los archivos del directorio dev que empiecen por tty y acaben en 3.
     
-   ls /dev -d tty*3
+   ls /dev/tty*3
 
-    
   6.Listar todos los archivos del directorio dev que empiecen por t y acaben en C1.
     
-    desde /dev > ls tty*C1
+   ls /dev/ztty*C1
 
   7.Listar todos los archivos, incluidos los ocultos, del directorio raíz.
     
@@ -43,7 +42,6 @@ Ejercicio de comandos en la consola de linux.
     
     cd /tmp
     mkdir PRUEBA
-    
 
   11.Verificar que el directorio actual ha cambiado.
     
