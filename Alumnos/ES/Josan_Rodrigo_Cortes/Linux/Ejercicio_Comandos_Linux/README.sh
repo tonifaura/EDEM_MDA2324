@@ -8,7 +8,7 @@
 echo "Ejercicio de comandos en la consola de linux."
 
   echo "1.Listar todos los archivos del directorio bin."
-  ls -a /bin
+  ls /bin
 
   echo "2.Listar todos los archivos del directorio tmp."
   ls /tmp
@@ -20,10 +20,10 @@ echo "Ejercicio de comandos en la consola de linux."
   ls /dev/tty*
     
   echo "5.Listar todos los archivos del directorio dev que empiecen por tty y acaben en 3." 
-  ls -a /dev/tty*[3]
+  ls /dev/tty*[3]
   # Hay alguno??
   echo "6.Listar todos los archivos del directorio dev que empiecen por t y acaben en C1."
-  ls -a /dev/t*c1
+  ls /dev/t*c1
   # Hay alguno?
   echo "7.Listar todos los archivos, incluidos los ocultos, del directorio raíz."
   ls -a /
@@ -36,7 +36,8 @@ echo "Ejercicio de comandos en la consola de linux."
   #ls /usr * Podría valer?
 
   echo "10.Cambiarse al directorio tmp, crear directorio PRUEBA."
-  cd /tmp && mkdir /tmp/PRUEBA
+  cd /tmp
+  mkdir /tmp/PRUEBA
     
   echo "11.Verificar que el directorio actual ha cambiado."
   pwd
@@ -56,14 +57,22 @@ echo "Ejercicio de comandos en la consola de linux."
   echo "16.Borrar todos los archivos y directorios visibles de vuestro directorio PRUEBA."
   rmdir /tmp/PRUEBA
     
-  echo "17.Crear los directorios dir1, dir2 y dir3 en el directorio PRUEBA. Dentro de dir1 crear el directorio dir11. Dentro del directorio dir3 crear el directorio dir31. Dentro del directorio dir31, crear los directorios dir311 y dir312."
-  mkdir /tmp/PRUEBA/dir1
-  mkdir /tmp/PRUEBA/dir2 
-  mkdir /tmp/PRUEBA/dir3
+  echo "17.Crear los directorios dir1, dir2 y dir3 en el directorio PRUEBA. Dentro de dir1 crear el directorio dir11.
+  Dentro del directorio dir3 crear el directorio dir31. Dentro del directorio dir31, crear los directorios dir311 y dir312."
+  mkdir /tmp/PRUEBA
+  mkdir /tmp/PRUEBA dir1 dir2 dir3
   mkdir /tmp/PRUEBA/dir1/dir11
   mkdir /tmp/PRUEBA/dir3/dir31
   mkdir /tmp/PRUEBA/dir3/dir31/dir311
   mkdir /tmp/PRUEBA/dir3/dir31/dir312
+
+
+  #DUDA, A LA HORA DE CREAR VARIOS DIRECTORIOS DENTRO DE OTRO NO TENGO CLARA LA SINTAXIS
+  #mkdir /tmp/PRUEBA/ dir1 dir2 dir3
+  #mkdir /tmp/PRUEBA/dir1/dir11
+  #mkdir /tmp/PRUEBA/dir3/dir31
+  #mkdir /tmp/PRUEBA/dir3/dir31/dirpepe dirjuan
+ 
 
   echo "18.Copiar el archivo /etc/motd a un archivo llamado mensaje de vuestro directorio PRUEBA."
     
@@ -78,6 +87,7 @@ echo "Ejercicio de comandos en la consola de linux."
   
   ls -R /etc
 
+#Como comprovamos a parte de en la consola?? Tenemos que hacer que se ejecute como en el ejercicio de la Script??
 #Para crear un script bash en Linux, sigue estos pasos:
 #Abre tu editor de texto preferido (por ejemplo, vim, gedit o nano).
 #Escribe tus comandos en el archivo, uno debajo del otro. Asegúrate de que cada comando esté en una nueva línea.
