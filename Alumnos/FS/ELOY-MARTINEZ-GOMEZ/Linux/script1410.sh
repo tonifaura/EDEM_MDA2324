@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 
 mkdir c1 c2 c2/c3
 touch c1/hola.csv
