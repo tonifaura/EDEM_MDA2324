@@ -1,5 +1,5 @@
-FROM python:latest
+FROM python
 
-COPY ./suma_python.py /
+COPY suma_python.py /
 
-CMD ["python3", "suma_python.py"]
+ENTRYPOINT ["python3", "suma_python.py"]
