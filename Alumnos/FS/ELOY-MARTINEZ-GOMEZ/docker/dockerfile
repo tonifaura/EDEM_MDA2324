@@ -1,0 +1,5 @@
+FROM python:latest
+
+COPY ./suma_python.py /
+
+CMD ["python3", "suma_python.py"]
