@@ -1,5 +1,6 @@
 echo 'Hello World'
 cd ~
-mkdir CHUCK
-cd CHUCK
-mkdir Results
+mkdir /CHUCK
+mkdir ~/CHUCK/Results
+pip install requests
+python3 chuck.py
