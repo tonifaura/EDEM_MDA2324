@@ -20,7 +20,7 @@ def chuck():
 
 # Now we run the code for t seconds:
 import time
-t = 10
+t = 1
 t_end = time.time() + t
 while time.time() < t_end:
     text_get = chuck()
