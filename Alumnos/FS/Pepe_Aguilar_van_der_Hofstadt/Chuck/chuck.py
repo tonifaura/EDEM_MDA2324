@@ -1,6 +1,22 @@
 import requests
 import pandas as pd
 
+class Sustantivo:
+    palabra:str
+    veces:int
+
+    def __init__(self, _palabra):
+        self.palabra = _palabra
+        self.veces = 1
+    
+    def suma_vez(self):
+        self.veces += 1
+
+    def reset(self):
+        self.veces = 0
+
+lista_sustantivos = []
+
 def random_chuck_norris_joke(url: str) -> str:
 
     respuesta = requests.get(url)
@@ -18,10 +34,20 @@ def separa_sustantivos(broma:str, todos_sustantivos) -> list:
     for palabra in broma_separada:
         for sust in todos_sustantivos:
             if(palabra.lower() == sust):
-                sustantivos.append(palabra)
+                if(len(lista_sustantivos) == 0):
+                    sustantivo_nuevo = Sustantivo(palabra)
+                    sustantivo_nuevo.reset()
+                    lista_sustantivos.append(sustantivo_nuevo)
+                for repetir in lista_sustantivos:
+                    
+                    if(repetir.palabra == palabra):
+                        repetir.suma_vez()
+                    else:
+                        sustantivo_nuevo = Sustantivo(palabra)
+                        lista_sustantivos.append(sustantivo_nuevo)
+                #sustantivos.append(palabra)
     return(sustantivos)
 
-sust_veces = dict[]
 
 
 
@@ -32,7 +58,17 @@ URL:str = 'https://api.chucknorris.io/jokes/random'
 
 
 broma = random_chuck_norris_joke(URL)
-print(separa_sustantivos(broma, palabras))
+sustativos_chiste = separa_sustantivos(broma, palabras)
+
+print(broma)
+for palabras in lista_sustantivos:
+    print(f'{palabras.palabra} {palabras.veces}')
+
+
+
+
+
+
 
 
 
