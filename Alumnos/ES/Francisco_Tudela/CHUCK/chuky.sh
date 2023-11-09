@@ -1,5 +1,6 @@
-#!bin/bash
+#!/bin/bash
 echo "Hello World"
-mkdir chuck
-mkdir ~/chuck/results
-touch ~/chuck/results/results.txt
+mkdir -p chuck
+mkdir -p chuck/results
+pip install requests
+python3 CHUCKY.py
