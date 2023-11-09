@@ -15,15 +15,17 @@ def chuck():
     data = requests.get(url)
     tt = json.loads(data.text)
 
-    print(tt['value'])
+    #print(tt['value'])
     return tt['value']
 
-i = 0
-while i < 10:
+# Now we run the code for t seconds:
+import time
+t = 10
+t_end = time.time() + t
+while time.time() < t_end:
     text_get = chuck()
     #print(text_get)
     # Now, we create the text file and write the joke, which is stored into text_get, to the txt file
     f = open('chuck/results/results.txt', 'a+')
     f.write(text_get + "\n")
     f.close()
-    i += 1
