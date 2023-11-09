@@ -5,7 +5,7 @@ import requests
 url = 'https://api.chucknorris.io/jokes/random'
 
 # Número de chistes
-numero_de_chistes = 200
+numero_de_chistes = 100
 
 # Crear el archivo TXT
 archivo = open('chistes.txt', 'w')
