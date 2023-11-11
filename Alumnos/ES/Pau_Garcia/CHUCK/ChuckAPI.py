@@ -17,11 +17,3 @@ for i in range(5):
 
     # Escribe el chiste en el .txt
     file.write(joke + "\n")
-
-
-
-
-
-
-
-
