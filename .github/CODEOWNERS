@@ -1,4 +1,5 @@
 # List of codeowners based on project team
 
 * @a10pepo
-*/DOCKER/* @alhercan
+/Alumnos/FS/*/DOCKER/** @alhercan
+/Alumnos/FS/*/docker/** @alhercan
