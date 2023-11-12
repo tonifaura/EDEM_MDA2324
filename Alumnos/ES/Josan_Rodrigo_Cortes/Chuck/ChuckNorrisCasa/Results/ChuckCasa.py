@@ -1,19 +1,14 @@
-
+# Como no puedo sumar sustantivos, voy a ver las veces que aparece repetida una palabra en el texto
 
 import requests
 import json
 import time
-"""
-url = "https://api.chucknorris.io/jokes/random"
-respuesta = requests.get(url)
-value=respuesta.json()
-fraseChuck:str =value["value"]
-"""
+
 url = "https://api.chucknorris.io/jokes/random"
 
 numeroFrases=0
 
-while numeroFrases<=3:
+while numeroFrases<=10:
 
     time.sleep(1)
     respuesta = requests.get(url)
@@ -23,34 +18,36 @@ while numeroFrases<=3:
     f = open("ChuckCasa.txt", "a")
     f.write( str(numeroFrases) +" " + fraseChuck + "\n")
     f.close()
+    
+f = open("ChuckCasa.txt")
 
-print("Ya he salido del bucle")
+listapalabras=[]
 
-#ahora hay que contar cada palabra y decir cuantas palabras hay de cada longitud
+for line in f:
 
-texto= open("ChuckCasa.txt","r")
+    listafrases=line.split() #Separa las frases y Me devuelve una lista donde cada elemento es una frase
 
-for linea in texto:
-   
-   palabras=linea.split()
-   
+    for palabra in listafrases:
 
-print(palabras)
-   #listaPalabras.append(frases)
-   #alabrasSueltas=[]
+        listapalabras.append(palabra) #itera las frases y me devuelve una lista donde cada elemento es una palabra.
 
-   #for frases in listaPalabras:
-   #    palabras=frases.split #tiene buena pinta, ahora hay que dividir de la lista listapalabras en palabras sueltas para poder añadirlas.
+#quito lo respetidos transformando la lista en un set
 
+listapalabrasnorepetidas=set(listapalabras)
+#creo un diccionario vacío
+diccionariopalabras={}
 
+for i in listapalabrasnorepetidas:
+    diccionariopalabras[i]=0 #creo un diccionario de palabras de la lista no repetidas con valor 0 cada una.
+    # Y las añado al diccionario 
+# ahora hay que contar las veces que una palabra aparece dentro de la lista de palabras
 
-"""
-datos = []
-with open('test.txt', 'r') as rawData:
-    next(rawData)  # Leer y descartar primera linea
-    for linea in rawData:  # Procesar las restantes
-      linea=linea.rstrip('\n') #este remueve el salto de linea
-      dato=float(linea.split(",")[-1])
-      datos.append(dato)
+claves=dict.keys(diccionariopalabras)
 
-"""
+for claves in listapalabras: # En este bucle cuento las veces que aparece una palabra en las frases,
+    if claves in listapalabras: #sumando uno cada vez que aparece una palabra
+        diccionariopalabras[claves]=diccionariopalabras[claves]+1
+
+print(diccionariopalabras)
+
+#probado-->FUNCIONA!!
