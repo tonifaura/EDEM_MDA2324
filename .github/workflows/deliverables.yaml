@@ -6,6 +6,7 @@ on:  # yamllint disable-line rule:truthy
       - main
 jobs:
   entregables:
+    if: github.event.commits[0].author.username != 'github-actions[bot]'
     runs-on: ubuntu-latest
     permissions:
       contents: write
