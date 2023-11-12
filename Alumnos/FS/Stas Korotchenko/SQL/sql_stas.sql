@@ -111,6 +111,169 @@ from film f
 group by rating
 having avg(length) > 115
 
+-- 10.11.2023 session 2 y 3
+
+-- Ejercicio 8 Cláusula JOIN
+
+
+select first_name, last_name, c.address_id, c2.city, c3.country 
+from customer c
+inner join address a on
+	c.address_id = a.address_id
+inner join city c2
+	on a.city_id = c2.city_id
+inner join country c3
+	on c2.country_id = c3.country_id 
+
+-- Ejercicio 9/1	Cláusula JOIN
+-- Obtén solamente las películas que tienen un actor que tenga un apellido que empiece por la letra “C”
+select f.title
+from film f
+inner join film_actor fa on f.film_id = fa.film_id
+inner join actor a on fa.actor_id = a.actor_id
+where a.last_name like 'C%'
+
+ 
+-- Ejercicio 9/2 Cláusula JOIN
+
+/*
+- ¿Cuántos actores tiene
+cada película?
+- ¿Cuáles son las películas
+que tienen más de 2
+actores?
+- ¿Cual es la película que
+tiene más actores?*/
+
+select title, count(first_name) 
+from film f
+inner join film_actor fa on f.film_id = fa.film_id
+inner join actor a on fa.actor_id = a.actor_id
+group by 1
+having count(last_name) > 2
+order by 2 desc
+
+-- Ejercicio 10
+
+create table if not exists public.reviews_sk (
+	film_id int2 not null,
+	customer_id int2 not null,
+	review_date date not null,
+	review_description varchar,
+	CONSTRAINT reviews_pkey PRIMARY KEY (film_id, customer_id)
+	);
+
+-- Ejercicio 11
+
+insert into reviews_sk (film_id, customer_id,review_date, review_description)
+values ('4','7',' 10-11-2023','a película es un
+poco aburrida')
+
+-- Ejercicio 12
+
+update reviews_sk
+set review_description = 'La película es bastante divertida y para todo los
+públicos'
+where customer_id = '7' and film_id = '4' 
+
+-- Ejercicio 13
+
+alter table reviews_sk
+	--add column review_stars int2
+	--rename column review_description to review_opinion
+	--alter column review_stars type varchar
+	--drop column review_stars
+
+delete
+from reviews_sk
+where customer_id = '7'
+
+drop table public.reviews_sk 
+
+-- Views
+-- Ejercicio 14
+
+create view stas_korotchenko as
+select title, rating 
+from film f 
+
+-- Subconsultas en WHERE
+-- Ejercicio 14
+-- Obtén haciendo una subconsulta en la cláusula WHERE, todas aquellas películas que están en el idioma de inglés
+
+SELECT *
+FROM public.film
+where title in (
+	select f.title
+	from film f 
+	inner join "language" l on f.language_id = l.language_id
+	where l.name = 'English'
+	)
+	
+-- Ejercicio 15
+-- Obtén haciendo una subconsulta en la cláusula WHERE, todos aquellos clientes que viven en una dirección que empieza por A
+
+SELECT first_name
+FROM public.customer c 
+where address_id in (
+	select address_id 
+	from address a 
+	where district  like 'A%'
+	)	
+	
+-- Obtén haciendo una subconsulta en la cláusula WHERE, aquellos clientes que han se han gastado más de 190€
+	
+SELECT first_name
+FROM public.customer c 
+where customer_id in (
+	select customer_id 
+	from payment p 
+	group by customer_id 
+	having sum(amount) > 190
+	);
+	
+-- WITH
+-- La suma de los amount que de los clientes que han pagado más de 190€
+	
+with sub_query as (
+select customer_id, sum(amount) as sum_cust
+from payment p 
+group by customer_id 
+having sum(amount) > 190
+)
+select sum(sum_cust)
+from sub_query
+
+-- El número de clientes que han pagado más de 190€
+with sub_query as (
+select customer_id
+from payment p 
+group by customer_id 
+having sum(amount) > 190
+)
+select count(customer_id)
+from sub_query
+
+-- El número de veces que un cliente ha alquilado una película.
+-- El número de veces que un cliente ha alquilado una película en el año 2005 y en el 2006
+-- por ejemplo sin with
+select c.customer_id,c.first_name, c.last_name, f.title, count(f.title)
+from customer c 
+inner join rental r on c.customer_id = r.customer_id 
+inner join inventory i on r.inventory_id  = i.inventory_id 
+inner join film f on i.film_id = f.film_id
+where extract (year from r.rental_date) in ('2005','2006')
+group by c.customer_id, f.title
+order by c.customer_id
+
+
+
+ 
+
+
+	
+	
+ 
 
 
 
