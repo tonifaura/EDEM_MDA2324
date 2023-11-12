@@ -1,6 +1,6 @@
 #!/bin/bash
-echo "Hello World"
-mkdir -p chuck
+echo "Creando directorio results..."
 mkdir -p chuck/results
+touch chuck/results/results.txt
 pip install requests
 python3 CHUCKY.py
