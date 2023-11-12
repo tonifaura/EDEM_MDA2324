@@ -24,13 +24,13 @@ jobs:
           # git commit -am "Automated report"
           # git push       
       
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v5
-        with:
-          token: ${{ secrets.REPO_PR }}
-          commit-message: Calculando entregables
-          branch: estado_entregables
-          title: 'Actualizando Estado de Entregables'
-          body: >
-            Esta PR es autogenerado con los cambios, por favor acepta los cambios en readme
+      # - name: Create Pull Request
+      #   uses: peter-evans/create-pull-request@v5
+      #   with:
+      #     token: ${{ secrets.REPO_PR }}
+      #     commit-message: Calculando entregables
+      #     branch: estado_entregables
+      #     title: 'Actualizando Estado de Entregables'
+      #     body: >
+      #       Esta PR es autogenerado con los cambios, por favor acepta los cambios en readme
 
