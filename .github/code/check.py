@@ -65,8 +65,7 @@ def modify_readme():
 
 
 
-if __name__ == '__main__':
-    
-    #check_class('Alumnos/FS')
+if __name__ == '__main__':  
     modify_readme()
+    print("README.md updated")
 
