@@ -56,4 +56,5 @@ print(diccionariopalabras)
 #Tambien se podría hacer de mayor a menor
 #probado-->parece que FUNCIONA!!
 #tambien pordría contar la longitud de casa palabra
+#Revisar este artículo:https://es.stackoverflow.com/questions/410757/diccionarios-anidados-a-partir-de-listas-en-python
 
