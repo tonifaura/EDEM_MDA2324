@@ -2,7 +2,7 @@ import os
 
 
 
-deliverables=["DOCKER","PYTHON","LINUX","NOTEBOOKS","AHORCADO"]
+deliverables=["DOCKER","PYTHON","LINUX","NOTEBOOKS","AHORCADO","SQL"]
 
 
 
