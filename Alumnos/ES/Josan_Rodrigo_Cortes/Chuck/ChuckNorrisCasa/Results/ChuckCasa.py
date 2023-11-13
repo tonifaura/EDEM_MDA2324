@@ -3,6 +3,10 @@
 import requests
 import json
 import time
+import matplotlib.pyplot as plt
+import numpy as np
+
+import matplotlib as mpl
 
 url = "https://api.chucknorris.io/jokes/random"
 
@@ -49,5 +53,6 @@ for claves in listapalabras: # En este bucle cuento las veces que aparece una pa
         diccionariopalabras[claves]=diccionariopalabras[claves]+1
 
 print(diccionariopalabras)
-
+#Tambien se podría hacer de mayor a menor
 #probado-->FUNCIONA!!
+
