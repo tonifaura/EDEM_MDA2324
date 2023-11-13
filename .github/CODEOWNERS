@@ -1,26 +1,3 @@
 # List of codeowners based on project team
 
 * @a10pepo
-
-/Alumnos/FS/*/DOCKER/** @alhercan
-/Alumnos/FS/*/docker/** @alhercan
-/Alumnos/ES/*/DOCKER/** @alhercan
-/Alumnos/ES/*/docker/** @alhercan
-
-/Alumnos/FS/*/PYTHON/** @martinImagina
-/Alumnos/FS/*/python/** @martinImagina
-/Alumnos/ES/*/PYTHON/** @martinImagina
-/Alumnos/ES/*/python/** @martinImagina
-
-/Alumnos/FS/*/SQL/** @gavaldanatalia
-/Alumnos/FS/*/sql/** @gavaldanatalia
-/Alumnos/ES/*/SQL/** @gavaldanatalia
-/Alumnos/ES/*/sql/** @gavaldanatalia
-
-/Alumnos/FS/*/NIFI/** @echiner
-/Alumnos/FS/*/nifi/** @echiner
-/Alumnos/ES/*/NIFI/** @echiner
-/Alumnos/ES/*/nifi/** @echiner
-
-/Alumnos/FS/** @a10pepo
-/Alumnos/ES/** @a10pepo

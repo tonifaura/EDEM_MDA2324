@@ -1,5 +1,0 @@
-FROM python
-
-COPY script.py / 
-
-ENTRYPOINT ["python" , "script.py"]

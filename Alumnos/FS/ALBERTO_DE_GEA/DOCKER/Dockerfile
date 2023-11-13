@@ -1,4 +1,4 @@
-FROM python:3.9
-COPY sumar.py /app/sumar.py
+FROM python:3.11.5-slim
+COPY suma.py /app/suma.py
 WORKDIR /app
-CMD ["python", "sumar.py"]
+CMD ["python", "suma.py"]
