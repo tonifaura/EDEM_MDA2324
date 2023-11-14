@@ -1,34 +1,49 @@
-# import random 
+import time
 
-# Random nos permitirá elegir una palabra aleatoria de una lista. Luego, podemos definir una lista de palabras que el programa elegirá al azar.
+def main():
+    # Obtenemos el tiempo actual
+    tiempoInicial = time.time()
+        
+    # Muestra un mensaje
+    print("Iniciando...")
 
-"""Asignamos variable a través de random choice, que devuelve un valor aleatorio
-extraido de la secuencia pasada como argumento."""
+    # Array de palabras
+    words = ["REMEDIO", "PRONUNCIAR", "MANEJAR", "LEY", "ELEFANTE"]
+    alphabet = alphabetList()
+    
+    intentos = 0
+    
+    # recorrer las palabras
+    for word in words:
+        # Iniciamos el contador de coincidencias
+        cont = 0
+        intentoPalabra = 0
+        # Recorremos el alfabeto
+        for letter in alphabet:
+            # Sumas las coincidencias
+            cont += word.count(letter)
+            intentos +=1
+            intentoPalabra +=1
+            
+            if cont == len(word): 
+                print(word, intentoPalabra)
+                break
+    
+    
+    tiempoFinal = time.time()
+      
+     
+            
+    # Imprime el contador
+    print(f"Numero de intentos: {intentos}")
+    print(f"Tiempo de ejecucion: {tiempoFinal - tiempoInicial}")
+       
 
-# palabra_aleatoria = random.choice(palabras) 
+    
+def alphabetList():
+    alfabeto = ['A', 'E', 'O', 'I', 'N', 'R', 'L', 'S', 'U', 'T', 'C', 'D', 'P', 'M', 'Y', 'Q', 'B', 'G', 'V', 'H', 'F', 'J', 'Z', 'X', 'K', 'Ñ', 'W']
+    return alfabeto
+    
+# Iniciar
+main()
 
-# Asignamos variable para que nos ofresca un guión bajo por cada letra que tenga nuestra palabra aleatoria.
-
-# palabra_oc = "_" *len(palabra_aleatoria)
-
-palabras = ["REMEDIO", "PRONUNCIAR", "MANEJAR", "LEY", "ELEFANTE"]
-
-import string
-
-def listAlphabet():
-    return list(string.ascii_uppercase)
-
-alphabet = listAlphabet()
-
-intentos = 0
-
-for palabra in palabras:
-    for letter in alphabet:
-        if letter in palabra:
-            print("letra encontrada")
-            intentos = intentos+1
-        else:
-            print("letra no encontrada")
-            intentos = intentos+1
-
-print(intentos)
