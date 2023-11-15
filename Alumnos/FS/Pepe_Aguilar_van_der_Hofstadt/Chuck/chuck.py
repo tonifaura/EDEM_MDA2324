@@ -60,15 +60,17 @@ lista_sustantivos = []
 
 URL:str = 'https://api.chucknorris.io/jokes/random'
 
-for n in range(10):
+txt = open("./results.txt", "w")
+
+for n in range(1000):
     broma = random_chuck_norris_joke(URL)
     sustativos = separa_sustantivos(broma, palabras)
     cuenta_sustantivos(sustativos)
 
 for palabras in lista_sustantivos:
-    print(f'{palabras.palabra} {palabras.veces}')
+    txt.write(f'{palabras.palabra},{palabras.veces};')
 
-
+txt.close()
 
 
 
