@@ -61,3 +61,14 @@ print(diccionariopalabras)
 #PODRIA CREAR UN BUCLE QUE AÑADIERA UN ELEMENTO A UNA LISTA SI TIENE LEN 1,2,3,ETC... Y 
 #CREAR UNA LISTA POR LA LONGITUD DE LA STRING, CON UN BUCLE. 
 #debugg los bucles para ver si funcionan los códigos
+
+"""
+EL CAMINO DE DOS FOR ANIDADOS RECORRIENDO LAS DOS LISTAS ME GUSTA, HAY QUE DARLE FORMA.
+REVISAR EL CODIGO PARA PODER HACER UNA DOS LISTAS COMPARABLES, LISTA PALABRAS Y LISTAPALABRASNOREPETIDAS
+PARA COMPARARLOS Y DESPUES CREAR EL DICCIONARIO.
+REVISAR ESTE ENFOQUE
+for i in listapalabras: # En este bucle cuento las veces que aparece una palabra en las frases,
+    for e in claves:
+        if claves[e]==listapalabras[i]: #sumando uno cada vez que aparece una palabra
+             diccionariopalabras[claves]=diccionariopalabras[claves]+1
+"""
