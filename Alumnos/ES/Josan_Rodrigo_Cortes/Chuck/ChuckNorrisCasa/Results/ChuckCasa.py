@@ -58,3 +58,6 @@ print(diccionariopalabras)
 #tambien pordría contar la longitud de casa palabra
 #Revisar este artículo:https://es.stackoverflow.com/questions/410757/diccionarios-anidados-a-partir-de-listas-en-python
 
+#PODRIA CREAR UN BUCLE QUE AÑADIERA UN ELEMENTO A UNA LISTA SI TIENE LEN 1,2,3,ETC... Y 
+#CREAR UNA LISTA POR LA LONGITUD DE LA STRING, CON UN BUCLE. 
+#debugg los bucles para ver si funcionan los códigos
