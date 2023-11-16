@@ -2,6 +2,8 @@
 import requests
 from requests.models import Response
 import nltk
+nltk.download ('punkt')
+nltk.download ('averaged_perceptron_tagger')
 import time
 URL : str = "https://api.chucknorris.io/jokes/random"
 lista_chistes = []

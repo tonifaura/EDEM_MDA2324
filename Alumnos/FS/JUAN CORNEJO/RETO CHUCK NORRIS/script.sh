@@ -1,7 +1,7 @@
 #!/bin/bash
-if [ -d "Chuck" ]; then 
-    rm -r "Chuck"
+if [ -d "CHUCK" ]; then 
+    rm -r "CHUCK"
 fi
-mkdir "Chuck"
+mkdir "CHUCK"
 ls
 python "/g/Mi unidad/PYTHON/PRUEBA_CHUCK_NORRIS/chuck_final.py"
