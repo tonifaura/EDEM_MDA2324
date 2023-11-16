@@ -45,11 +45,13 @@ for i in listapalabrasnorepetidas:
     # Y las añado al diccionario 
 # ahora hay que contar las veces que una palabra aparece dentro de la lista de palabras
 
-claves=dict.keys(diccionariopalabras)
 
-for claves in listapalabras: # En este bucle cuento las veces que aparece una palabra en las frases,
-    if claves in listapalabras: #sumando uno cada vez que aparece una palabra
-        diccionariopalabras[claves]=diccionariopalabras[claves]+1
+for i in listapalabras: # En este bucle cuento las veces que aparece una palabra en las frases,
+    for j in listapalabrasnorepetidas: #sumando uno cada vez que aparece una palabra
+
+        if i ==j:
+            diccionariopalabras[j]+=1
+      
 
 print(diccionariopalabras)
 
