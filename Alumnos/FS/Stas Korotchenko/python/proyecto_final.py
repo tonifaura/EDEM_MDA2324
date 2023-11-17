@@ -34,23 +34,11 @@ df = pd.DataFrame({'NIF': ['A1', 'A2', 'A3', 'A4', 'A5', 'A6'],
                 'Apellidos': ['Martinez', 'Nupa', 'Aflek', 'Pitt', 'Madison', 'Misty'],
                 'Teléfono': ['123', '345', '678', '987', '654', '321'],
                 'Email': ['alma@gmail.com', 'astra@gmail.com', 'ben@gmail.com', 'bred@gmail.com', 'carla@gmail.com', 'cristy@gmail.com'],
-                'Aprobado': [True, False, False, True, True, True]})
+                'Aprobado': ['SI', 'NO', 'NO', 'NO', 'NO', 'SI']})
 
 
 
-escoja_opcion = input('Escoja_opcion:\
-                        \n(1) Añadir un alumno\
-                        \n(2) Eliminar alumno por NIF\
-                        \n(3) Actualizar datos de un alumno por NIF\
-                        \n(4) Mostrar datos de un alumno por NIF\
-                        \n(5) Mostrar datos de un alumno por Email\
-                        \n(6) Listar TODOS os alumnos\
-                        \n(7) Aprobar Alumno por NIF\
-                        \n(8) Suspender Alumno por NIF\
-                        \n(9) Mostrar alumnos aprobados\
-                        \n(10) Mostrar alumnos suspensos\
-                        \n(X) Finalizar Programa\
-                        \nEntre numero: ')
+
 
 
 # (1) Añadir un alumno --> Esto activará una serie de preguntas para completar el nuevo alumno
@@ -60,8 +48,8 @@ def añadir_alumno():
     appellido: str = input('Añade appellido: ')
     telefono: str = input('Añade teléfono: ')
     email: str = input('Añade email: ')
-    aprobado: bool = input('Añade aprobado o no: ')
-    df.loc[ len(df.index )] = [nif, nombre, appellido,telefono, email, aprobado]
+    aprobado: str = input('Añade aprobado o no, introduce SI o NO: ')
+    df.loc[ len(df.index)] = [nif, nombre, appellido,telefono, email, aprobado]
     print(df)
     
 
@@ -82,16 +70,20 @@ def Actualizar_por_NIF():
                 \nIngresa número: ')
     if que == '1':
         nuevo_nombre = input('Nuevo nombre: ')
-        df['Nombre'].where(~(df.NIF == actualizar_por_nif), other=nuevo_nombre, inplace=True)
+        df['Nombre'].where(~(actualizar_por_nif == df.NIF),
+                           other=nuevo_nombre, inplace=True)
     elif que == '2':
         nuevo_apellido = input('Nuevo apellido: ')
-        df['Apellidos'].where(~(df.NIF == actualizar_por_nif), other=nuevo_apellido, inplace=True)
+        df['Apellidos'].where(~(actualizar_por_nif == df.NIF),
+                              other=nuevo_apellido, inplace=True)
     elif que == '3':
         nuevo_teléfono = input('Nuevo teléfono: ')
-        df['Teléfono'].where(~(df.NIF == actualizar_por_nif), other=nuevo_teléfono, inplace=True)
+        df['Teléfono'].where(~(actualizar_por_nif == df.NIF),
+                             other=nuevo_teléfono, inplace=True)
     elif que == '4':
         nuevo_email = input('Nuevo email: ')
-        df['Email'].where(~(df.NIF == actualizar_por_nif), other=nuevo_email, inplace=True)
+        df['Email'].where(~(actualizar_por_nif == df.NIF),
+                          other=nuevo_email, inplace=True)
     print(df)
 
 
@@ -112,51 +104,63 @@ def Listar_TODOS_los_alumnos():
 # (7) Aprobar Alumno por NIF
 def Aprobar_Alumno_por_NIF():
     aprobar_por_nif = input('Ingresa NIF: ')
-    df['Aprobado'].where(~(df.NIF == aprobar_por_nif), other=True, inplace=True)
+    df['Aprobado'].where(~(aprobar_por_nif == df.NIF), other=True, inplace=True)
     print(df)
 
 # 8) Suspender Alumno por NIF
 def Suspender_Alumno_por_NIF():
     suspender_por_nif = input('Ingresa NIF: ')
-    df['Aprobado'].where(~(df.NIF == suspender_por_nif), other=False, inplace=True)
+    df['Aprobado'].where(~(suspender_por_nif == df.NIF), other=False, inplace=True)
     print(df)
 
 # (9) Mostrar alumnos aprobados  
 def Mostrar_alumnos_aprobados():
-    print(df.loc[df['Aprobado'] == True])
+    print(df.loc[df['Aprobado']== 'SI'])
 
 # (10) Mostrar alumnos suspensos  
 def Mostrar_alumnos_suspensos():
-    print(df.loc[df['Aprobado'] == False])
+    print(df.loc[df['Aprobado'] == 'NO'])
+
+
+while True:
+    escoja_opcion = input('Escoja_opcion:\
+                        \n(1) Añadir un alumno\
+                        \n(2) Eliminar alumno por NIF\
+                        \n(3) Actualizar datos de un alumno por NIF\
+                        \n(4) Mostrar datos de un alumno por NIF\
+                        \n(5) Mostrar datos de un alumno por Email\
+                        \n(6) Listar TODOS os alumnos\
+                        \n(7) Aprobar Alumno por NIF\
+                        \n(8) Suspender Alumno por NIF\
+                        \n(9) Mostrar alumnos aprobados\
+                        \n(10) Mostrar alumnos suspensos\
+                        \n(X) Finalizar Programa\
+                        \nEntre numero: ')
 
 
 
-
-
-
-
-if escoja_opcion == 'x':
-        exit
-elif int(escoja_opcion) == 1:
-        añadir_alumno()
-elif int(escoja_opcion) == 2:
-        Eliminar_por_NIF(df)
-elif int(escoja_opcion) == 3:
-        Actualizar_por_NIF()
-elif int(escoja_opcion) == 4:
-        Mostrar_datos_por_NIF()
-elif int(escoja_opcion) == 5:
-        Mostrar_datos_por_Email()
-elif int(escoja_opcion) == 6:
-        Listar_TODOS_los_alumnos()
-elif int(escoja_opcion) == 7:
-        Aprobar_Alumno_por_NIF()    
-elif int(escoja_opcion) == 8:
-        Suspender_Alumno_por_NIF()
-elif int(escoja_opcion) == 9:
-        Mostrar_alumnos_aprobados()
-elif int(escoja_opcion) == 10:
-        Mostrar_alumnos_suspensos()
+    if escoja_opcion == 'x':
+            break
+    elif int(escoja_opcion) == 1:
+            añadir_alumno()
+    elif int(escoja_opcion) == 2:
+            Eliminar_por_NIF(df)
+    elif int(escoja_opcion) == 3:
+            Actualizar_por_NIF()
+    elif int(escoja_opcion) == 4:
+            Mostrar_datos_por_NIF()
+    elif int(escoja_opcion) == 5:
+            Mostrar_datos_por_Email()
+    elif int(escoja_opcion) == 6:
+            Listar_TODOS_los_alumnos()
+    elif int(escoja_opcion) == 7:
+            Aprobar_Alumno_por_NIF()    
+    elif int(escoja_opcion) == 8:
+            Suspender_Alumno_por_NIF()
+    elif int(escoja_opcion) == 9:
+            Mostrar_alumnos_aprobados()
+    elif int(escoja_opcion) == 10:
+            Mostrar_alumnos_suspensos()
 
 
     
