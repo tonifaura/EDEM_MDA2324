@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh 
 mkdir c1
 mkdir c2
 mkdir c2/c3
