@@ -25,19 +25,19 @@ def check_class(folder_path):
 def generate_table(clase,alumnos):
     
     try:
-        table="<table><tr><th>Alumno</th>"
+        table="<table>\n<tr><th>Alumno</th>"
         for element in deliverables:
-            table+="<th>"+element+"</th>"
-        table+="</tr>"  
+            table+="\n<th>"+element+"</th>"
+        table+="\n</tr>\n"  
         for alumno in sorted(alumnos):
-            table+="<tr><td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/"+clase+"/"+alumno+"'>"+str.capitalize(alumno)+"</a></td>"
+            table+="<tr>\n<td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/"+clase+"/"+alumno+"'>"+str.capitalize(alumno)+"</a></td>"
             for element in deliverables:
                 if alumnos[alumno][element]:
-                    table+="<td>✅</td>"
+                    table+="\n<td>✅</td>"
                 else:
-                    table+="<td>❌</td>"
-            table+="</tr>"
-        table+="</table>"
+                    table+="\n<td>❌</td>"
+            table+="\n</tr>\n"
+        table+="</table>\n"
     except:
         print("error")
     return table
