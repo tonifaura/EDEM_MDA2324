@@ -1,3 +1,4 @@
+import os
 import requests
 import time
 
@@ -10,14 +11,19 @@ def fetch_chuck_norris_joke():
     else:
         return None
 
-def save_jokes_to_file(jokes, file_path="chisteschuck.txt"):
+def save_jokes_to_file(jokes, file_name="chisteschuck.txt"):
+    # Obtiene el directorio del chuck.py!!!
+    script_directory = os.path.dirname(os.path.realpath(__file__))
+    
+    # Crea la ruta completa al archivo dentro del directorio actual!!!!
+    file_path = os.path.join(script_directory, file_name)
+
     with open(file_path, "a", encoding="utf-8") as file:
         for joke in jokes:
             file.write(joke + "\n")
 
 def main():
     num_jokes_to_fetch = 5
-
     interval_seconds = 100
 
     while True:
@@ -30,7 +36,7 @@ def main():
 
         save_jokes_to_file(jokes)
 
-        # Wait for the specified interval before fetching jokes again
+        # Esperar el intervalo de tiempo especificado antes de obtener más bromas
         time.sleep(interval_seconds)
 
 if __name__ == "__main__":
