@@ -8,7 +8,7 @@ url = 'https://api.chucknorris.io/jokes/random'
 numero_de_chistes = 100
 
 # Crear el archivo TXT
-archivo = open('chistes.txt', 'w')
+archivo = open('/Users/User/Documents/GitHub/EDEM_MDA2324/Alumnos/ES/Javier_Ruiz/Chuck/results/chistes.txt', 'w')
 
 # Obtener las bromas
 for i in range(numero_de_chistes):
