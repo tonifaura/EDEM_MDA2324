@@ -116,5 +116,5 @@ while(opcion_escogida != 'X'):
         else:
           element_total_price = units * unit_price
           total_price += element_total_price
-        print(f'{product:<15}{unit_price:<12}{units:<15}{round(element_total_price * (discount / 100), 2):<12}{round(element_total_price, 3):<10}')
-      print(f'______________________________________________________\nTotal: {total_price:.2f}')
+        print(f'{product:<15}{unit_price:<12}{units:<15}{round(units * unit_price * (discount / 100), 2):<12}{round(element_total_price, 3):<10}')
+      print(f'______________________________________________________\nTotal: {total_price:.2f}') 
