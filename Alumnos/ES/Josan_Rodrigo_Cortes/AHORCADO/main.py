@@ -17,6 +17,9 @@ palabras=["Cosquillas", "Japonesa", "Aullar", "Amistad", "Matrimonio","Obligator
 
 # 1 Necesitamos un bucle en que iteremos las palabras: listar la fila del csv
 # 2 Comparar
+
+#ver de que forma puedo comparar letra por letra, atacar cada hueco por si solo
+# iterar contra la palabra toda la lista.
 totalintentos=0
 for palabra in palabras:
     letras=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","y","z"]
