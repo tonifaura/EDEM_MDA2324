@@ -14,7 +14,7 @@ for palabra in words:
 # intentos=0
 # for word in list_words:
 #     # Restauramos lista dado que la hemos manipulado durante la resolución
-#     letters = ['e', 'a', 'o', 'i', 's', 'n', 'r', 'l', 'u', 'd', 't', 'c', 'm', 'p', 'b', 'g', 'v', 'y', 'q', 'f', 'h', 'j', 'z', 'x', 'k', 'w']
+#     letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'ñ', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 #     #  Contamos letras en variable gap 
 #     gaps = len(word)
 #     trials = 0
