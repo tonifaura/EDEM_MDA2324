@@ -2,7 +2,7 @@
 import csv
 import random
 #Let's create an abcdary list with all the letters:
-#abcdary_ordered = [
+#abcdary_sorted = [
     #'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'ñ',
     #'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
 #]
