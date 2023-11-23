@@ -5,7 +5,8 @@ WORKDIR /app
 COPY ahorcado.py /app
 COPY requirements.txt /app
 COPY palabras.csv /app
+COPY ahorcado64.py /app
 
 RUN pip install -r requirements.txt
 
-CMD ["python", "ahorcado.py"]
+CMD ["python", "ahorcado.py", "ahorcado64.py"]
