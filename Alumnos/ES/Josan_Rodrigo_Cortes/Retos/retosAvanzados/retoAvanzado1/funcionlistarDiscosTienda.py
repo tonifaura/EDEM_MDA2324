@@ -26,4 +26,4 @@ def listarDiscosTienda():
         print(f' {nombreDisco:<10} {artistaDisco:<10} {anyoDisco:<10} {generoDisco:<10} {descuentoDisco:<10} {precioDisco:<10}')
     print("QUE DESAR COMPRAR??????????????????????")
 
-    # 2 Función elegir un articulo de la tienda
+   

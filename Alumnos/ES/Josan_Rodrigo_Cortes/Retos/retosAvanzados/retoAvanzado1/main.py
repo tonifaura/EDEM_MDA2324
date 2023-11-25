@@ -27,22 +27,14 @@ ahorra el usuario y el coste final de la compra."""
 
 from tienda import listaDiscos
 
-from funcionesRA1 import listarDiscosTienda
+from funcionlistarDiscosTienda import listarDiscosTienda
 
-# Aqui tiene que estar esta funcion para que imprima la lista
-# listarDiscosTienda() 
-print(listaDiscos)
-def pedidoCompra():
-    nuevoPedido=[]
-    listarDiscosTienda()
-    nombreDiscoElegido=input("Introduce el disco elegido: ")
+from funcionpedidoCompra import pedidoCompra
 
-    for disco in listaDiscos:
-        if nombreDiscoElegido==disco["Nombre"]:
-            nuevoPedido.append(disco)
-            #listaDiscos.remove(disco)
+# 1 Función Imprimir Articulos de la tienda
 
-    return nuevoPedido
+listarDiscosTienda()
 
-print(pedidoCompra())
-print(listarDiscosTienda())
+# 2 Función que nos pregunta nos pregunta que articulos queremos de las existencias disponibles.
+
+pedidoCompra()
