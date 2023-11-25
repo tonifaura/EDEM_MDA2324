@@ -1,5 +1,8 @@
 from tienda import listaDiscos
 
+
+# 1 Función Imprimir Articulos de la tienda
+
 def listarDiscosTienda():
 
     print("ESTAS SON LAS EXISTENCIAS DE NUESTRA TIENDA: ")
@@ -22,3 +25,5 @@ def listarDiscosTienda():
             discos["Genero"]=(0)
         print(f' {nombreDisco:<10} {artistaDisco:<10} {anyoDisco:<10} {generoDisco:<10} {descuentoDisco:<10} {precioDisco:<10}')
     print("QUE DESAR COMPRAR??????????????????????")
+
+    # 2 Función elegir un articulo de la tienda

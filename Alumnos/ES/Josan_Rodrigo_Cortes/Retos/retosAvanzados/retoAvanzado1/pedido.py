@@ -1,9 +1,0 @@
-pedido=[
-    {"Nombre":"",
-    "Artista":"",
-    "Año":"",
-    "Precio":0,
-    "Genero":"",
-    "Unidades":0
-    }
-    ]

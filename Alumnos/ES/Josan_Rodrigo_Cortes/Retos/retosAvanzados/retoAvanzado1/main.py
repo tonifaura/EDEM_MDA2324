@@ -22,28 +22,27 @@ disponibles en la tienda el usuario pueda elegir el disco a comprar.
 
 Al acabar la compra (pulsando la tecla 0) se deberá mostrar el ticket de compra indicando
 la fecha de compra (puedes coger la fecha actual a través de datetime), el dinero que se 
-ahorra el usuario y el coste final de la compra.
-"Genero":["Pop","Electro","Reggaeton","Rock","Metal","Death Metal","Black Metal"] """
+ahorra el usuario y el coste final de la compra."""
+
 
 from tienda import listaDiscos
 
 from funcionesRA1 import listarDiscosTienda
 
-from pedido import pedido
-
-listarDiscosTienda() 
-
-def ticketCompra():
-
+# Aqui tiene que estar esta funcion para que imprima la lista
+# listarDiscosTienda() 
+print(listaDiscos)
+def pedidoCompra():
+    nuevoPedido=[]
     listarDiscosTienda()
     nombreDiscoElegido=input("Introduce el disco elegido: ")
+
     for disco in listaDiscos:
         if nombreDiscoElegido==disco["Nombre"]:
-            pedido["Nombre"]=nombreDiscoElegido
-            disco["Nombre"]=nombreDiscoElegido
-            disco["Genero"]=
-            pedido.setdefault("Nombre",nombreDiscoElegido)
+            nuevoPedido.append(disco)
+            #listaDiscos.remove(disco)
 
-    return pedido
+    return nuevoPedido
 
-print(ticketCompra())
+print(pedidoCompra())
+print(listarDiscosTienda())
