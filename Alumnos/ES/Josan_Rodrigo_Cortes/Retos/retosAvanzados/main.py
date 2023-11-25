@@ -22,4 +22,25 @@ disponibles en la tienda el usuario pueda elegir el disco a comprar.
 
 Al acabar la compra (pulsando la tecla 0) se deberá mostrar el ticket de compra indicando
 la fecha de compra (puedes coger la fecha actual a través de datetime), el dinero que se 
-ahorra el usuario y el coste final de la compra. """
+ahorra el usuario y el coste final de la compra.
+"Genero":["Pop","Electro","Reggaeton","Rock","Metal","Death Metal","Black Metal"] """
+
+from tienda import listaDiscos
+
+from funciones import listarDiscosTienda
+
+from pedido import pedido
+
+listarDiscosTienda() 
+
+def ticketCompra():
+
+    listarDiscosTienda()
+    nombreDiscoElegido=input("Introduce el disco elegido: ")
+    for disco in listaDiscos:
+        if nombreDiscoElegido==disco["Nombre"]:
+            pedido.setdefault("Nombre",nombreDiscoElegido)
+
+    return pedido
+
+print(ticketCompra())
