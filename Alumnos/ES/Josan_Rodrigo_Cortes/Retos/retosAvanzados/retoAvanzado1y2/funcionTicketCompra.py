@@ -1,12 +1,13 @@
 from tienda import listaDiscos
 from funcionpedidoCompra import pedidoCompra
+import datetime
 
 def ticketCompra():
 
     print("TICKET DE COMPRA")
     mipedido=pedidoCompra()
     importeTotal=0
-    print(f' NOMBRE\t|ARTISTA\t|AÑO\t|GENERO\t|DESCUENTO\t|PRECIO|\t|SUBTOTAL|\t|DESCUENTO|\t|TOTAL|')
+    print(f' NOMBRE\t|ARTISTA\t|AÑO\t|GENERO\t|DESCUENTO\t|PRECIO|\t|SUBTOTAL|')
     for discos in mipedido:
         #Creo las variables para acceder al valor de cada una de ellas en el bucle
         nombreDisco=discos["Nombre"]
@@ -15,6 +16,7 @@ def ticketCompra():
         precioDisco=discos["Precio"]
         generoDisco=discos["Genero"]
         descuentoDisco=discos.setdefault("Descuento",0)
+        
 
         #Creo el if para darle el que corresponde a la clave Descuento
         if generoDisco=="Black Metal":
@@ -25,20 +27,21 @@ def ticketCompra():
             discos["Genero"]=(0)
         #Creo los totales y subtotales:
         if descuentoDisco!=0:
-            importeSubtotal=precioDisco
-            descuento=descuentoDisco/100
-            importeTotalUnidad=importeSubtotal*descuento
+          importedisco=precioDisco-(precioDisco*(descuentoDisco/100))
         else:
-            importeTotal=precioDisco
-            importeTotalUnidad=importeSubtotal
-
-        importeTotal+=importeTotalUnidad
-
-
-        print(f' {nombreDisco:<1} {artistaDisco:<10} {anyoDisco:<10} {generoDisco:<10} {descuentoDisco:<10} {precioDisco:<10} {importeSubtotal:<10} {importeTotalUnidad:<10}')
+            importedisco=precioDisco
         
-        print(importeTotal)
 
-ticketCompra()    
+        importeTotal+=importedisco
+
+
+        print(f' {nombreDisco:<5} {artistaDisco:<5} {anyoDisco:<5} {generoDisco:<5} {descuentoDisco:<5} {precioDisco:<5} {importedisco:<5}')
+            
+    print(f'ELTOTAL DE SU COMPRA ASCIENDE A ------------------------------{importeTotal}')
+    print("Falta la fecha")
+    #No me funciona esta instrucción
+    # print(datetime.today().strftime("%Y-%m-%d"))
+
+   
 
    

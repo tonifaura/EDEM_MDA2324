@@ -31,10 +31,6 @@ from funcionlistarDiscosTienda import listarDiscosTienda
 
 from funcionpedidoCompra import pedidoCompra
 
-# 1 Función Imprimir Articulos de la tienda
+from funcionTicketCompra import ticketCompra
 
-listarDiscosTienda()
-
-# 2 Función que nos pregunta nos pregunta que articulos queremos de las existencias disponibles.
-
-pedidoCompra()
+miCompra=ticketCompra()
