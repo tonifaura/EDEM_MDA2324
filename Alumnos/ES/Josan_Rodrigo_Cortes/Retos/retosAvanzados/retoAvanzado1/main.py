@@ -27,7 +27,7 @@ ahorra el usuario y el coste final de la compra.
 
 from tienda import listaDiscos
 
-from funciones import listarDiscosTienda
+from funcionesRA1 import listarDiscosTienda
 
 from pedido import pedido
 
@@ -39,6 +39,9 @@ def ticketCompra():
     nombreDiscoElegido=input("Introduce el disco elegido: ")
     for disco in listaDiscos:
         if nombreDiscoElegido==disco["Nombre"]:
+            pedido["Nombre"]=nombreDiscoElegido
+            disco["Nombre"]=nombreDiscoElegido
+            disco["Genero"]=
             pedido.setdefault("Nombre",nombreDiscoElegido)
 
     return pedido
