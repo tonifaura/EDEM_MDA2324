@@ -1,0 +1,10 @@
+FROM python:latest
+
+RUN pip install --upgrade pip
+RUN apt-get update
+RUN apt-get upgrade -y
+#COPY requirements.txt / #Not needed, sys is part of the standard library
+#COPY entrypoint.sh / #Not needed, sys is part of the standard library
+COPY pysum.py /
+RUN chmod +rwx /pysum.py
+ENTRYPOINT [ "python3", "/pysum.py"]
