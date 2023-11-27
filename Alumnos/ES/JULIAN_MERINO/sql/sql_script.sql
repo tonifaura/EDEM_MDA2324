@@ -73,3 +73,9 @@ select rating, count(rating) as no_pelis, round(avg(rental_rate),2) as alquiler_
 max(rental_rate) as alquiler_max, round(avg(length), 2) as duración_media, 
 min(release_year) as más_antigua, max(release_year) as más_reciente
 from film f group by rating
+
+/*Ejercicio 20 - HAVING - agrupar pelis por rating cuando haya más de X pelis en ese grupo*/
+select rating, count(rating) as no_pelis, round(avg(rental_rate),2) as alquiler_medio, min(rental_rate) as alquiler_min,
+max(rental_rate) as alquiler_max, round(avg(length), 2) as duración_media, 
+min(release_year) as más_antigua, max(release_year) as más_reciente
+from film f group by rating having count(rating) > 200
