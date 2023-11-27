@@ -5,10 +5,10 @@
 import sys
 
 #Let's define a function we can call, which returns the addition
-def pysum(arg1: int, arg2: int):
+def pysum(arg1: float, arg2: float):
     return arg1 + arg2
 
-#Let's define two functions that check whether the arguments are numbers (int or float):
+#Let's define a functions that checks whether the arguments are numbers (int or float):
 def is_num(n):
     try:
         float(n)
@@ -17,6 +17,6 @@ def is_num(n):
         return False
 
 if is_num(sys.argv[1]) == True and is_num(sys.argv[2]) == True:
-    print(f'Sum: {float(sys.argv[1]) + float(sys.argv[2])}')
+    print(f'Sum: {pysum(float(sys.argv[1]), float(sys.argv[2]))}')
 else:
     print('All arguments must be numbers.')
