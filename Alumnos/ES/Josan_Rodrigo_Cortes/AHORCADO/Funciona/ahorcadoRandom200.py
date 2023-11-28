@@ -5,39 +5,29 @@ import random
 #ver de que forma puedo comparar letra por letra, atacar cada hueco por si solo
 # iterar contra la palabra toda la lista.
 
-# palabras=["cosquillas", "Japonesa", "Aullar", "Amistad", "Matrimonio","Obligatorio", "Trenza", "Aldea", "Peinado", "Principal"]
-palabras=["cosquillas"]
+palabras=["cosquillas", "japonesa", "aullar", "amistad", "matrimonio","obligatorio", "trenza", "aldea", "peinado", "principal"]
+# palabras=["aa"]
 totalintentos=0
-
-intentos=0
 
 for palabra in palabras:
     abcedario=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","y","z"]
-    
-    
-    letrasAdivinadas=[]
     huecos=len(palabra)
-    
-    while huecos>0:
-        
-        
+    longitudABC=len(abcedario)
+    intentos=0
+    while huecos>0:        
         letraAzar= random.choice(abcedario)
-        
-        
         for letra in palabra:
             veces = palabra.count(letraAzar)
-            if letra==letraAzar:
-                
+            if veces>=1:               
                 huecos-=veces
-                
                 intentos+=1
                 abcedario.remove(letraAzar)
-                letrasAdivinadas.append(letra)
                 break
             else:
+                abcedario.remove(letraAzar)
                 intentos+=1
-                break
-      
-print(intentos)
+                break  
+    totalintentos+=intentos 
+print(totalintentos)
     
         
