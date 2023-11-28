@@ -100,7 +100,7 @@ Entregas Fin de Semana
 <td>❌</td>
 <td>✅</td>
 <td>✅</td>
-<td>❌</td>
+<td>✅</td>
 <td>✅</td>
 <td>✅</td>
 </tr>
@@ -258,7 +258,7 @@ Entregas Entre Semana
 <td>❌</td>
 <td>✅</td>
 <td>✅</td>
-<td>❌</td>
+<td>✅</td>
 <td>❌</td>
 </tr>
 <tr>
@@ -375,7 +375,7 @@ Entregas Entre Semana
 <td>❌</td>
 <td>✅</td>
 <td>✅</td>
-<td>❌</td>
+<td>✅</td>
 <td>❌</td>
 </tr>
 <tr>
@@ -384,7 +384,7 @@ Entregas Entre Semana
 <td>❌</td>
 <td>✅</td>
 <td>✅</td>
-<td>❌</td>
+<td>✅</td>
 <td>❌</td>
 </tr>
 <tr>
@@ -415,4 +415,3 @@ Entregas Entre Semana
 <td>❌</td>
 </tr>
 </table>
-
