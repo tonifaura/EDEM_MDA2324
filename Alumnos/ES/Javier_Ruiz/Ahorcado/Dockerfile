@@ -5,7 +5,7 @@ WORKDIR /app
 COPY main.py /app
 COPY requirements.txt /app
 COPY palabras.csv /app
-COPY 0_palabras_todas_no_conjunciones.txt /app
+COPY 0_palabras_todas_no_conjugaciones.txt /app
 
 
 RUN pip install -r requirements.txt 
