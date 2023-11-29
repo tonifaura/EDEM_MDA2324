@@ -72,10 +72,119 @@ order by release_year asc limit 10
 select rating, count(rating) as no_pelis, round(avg(rental_rate),2) as alquiler_medio, min(rental_rate) as alquiler_min,
 max(rental_rate) as alquiler_max, round(avg(length), 2) as duración_media, 
 min(release_year) as más_antigua, max(release_year) as más_reciente
-from film f group by rating
+from film f 
+group by rating
 
 /*Ejercicio 20 - HAVING - agrupar pelis por rating cuando haya más de X pelis en ese grupo*/
 select rating, count(rating) as no_pelis, round(avg(rental_rate),2) as alquiler_medio, min(rental_rate) as alquiler_min,
 max(rental_rate) as alquiler_max, round(avg(length), 2) as duración_media, 
 min(release_year) as más_antigua, max(release_year) as más_reciente
-from film f group by rating having count(rating) > 200
+from film f 
+group by rating having count(rating) > 200
+
+/*Ejercicio 21 - Obten por rating el no. de pelis y quédate con los rating con más de 200 pelis*/
+select count(title), rating from film f group by rating having count(rating) > 200
+
+/*Ejercicio 22 - Obten por rating el precio medio del alquiler y quédate con aquellos rating con un precio medio entre 1 y 3*/
+select avg(rental_rate), rating from film f 
+group by rating 
+having 1 <= avg(rental_rate) and 3 >= avg(rental_rate)
+
+/*Ejercicio 24 - Obten por rating duración media de las pelis y qiédate con aquellos rating con una duración media
+ * mayor a 115 pero menor a 200 min*/
+select avg(length), rating from film f 
+group by rating 
+having avg(length) > 115 and 200 > avg(length)
+
+/*Ejercicio 25 - Obten por rating que empiecen por P*/
+select title, rating from film f 
+where rating::text like 'P%'
+
+/*Ejercicio 26 - Obten direcciones de aquellos clientes de nuestro videoclub*/
+select c.first_name, c.last_name, a.address, ct.city, co.country
+from customer c 
+join address a 
+on a.address_id = c.address_id
+join city ct 
+on a.city_id = ct.city_id
+join country co 
+on co.country_id = ct.country_id
+order by c.first_name asc
+
+/*Ejercicio 27 - Obten no. de clientes agrupados por países*/
+select co.country, count(co.country)
+from customer c 
+join address a 
+on a.address_id = c.address_id
+join city ct 
+on a.city_id = ct.city_id
+join country co 
+on co.country_id = ct.country_id
+group by co.country
+order by co.country asc
+
+/*Ejercicio 28 - Obten pelis con un actor con un apellido que empiece por C*/
+select f.title, a.first_name, a.last_name
+from film f
+join film_actor fa 
+on f.film_id = fa.film_id
+join actor a 
+on fa.actor_id = a.actor_id
+where a.last_name like 'C%'
+
+/*Ejercicio 29 - Cuántos actores tiene cada peli*/
+select f.title, count(a.actor_id)
+from actor a 
+join film_actor fa 
+on a.actor_id = fa.actor_id
+join film f 
+on fa.film_id = f.film_id
+group by f.title
+order by f.title asc
+
+/*Ejercicio 30 - Pelis con más de dos actores*/
+select f.title as "Título", count(a.actor_id) as "Recuento"
+from actor a 
+join film_actor fa 
+on a.actor_id = fa.actor_id
+join film f 
+on fa.film_id = f.film_id
+group by f.title /*Se puede poner group by 1 (primera columna en select) para ahorrar tiempo de computación*/
+having count(a.actor_id) > 2
+order by count(a.actor_id) desc
+
+/*Ejercicio 31 - Peli con más actores*/
+select f.title as "Título", count(a.actor_id) as "Recuento"
+from actor a 
+join film_actor fa 
+on a.actor_id = fa.actor_id
+join film f 
+on fa.film_id = f.film_id
+group by f.title /*Se puede poner group by 1 (primera columna en select) para ahorrar tiempo de computación*/
+having count(a.actor_id) > 2
+order by count(a.actor_id) desc
+limit 1
+
+/*Ejercicio 32 - Generar una tabla nueva con film_id, customer_id, review_date y review_description*/
+create table public.review_jmp(
+film_id int2,
+customer_id int2,
+review_date timestamp,
+review_description varchar(50),
+constraint review_jmp_pkey primary key (film_id, customer_id)
+/*constraint review_jmp_filmid_fkey foreign key (film_id) references public.film(film_id), quitamos las foreign keys, no tenemos permisos*/
+/*constraint review_jmp_customerid_fkey foreign key (customer_id) references public.customer(customer_id)*/
+)
+
+/*Ejercicio 33 - Insertar datos (filas) en tablas de compañeros*/
+insert into reviews_jorgeredbull (film_id, customer_id, review_date, review_description)
+values (4, 4, '11-29-2023', 'Mr Robot es mucho mejor que Mi Pequeño Pony')
+
+/*Ejercicio 34 - Actualizar la tabla de arriba con update*/
+update reviews_jorgeredbull
+set review_description = 'Fucking panza lambo burpees mileurista foak'
+where customer_id = 4 and film_id = 4;
+
+/*Ejercicio 35 - Cambiar tipo de dato de una columna, añadir/borrar entradas, etc.*/
+alter table review_jarupu 
+drop column review_description;
