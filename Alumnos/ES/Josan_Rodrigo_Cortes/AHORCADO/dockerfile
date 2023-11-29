@@ -4,10 +4,10 @@ WORKDIR /ahorcado
 
 COPY requirements.txt .
 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN RUN pip install --no-cache-dir -r requirements.txt || cat requirements.txt
 
-COPY main.py .
+COPY ahorcadoRandom.py ahorcadoAlfabeto.py ahorcadoAlfabetoOrdenado.py palabras.csv /ahorcado/
 
 COPY palabras.csv .
 
-CMD [ "python", "main.py" ]
+CMD ["python","ahorcadoAlfabetoOrdenado.py","&&","python","ahorcadoRandom.py","&&","python","ahorcadoAlfabeto.py"]

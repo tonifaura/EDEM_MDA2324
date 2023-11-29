@@ -1,9 +1,16 @@
 import random
 import csv
 
-with open('palabras.csv') as file:
-    palabras= csv.reader(file, delimiter=',')
-# palabras=["cosquillas", "japonesa", "aullar", "amistad", "matrimonio","obligatorio", "trenza", "aldea", "peinado", "principal"]
+
+palabras = []
+
+with open('palabras.csv') as csvfile:
+    words = csv.reader(csvfile, delimiter=',')
+    for row in words:
+        for word in row:
+            palabras.append(word.lower())
+   
+print(palabras)
 
 totalintentos=0
 
@@ -26,6 +33,7 @@ for palabra in palabras:
                 intentos+=1
                 break  
     totalintentos+=intentos 
-print(totalintentos)
+print(f'Usando letras generadas al azar, el programa necesita {totalintentos} intentos para adivinar las palabras:{palabras}')
+                
     
         

@@ -1,6 +1,15 @@
 # Abecedario ordenado por recurrencia de aparición:
+import csv
 
-palabras=["cosquillas", "japonesa", "aullar", "amistad", "matrimonio","obligatorio", "trenza", "aldea", "peinado", "principal"]
+palabras = []
+
+with open('palabras.csv') as csvfile:
+    words = csv.reader(csvfile, delimiter=',')
+    for row in words:
+        for word in row:
+            palabras.append(word.lower())
+
+
 totalintentos=0
 
 for palabra in palabras:
@@ -23,7 +32,7 @@ for palabra in palabras:
                 break  
     totalintentos+=intentos 
 
-print(totalintentos)
+print(f'Usando un alfabeto ordenado por frecuencia de aparición de letra, el programa necesita {totalintentos} intentos para adivinar las palabras:{palabras}')
                 
 
                 
