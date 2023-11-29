@@ -1,12 +1,10 @@
 import random
-# 1 Necesitamos un bucle en que iteremos las palabras: listar la fila del csv
-# 2 Comparar
+import csv
 
-#ver de que forma puedo comparar letra por letra, atacar cada hueco por si solo
-# iterar contra la palabra toda la lista.
+with open('palabras.csv') as file:
+    palabras= csv.reader(file, delimiter=',')
+# palabras=["cosquillas", "japonesa", "aullar", "amistad", "matrimonio","obligatorio", "trenza", "aldea", "peinado", "principal"]
 
-palabras=["cosquillas", "japonesa", "aullar", "amistad", "matrimonio","obligatorio", "trenza", "aldea", "peinado", "principal"]
-# palabras=["aa"]
 totalintentos=0
 
 for palabra in palabras:
