@@ -82,25 +82,25 @@ min(release_year) as más_antigua, max(release_year) as más_reciente
 from film f 
 group by rating having count(rating) > 200
 
-/*Ejercicio 21 - Obten por rating el no. de pelis y quédate con los rating con más de 200 pelis*/
+/*Ejercicio 21 - Obtén por rating el no. de pelis y quédate con los rating con más de 200 pelis*/
 select count(title), rating from film f group by rating having count(rating) > 200
 
-/*Ejercicio 22 - Obten por rating el precio medio del alquiler y quédate con aquellos rating con un precio medio entre 1 y 3*/
+/*Ejercicio 22 - Obtén por rating el precio medio del alquiler y quédate con aquellos rating con un precio medio entre 1 y 3*/
 select avg(rental_rate), rating from film f 
 group by rating 
 having 1 <= avg(rental_rate) and 3 >= avg(rental_rate)
 
-/*Ejercicio 24 - Obten por rating duración media de las pelis y qiédate con aquellos rating con una duración media
+/*Ejercicio 24 - Obtén por rating duración media de las pelis y qiédate con aquellos rating con una duración media
  * mayor a 115 pero menor a 200 min*/
 select avg(length), rating from film f 
 group by rating 
 having avg(length) > 115 and 200 > avg(length)
 
-/*Ejercicio 25 - Obten por rating que empiecen por P*/
+/*Ejercicio 25 - Obtén por rating que empiecen por P*/
 select title, rating from film f 
 where rating::text like 'P%'
 
-/*Ejercicio 26 - Obten direcciones de aquellos clientes de nuestro videoclub*/
+/*Ejercicio 26 - Obtén direcciones de aquellos clientes de nuestro videoclub*/
 select c.first_name, c.last_name, a.address, ct.city, co.country
 from customer c 
 join address a 
@@ -111,7 +111,7 @@ join country co
 on co.country_id = ct.country_id
 order by c.first_name asc
 
-/*Ejercicio 27 - Obten no. de clientes agrupados por países*/
+/*Ejercicio 27 - Obtén no. de clientes agrupados por países*/
 select co.country, count(co.country)
 from customer c 
 join address a 
@@ -123,7 +123,7 @@ on co.country_id = ct.country_id
 group by co.country
 order by co.country asc
 
-/*Ejercicio 28 - Obten pelis con un actor con un apellido que empiece por C*/
+/*Ejercicio 28 - Obtén pelis con un actor con un apellido que empiece por C*/
 select f.title, a.first_name, a.last_name
 from film f
 join film_actor fa 
@@ -186,5 +186,104 @@ set review_description = 'Fucking panza lambo burpees mileurista foak'
 where customer_id = 4 and film_id = 4;
 
 /*Ejercicio 35 - Cambiar tipo de dato de una columna, añadir/borrar entradas, etc.*/
-alter table review_jarupu 
-drop column review_description;
+insert into reviews_reyes (film_id, customer_id, review_date, mi_fakin_opinion)
+values (13, 14, '11-30-2023', 'GO HOME, NO QR SORRY')
+
+/*Ejercicio 36 - Renombrar una columna*/
+alter table review_jmp
+rename column review_description to descripcion_reseña;
+
+/*Ejercicio 37 - Cambiar nombre de otra columna*/
+alter table review_jarupu
+rename column llados to matias_el_humilde;
+
+/*Ejercicio 38 - Cambiar tipo de datos a varchar*/
+alter table review_jarupu
+alter column matias_el_humilde type varchar
+
+/*Ejercicio 39 - delete: borrar registros de una tabla, bajo condición*/
+delete review_jarupu 
+where jorje_es_toni_cuquerella = '16474' and jose_mota_es_mi_padre = '2'
+
+/*Ejercicio 40 - Eliminar tabla*/
+drop table review_jmp
+
+/*Ejercicio 41 - Crear una vista*/
+create view my_view_of_actor_jmp as
+select actor_id, first_name, last_name, last_update
+from public.actor
+
+/*Ejercicio 42 - Ejecutar una vista*/
+select * from my_view_of_actor_jmp
+
+/*Ejercicio 43 - Eliminar una vista*/
+drop view my_view_of_actor_jmp
+
+/*Ejercicio 44 - Subquery en where*/
+select actor_id, first_name, last_name, last_update
+from public.actor
+where actor_id in (select actor_id from public.actor
+where last_name ilike 'C%')
+
+/*Ejercicio 45 - Todas las pelis que estén en inglés haciendo subquery en where*/
+select title, language_id
+from film
+where language_id in (select language_id from language where language_id = '1')
+
+/*Ejercicio 46 - Todos aquellos clientes que viven en una dirección que empieza por A*/
+select customer_id, first_name, last_name, address_id
+from customer
+where address_id in (select address_id from address where address ilike '122%')
+
+/*Ejercicio 47 - Obtén haciendo una subconsulta en where aquellos clientes que se han gastado más de 190€*/
+select customer_id, first_name, last_name
+from customer
+where customer_id in (select customer_id from payment group by customer_id having sum(amount) > 190)
+
+/*Ejercicio 48 - Obtén haciendo una subconsulta en where la suma de aquellos 4 clientes que se han gastado más de 190€*/
+select sum(amount) as suma_4
+from payment
+where customer_id in (
+select customer_id
+from payment
+group by customer_id
+having sum(amount) > 190)
+
+/*Ejercicio 49 - Obtén haciendo una subconsulta aquellos clientes que se han gastado más de 190€ con WITH*/
+with my_subquery as (
+select customer_id from payment
+group by customer_id
+having sum(amount) > 190)
+select sum(p.amount) from my_subquery
+join payment p
+on my_subquery.customer_id = p.customer_id
+
+
+/*Ejercicio 49 - Obtén haciendo una subconsulta los amounts de aquellos clientes que se han gastado más de 190€ con WITH*/
+with my_subquery as (
+select customer_id from payment
+group by customer_id 
+having sum(amount) > 190)
+select count(customer_id) from my_subquery
+
+/*Ejercicio 50 - Obtén el número de veces que un cliente ha alquilado una peli con with*/
+with subq_inventory as (
+select film_id, inventory_id
+from inventory
+)
+with subq_rental as (
+select customer_id, rental_id, inventory_id
+from rental
+)
+with subq_film as (
+select film_id, title
+from film
+)
+select subqf.title, c.customer_id, subqi.sum(film_id)
+from customer c
+join subq_rental as subqr
+on c.customer_id = subq.customer_id
+join subq_inventory as subqi
+on subqr.inventory_id = subqi.inventory_id
+join subq_film as subqf
+on subqi.film_id = subqf.film_id
