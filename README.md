@@ -161,7 +161,7 @@ Entregas Fin de Semana
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/FS/JUAN CORNEJO'>Juan cornejo</a></td>
 <td>✅</td>
-<td>❌</td>
+<td>✅</td>
 <td>✅</td>
 <td>✅</td>
 <td>✅</td>
@@ -179,7 +179,7 @@ Entregas Fin de Semana
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/FS/MAR-PONS-VALVERDE'>Mar-pons-valverde</a></td>
 <td>❌</td>
-<td>❌</td>
+<td>✅</td>
 <td>✅</td>
 <td>❌</td>
 <td>✅</td>
