@@ -100,3 +100,5 @@ Ejercicio de comandos en la consola de linux.
   20.Comprobar el ejercicio anterior mediante un solo comando.
     
     ls -R ./
+
+
