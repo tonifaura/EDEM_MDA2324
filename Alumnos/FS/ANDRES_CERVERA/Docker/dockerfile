@@ -1,5 +1,5 @@
-FROM python:3.11.6
+FROM python
 
-COPY suma.py /
+COPY suma.py / 
 
-CMD ["python", "suma.py"]
+ENTRYPOINT ["python" , "suma.py"]
