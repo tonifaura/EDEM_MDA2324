@@ -21,7 +21,7 @@ alumnos=[
      "Apellido2":"Jimenez",
      "NIF":"3",
      "Email":"josan2@email.com",
-     "Calificacion":"Suspenso"
+     "Calificacion":" "
     },
     {
         "Nombre":"Claudio",
@@ -29,6 +29,6 @@ alumnos=[
      "Apellido2":"Jimenez",
      "NIF":"4",
      "Email":"claudio@email.com",
-     "Calificacion":"Suspenso"
+     "Calificacion":" "
     }
     ]
