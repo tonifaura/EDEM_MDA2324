@@ -22,13 +22,9 @@ Ejercicio de comandos en la consola de linux.
     
    ls /dev/tty*3
 
-  6.Listar todos los archivos del directorio dev que empiecen por t y acaben en C1.
-    
-<<<<<<< HEAD
-   ls /dev/t*C1
-=======
+  6.Listar todos los archivos del directorio dev que empiecen por t y acaben en C1.  
+  
    ls /dev/tty*C1
->>>>>>> upstream/main
 
   7.Listar todos los archivos, incluidos los ocultos, del directorio raíz.
     
