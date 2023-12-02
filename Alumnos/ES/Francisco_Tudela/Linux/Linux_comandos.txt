@@ -24,7 +24,7 @@ Ejercicio de comandos en la consola de linux.
 
   6.Listar todos los archivos del directorio dev que empiecen por t y acaben en C1.  
   
-   ls /dev/tty*C1
+   ls /dev/t*C1
 
   7.Listar todos los archivos, incluidos los ocultos, del directorio raíz.
     
