@@ -5,7 +5,7 @@ alumnos=[
      "Apellido2":"Cortes",
      "NIF":"1",
      "Email":"josan@email.com",
-     "Calificacion":" "
+     "Calificacion":False
     },
     {
         "Nombre":"Laura",
@@ -13,7 +13,7 @@ alumnos=[
      "Apellido2":"Ruiz",
      "NIF":"2",
      "Email":"laura@email.com",
-     "Calificacion":" "
+     "Calificacion":False
     },
     {
         "Nombre":"Josan",
@@ -21,7 +21,7 @@ alumnos=[
      "Apellido2":"Jimenez",
      "NIF":"3",
      "Email":"josan2@email.com",
-     "Calificacion":"Suspenso"
+     "Calificacion":True
     },
     {
         "Nombre":"Claudio",
@@ -29,6 +29,6 @@ alumnos=[
      "Apellido2":"Jimenez",
      "NIF":"4",
      "Email":"claudio@email.com",
-     "Calificacion":"Suspenso"
+     "Calificacion":True
     }
     ]

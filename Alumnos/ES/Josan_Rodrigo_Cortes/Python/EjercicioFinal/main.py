@@ -12,16 +12,18 @@
 
 from alumnos import alumnos
 from functions import *
-print(alumnos)
+
 # alumnos=[]
 funcion=" "
 while funcion != "X": # or funcion!="x":
-    print(alumnos)
+    
     funcion=(queOpcion())
 
     # (1) Añadir un alumno OK
     if funcion=="1":
         anyadirAlumno()
+        mostrarDatosTodosAlumnos() #Revisar, parece que imprime por duplicado
+
         funcion=queOpcion()
 
     # (2) Eliminar alumno por NIF OK
