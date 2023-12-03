@@ -1,19 +1,24 @@
 import csv
 import pandas as pd
-import csv
 import time
 palabras_dfr = pd.read_csv("Palabras.csv")
 
-abecedario = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+abecedario = ['e', 'a', 'o', 'i', 's', 'n', 'r', 'u', 'l', 'd', 't', 'c', 'm', 'p', 'b', 'g', 'v', 'y', 'q', 'h', 'f', 'j','x', 'z', 'k', 'w']
 
 words_list = palabras_dfr["Palabras"].tolist()
 
-for word in words_list:
-    leng= len(word)
-    print(leng)
-    while leng > 0:
-        i = 0
-        guess = abecedario
-        if guess in word:
-            leng -= 1
-        
+intentos = 0
+inicio = time.time()
+for letter in words_list:
+    letter = letter.lower()
+    leng = len(letter)
+    for l in abecedario:
+        intentos += 1
+        if l in letter:
+            cont = letter.count(l)
+            leng -= cont
+            if leng == 0:
+                break
+fin = time.time()
+print(f' El numero de intentos ha sido: {intentos}')
+print (f'Hemos tardado... {fin-inicio}')        
