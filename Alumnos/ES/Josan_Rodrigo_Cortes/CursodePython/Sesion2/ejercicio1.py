@@ -23,12 +23,12 @@ Paso 4 - Final
  """
 
 print("> Hola. Bienvenido al sistema de cálculo de inversiones")
-cantidad=int(input("¿Cuánto quieres invertir?"))
-interes=int(input("¿Que interes aplicas a la inversion?"))
-años=int(input("¿Durante cuanto años?"))
 
-def retornoInversion(cantidad, interes,años):
+def retornoInversion():
+    cantidad=int(input("¿Cuánto quieres invertir?"))
+    interes=int(input("¿Que interes aplicas a la inversion?"))
+    años=int(input("¿Durante cuanto años?"))
     retorno=cantidad*(interes/100)*años
-    print(f"En {años} años habrás recibido {retorno} € de interés")
+    print(f"En {años} años, con un interes del {interes}, recibiras {retorno} €")
 
 retornoInversion()
