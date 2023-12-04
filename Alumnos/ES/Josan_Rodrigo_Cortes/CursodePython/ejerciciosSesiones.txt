@@ -29,7 +29,7 @@ Crea un archivo Python que muestre por consola "¡Hola, Mundo!"
 Ejercicio 2
 Ahora modifícalo para que muestre "¡Hola, [Nombre]" donde el nombre es el valor (str) de una variable
 Sesión 2
-Ejercicio1
+Ejercicio
 Crea una aplicación de consola que calcule los resultados de una inversión. Debe
 Pedir por consola una cantidad (numérica) de Inversión
 Pedir el % de interés anual
@@ -68,9 +68,13 @@ En caso de escribir X --> La aplicación debe mostrar un mensaje de despedida y 
 
 > ¡Nos vemos!
 > (aplicación cerrada con un exit())
+
 Ejercicio 2
 Crea un programa en Python que sea capaz de calcular y mostrar por consola todos los números primos de 1 - 100
-Ejercicio 3
+Ejercicio 3,
+
+
+ por aquí
 Crea un programa en Python que sea capaz de identificar a partir de una lista de años si un año es bisiesto o no.
 Sesión 4
 Ejercicio 1

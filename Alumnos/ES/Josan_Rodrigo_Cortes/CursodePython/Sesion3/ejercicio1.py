@@ -1,34 +1,49 @@
-""" Sesión 2
-Ejercicio
-Crea una aplicación de consola que calcule los resultados de una inversión. Debe
-Pedir por consola una cantidad (numérica) de Inversión
-Pedir el % de interés anual
-Pedir el número de años que se va a mantener la inversión
-Finalmente, calcular la cantidad generada en los años especificados por el usuario
-Debería resultar en algo así vía consola:
+""" Ejercicio 2
+A la aplicación de la calculadora de inversión, deberás añadirle una opción para salir de la consola.
+Debería quedar algo parecido a lo siguiente
 
-Paso 1
-> Hola. Bienvenido al sistema de cálculo de inversiones.
-> ¿Cuánto quieres invertir?
-> (EL usuario escribe aquí la cantidad)
-Paso 2
-> ¿Cuál es el interés anual?
-> (EL usuario escribe aquí el interés anual)
-Paso 3
-> ¿Cuántos años vas a mantener la inversión?
-> (EL usuario escribe aquí el nº de años)
-Paso 4 - Final
-> En [N] años habrás recibido [X]€ de interés
-> (Donde [N] debes sustituirlo por el número de años y [X] por la cantidad generada)
- """
+> Hola. Bienvenido al sistema de cálculo de inversiones. ¿Qué quieres hacer?
+> [1] Calcular una inversión
+> [X] Salir
+> (Aquí el usuario deberá escribir 1 o X. Ningón otro valor será considerado como válido. Saliendo el mismo mensaje si introduce algo distinto a 1 o X)
+En caso de escribir 1 --> Se deberá proceder al sistema de Cálculo de inversión. En todas las pantallas posteriores, se debe mostrar la opción de [X] Salir
 
-print("> Hola. Bienvenido al sistema de cálculo de inversiones")
+> En [N] años habrás recibido [X]€ de interés. ¿Qué quieres hacer ahora?
+> [1] Calcular una nueva inversión
+> [X] Salir
+En caso de escribir X --> La aplicación debe mostrar un mensaje de despedida y cerrarse: """
+
+
 
 def retornoInversion():
     cantidad=int(input("¿Cuánto quieres invertir?"))
     interes=int(input("¿Que interes aplicas a la inversion?"))
     años=int(input("¿Durante cuanto años?"))
     retorno=cantidad*(interes/100)*años
-    print(f"En {años} años, con un interes del {interes}, recibiras {retorno} €")
+    print(f"En {años} años, con un interes del {interes}%, recibiras {retorno} €")
 
-retornoInversion()
+opcion=" "
+
+while opcion!= "X":
+    print("> Hola. Bienvenido al sistema de cálculo de inversiones")
+    opcion=input("""
+¿Qué quieres hacer?
+> [1] Calcular una inversión
+> [X] Salir
+""")
+
+    if opcion=="1":
+        retornoInversion()
+        opcion=input("""¿Qué quieres hacer ahora?
+> [1] Calcular otra inversión
+> [X] Salir
+""")
+    else:
+        opcion=input("""
+Lo siento, parametro introducido fuera del rango de elección.                     
+¿Qué quieres hacer?
+> [1] Calcular una inversión
+> [X] Salir
+""")
+        
+print("Programa finalizado. ¡Nos vemos!")
