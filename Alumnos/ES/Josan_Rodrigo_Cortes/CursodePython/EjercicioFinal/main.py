@@ -15,7 +15,7 @@ from functions import *
 
 # alumnos=[]
 funcion=" "
-while funcion != "X": # or funcion!="x":
+while funcion != "X":
     
     funcion=(queOpcion())
 

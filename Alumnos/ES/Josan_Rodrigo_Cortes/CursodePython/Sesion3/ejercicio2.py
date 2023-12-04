@@ -13,15 +13,16 @@ En caso de escribir 1 --> Se deberá proceder al sistema de Cálculo de inversi�
 > [X] Salir
 En caso de escribir X --> La aplicación debe mostrar un mensaje de despedida y cerrarse: """
 
-opcion=" "
+
 
 def retornoInversion():
     cantidad=int(input("¿Cuánto quieres invertir?"))
     interes=int(input("¿Que interes aplicas a la inversion?"))
     años=int(input("¿Durante cuanto años?"))
     retorno=cantidad*(interes/100)*años
-    print(f"En {años} años, con un interes del {interes}, recibiras {retorno} €")
+    print(f"En {años} años, con un interes del {interes}%, recibiras {retorno} €")
 
+opcion=" "
 
 while opcion!= "X":
     print("> Hola. Bienvenido al sistema de cálculo de inversiones")
@@ -30,16 +31,19 @@ while opcion!= "X":
 > [1] Calcular una inversión
 > [X] Salir
 """)
-    if opcion==1:
+
+    if opcion=="1":
         retornoInversion()
-        opcion=input("""
-¿Qué quieres hacer?
-> [1] Calcular una inversión
+        opcion=input("""¿Qué quieres hacer ahora?
+> [1] Calcular otra inversión
 > [X] Salir
 """)
     else:
         opcion=input("""
+Lo siento, parametro introducido fuera del rango de elección.                     
 ¿Qué quieres hacer?
 > [1] Calcular una inversión
 > [X] Salir
 """)
+        
+print("Programa finalizado. ¡Nos vemos!")

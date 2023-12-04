@@ -51,7 +51,7 @@ Paso 4 - Final
 > En [N] años habrás recibido [X]€ de interés
 > (Donde [N] debes sustituirlo por el número de años y [X] por la cantidad generada)
 Sesión 3
-Ejercicio 2
+Ejercicio 1
 A la aplicación de la calculadora de inversión, deberás añadirle una opción para salir de la consola.
 Debería quedar algo parecido a lo siguiente
 
