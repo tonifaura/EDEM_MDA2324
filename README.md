@@ -121,8 +121,12 @@ Entregas Fin de Semana
 <td>❌</td>
 =======
 <td>✅</td>
+<<<<<<< HEAD
 <td>✅</td>
 >>>>>>> 0cd56bbc6441b00315ea997106d92571e305758c
+=======
+<td>❌</td>
+>>>>>>> 378477a8a22bac1025b3a6233c564298111f04ee
 <td>✅</td>
 <td>✅</td>
 <td>❌</td>
@@ -308,7 +312,7 @@ Entregas Entre Semana
 <td>❌</td>
 <td>✅</td>
 <td>✅</td>
-<td>❌</td>
+<td>✅</td>
 <td>❌</td>
 </tr>
 <tr>
@@ -360,6 +364,7 @@ Entregas Entre Semana
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/ES/Jorge_Dominguez'>Jorge_dominguez</a></td>
 <td>❌</td>
 <td>❌</td>
+<<<<<<< HEAD
 <td>✅</td>
 <td>✅</td>
 <<<<<<< HEAD
@@ -371,6 +376,12 @@ Entregas Entre Semana
 <td>✅</td>
 <td>✅</td>
 >>>>>>> 0cd56bbc6441b00315ea997106d92571e305758c
+=======
+<td>✅</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+>>>>>>> 378477a8a22bac1025b3a6233c564298111f04ee
 </tr>
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/ES/Josan_Rodrigo_Cortes'>Josan_rodrigo_cortes</a></td>
@@ -393,7 +404,7 @@ Entregas Entre Semana
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/ES/Miguel_Herrero'>Miguel_herrero</a></td>
 <td>✅</td>
-<td>❌</td>
+<td>✅</td>
 <td>✅</td>
 <td>✅</td>
 <td>✅</td>
@@ -402,7 +413,7 @@ Entregas Entre Semana
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/ES/NACHO_REYES'>Nacho_reyes</a></td>
 <td>✅</td>
-<td>❌</td>
+<td>✅</td>
 <td>✅</td>
 <td>✅</td>
 <td>✅</td>
