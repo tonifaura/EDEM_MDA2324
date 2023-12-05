@@ -266,24 +266,52 @@ group by customer_id
 having sum(amount) > 190)
 select count(customer_id) from my_subquery
 
-/*Ejercicio 50 - Obtén el número de veces que un cliente ha alquilado una peli con with*/
+/*Ejercicio 50 - Obtén el número de veces que un cliente ha alquilado una peli con WITH*/
 with subq_inventory as (
-select film_id, inventory_id
-from inventory
+	select film_id, inventory_id
+	from inventory
+),
+/* No necesito un WITH por cada definición de with, puedo separarlas por comas*/
+subq_rental as (
+	select customer_id, rental_id, inventory_id
+	from rental
+),
+subq_film as (
+	select film_id, title
+	from film
 )
-with subq_rental as (
-select customer_id, rental_id, inventory_id
-from rental
-)
-with subq_film as (
-select film_id, title
-from film
-)
-select subqf.title, c.customer_id, subqi.sum(film_id)
+select subqf.title, c.customer_id, c.first_name, c.last_name, count(subqr.rental_id) as rental_count
 from customer c
-join subq_rental as subqr
-on c.customer_id = subq.customer_id
-join subq_inventory as subqi
-on subqr.inventory_id = subqi.inventory_id
-join subq_film as subqf
+join subq_rental subqr /*Los alias en join no se pasan con AS sino simplemente con un espacio*/
+	on c.customer_id = subqr.customer_id
+join subq_inventory subqi
+	on subqr.inventory_id = subqi.inventory_id
+join subq_film subqf
 on subqi.film_id = subqf.film_id
+group by subqf.title, c.customer_id
+order by rental_count desc;
+
+/*Ejercicio 51 - Obtén el número de veces que un cliente ha alquilado una peli en 2005 y 2006 con WITH*/
+with subq_inventory as (
+	select film_id, inventory_id
+	from inventory
+),
+subq_rental as (
+	select customer_id, rental_id, inventory_id, rental_date
+	from rental
+),
+subq_film as (
+	select film_id, title
+	from film
+)
+select subqf.title, c.customer_id, c.first_name, c.last_name, count(subqr.rental_id) as rental_count, extract(year from subqr.rental_date) as rental_year
+from customer c
+join subq_rental subqr
+	on c.customer_id = subqr.customer_id
+join subq_inventory subqi
+	on subqr.inventory_id = subqi.inventory_id
+join subq_film subqf
+on subqi.film_id = subqf.film_id
+group by subqf.title, c.customer_id, extract(year from subqr.rental_date) /*No sé por qué en el group by y having no me deja usar el alias rental_year*/
+having extract(year from subqr.rental_date) in (2005, 2006)
+order by rental_count desc;
