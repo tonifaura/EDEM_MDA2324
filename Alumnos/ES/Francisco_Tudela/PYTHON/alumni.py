@@ -1,36 +1,8 @@
-import random
-from faker import Faker
 from funciones import *
-import json
 
-def guardar_alumnos(lista_alumnos):
-    with open('alumnos.json', 'w') as archivo:
-        json.dump(lista_alumnos, archivo)
-
-def cargar_alumnos():
-    try:
-        with open('alumnos.json', 'r') as archivo:
-            return json.load(archivo)
-    except FileNotFoundError:
-        return []
-
-faker = Faker(['es-ES'])
-alumnos = []
-
-for data in range(20):
-    alumno = {
-        'NIF': faker.nif(),
-        'Nombre': faker.first_name(),
-        'Apellidos': faker.last_name(),
-        'Teléfono': faker.phone_number(),
-        'Email': faker.email(),
-        'Aprobado': random.choice([True, False])
-    }
-    alumnos.append(alumno)
-
-for i, alumno in enumerate(alumnos, start=1):
-    print(f'Alumno {i}: {alumno}')
-
+alumnos  = []
+cargar_alumnos(alumnos)
+guardar_alumnos(alumnos)
 opcion_elegida = ''
 while (opcion_elegida != 'X'):
     opcion_elegida = input('''
@@ -54,13 +26,20 @@ while (opcion_elegida != 'X'):
     elif (opcion_elegida == '3'):
         actualizar_data()
     elif (opcion_elegida == '4'):
+        mostrar_data_alumni()
     elif (opcion_elegida == '5'):
+        mostrar_datos_por_mail()
     elif (opcion_elegida == '6'):
+        mostrar_total_alumnos()
     elif (opcion_elegida == '7'):
+        aprobar_alumno()
     elif (opcion_elegida == '8'):
+        suspender_alumno()
     elif (opcion_elegida == '9'):
+        mostrar_alumnos_aprobados()
     elif (opcion_elegida == '10'):
-    
+        mostrar_alumnos_suspendidos()
+        break
         
 
         
