@@ -12,9 +12,11 @@ respuesta = requests.get(url)
 
 
 datos=respuesta.json()
-for dato in datos:
-    if dato=="results":
-        
+resultado=datos["results"]
+
+    for dato in datos["results"]:
+        print(dato[0]["name"])
+
 
 print(datos)
 # fraseChuck:str =datos["value"]  
