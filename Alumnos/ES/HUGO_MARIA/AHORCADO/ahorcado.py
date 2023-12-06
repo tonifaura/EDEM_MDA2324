@@ -1,37 +1,34 @@
 import random
-# 1. Agregando el diccionario
+
 
 abecedario2 = ["A","B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "Ñ", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-abecedario = ['E', 'A', 'O', 'I', 'S', 'N', 'R', 'L', 'U', 'D', 'T', 'C', 'M', 'P', 'B', 'G', 'V', 'Y', 'Q', 'H', 'F', 'J', 'Ñ', 'Z', 'X', 'K', 'W']
+abecedario = ['e', 'a', 'o', 's', 'r', 'n', 'l', 'd', 'i', 'c', 't', 'u', 'm', 'p', 'b', 'g', 'v', 'y', 'q', 'h', 'f', 'z', 'j', 'ñ' 'x', 'k', 'w']
 
 
-#PASO 2
+
 with open("palabras.csv", "r") as archivo:
-    palabras = archivo.read().splitlines()
-
-#print(palabras)
-
-#PASO 3
-#for palabra in palabras:
-#    letras = len(palabra)
-#    print(letras)
+    lista = archivo.read().splitlines()
 
 intento= 0
 
-for palabra in palabras:
+
+for palabra in lista:
     longitud = len(palabra)
-    for letra in abecedario:
-        intento += 1
-        contador = palabra.count(letra)
+    while longitud > 0:
+        for a in abecedario:
+            intento += 1
+            if a in palabra:
+                conteo = palabra.count(a)
+                longitud -= conteo
+                if longitud == 0:
+                    break
+
+ 
+print(f'ha tomado {intento} intentos resolver el ahorcado')
 
 
-print(intento)
 
 
 
 
 
-#total_recorrido = 0
-#total_no_recorrido= 0
-
-#for palabra in lista_palabras:
