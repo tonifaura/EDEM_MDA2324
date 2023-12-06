@@ -12,12 +12,29 @@ respuesta = requests.get(url)
 
 
 datos=respuesta.json()
-resultado=datos["results"]
+results=datos['results']
+#Lo he hecho de esta forma primero porque me cuesta menos pensar a donde quiero entrar, aunque despues
+# lo he conseguido anidando los diferentes índices.
 
-    for dato in datos["results"]:
-        print(dato[0]["name"])
+# datos1=results[0]
+# name=datos1['name']
+# nombre=name['first']
+# apellido=name['last']
+# print(datos)
+# print('---------------------')
+# print(results)
+# print('---------------------')
+# print(datos1)
+# print('---------------------')
+# print(name)
+# print('---------------------')
+# print(f' Nombre: {nombre}')
+# print(f' Apellido: {apellido}')
+
+resultsNombre=datos['results'][0]['name']['first']
+resultsApellido=datos['results'][0]['name']['last']
+print(f' Nombre: {resultsNombre}')
+print(f' Apellido: {resultsApellido}')
 
 
-print(datos)
-# fraseChuck:str =datos["value"]  
 
