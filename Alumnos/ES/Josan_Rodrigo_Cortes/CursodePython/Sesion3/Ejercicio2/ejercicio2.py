@@ -6,22 +6,20 @@ primos de 1 - 100
 
 
 def primos(numero):
-    if numero==0 or numero==1 or numero==4:
+    if numero == 0 or numero == 1 or numero == 4:
         return False
     else:
-        for i in range(2,numero):
-            if numero%i==0:
+        for i in range(2, numero):
+            if numero % i == 0:
                 return False
-            else:
-                return True
+        return True
             
 
-numerosPrimos=[]
+numerosPrimos = []
 
-for n in range(1,100):
-    esPrimo=primos(n)
-    if esPrimo==True:
+for n in range(1, 100):
+    esPrimo = primos(n)
+    if esPrimo:
         numerosPrimos.append(n)
 
 print(numerosPrimos)
-

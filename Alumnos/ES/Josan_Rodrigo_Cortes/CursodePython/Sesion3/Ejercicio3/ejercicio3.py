@@ -9,15 +9,15 @@ def anyoBisiesto(anyo):
     if anyo%4!=0:
         print(f"El año {anyo} no es bisiesto")
 
-    elif anyo%4==0 and anyo%100!=0:
+    elif anyo%100==0 and anyo%400!=0:
         print(f"El año {anyo} no es bisiesto")
 
-    elif anyo%4==0 and anyo%100!=0 and anyo%400!=0:
-        print(f"El año {anyo} no es bisiesto")
-
-    elif anyo%4==0 and anyo%100!=0 and anyo%400==0:
+    else:
         print(f"El año {anyo} es bisiesto")
+
+        
     
 queanyo=int(input("Introduce el año: "))
 for i in range(queanyo-10,queanyo+10):
     anyoBisiesto(i)
+
