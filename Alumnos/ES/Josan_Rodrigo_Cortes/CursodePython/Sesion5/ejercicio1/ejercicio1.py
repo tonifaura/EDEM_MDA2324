@@ -84,16 +84,35 @@ pokemondf=pd.DataFrame(pokemon)
 # print(pokemondf.head)
 # pokemondfFiltrado = pokemondf[(pokemondf['Type 1'] == "Fire") | (pokemondf['Type 1'] == "Poison") | (pokemondf['HP'] >= 70)]
 # print(pokemondfFiltrado)
-
-pokemondfFiltrado = pokemondf[(pokemondf['Type 1'] == "Poison")]
-print(pokemondfFiltrado)
 # FILTRAR POKEMONS CON NOMBRE "MEGA"
+# pokemonFiltrado= pokemondf[pokemondf['Name'].str.contains('mega', case=False, na=False, regex=True)]
+# print(pokemonFiltrado)
 # FILTRAR POKEMONS SIN NOMBRE "MEGA"
+# pokemonFiltrado= pokemondf[~pokemondf['Name'].str.contains('mega', case=False, na=False, regex=True)]
+# print(pokemonFiltrado)
 # FILTRAR POKEMONS CUYOS NOMBRES COMIENCEN CON "PI"
+# pokemonFiltrado= pokemondf[pokemondf['Name'].str.contains('pi', case=False, na=False, regex=True)]
+# print(pokemonFiltrado)
 # RENOMBRADO DE COLUMNA "FIRE" a "FLAME"
+# print(pokemondf.columns)
+# pokemondfRenombradoValores= pokemondf['Type 1'].replace({'Fire':'Flame'})
+# print(pokemondfRenombradoValores)
 # RENOMBRAR DE NUEVO A "FIRE" LA COLUMNA "FLAME" RECIÉN CAMBIADA
+# print(pokemondf.columns)
+# pokemondfRenombradoValores= pokemondf['Type 1'].replace({'Flame':'Fire'})
+# print(pokemondfRenombradoValores)
+
 # CAMBIAR A TODOS LOS POKEMON LEGENDARIOS A TIPO "FIRE"
+# condicion = pokemondf['Legendary'] ==True
+# pokemondf.loc[condicion, 'Type 1'] = 'Fire'
+# print(pokemondf)
 # (Agrupación - groupBy) ESTADÍSTICAS DE MEDIA POR TIPO DE POKEMON y ORDENADOS POR DEFENSA
+# print(pokemondf['Type 1'].unique())
+# media_por_tipo_defensa = pokemondf.groupby('Type 1')['Grass' 'Fire' 'Water' 'Bug' 'Normal' 'Poison' 'Electric' 'Ground'
+#  'Fairy' 'Fighting' 'Psychic' 'Rock' 'Ghost' 'Ice' 'Dragon' 'Dark' 'Steel'
+#  'Flying'] #.mean().reset_index()  Reset_index para convertir a DataFrame
+# # media_ordenada = media_por_tipo_defensa.sort_values(by='Defense', ascending=False)
+# print(media_por_tipo_defensa)
 # (Agrupación - groupBy) ESTADÍSTICAS DE MEDIA POR TIPO DE POKEMON y ORDENADOS POR ATAQUE
 # (Agrupación - groupBy) ESTADÍSTICAS DE MEDIA POR TIPO DE POKEMON y ORDENADOS POR HP
 # (Agrupación - groupBy) ESTADÍSTICAS DE SUMA POR TIPO DE POKEMON
@@ -102,6 +121,14 @@ print(pokemondfFiltrado)
 # Nota: SI TENEMOS ARCHIVOS ENORMES (1TB) PODEMOS LEERLOS POR PARTES Cada fila podría estar acumulando cerca de 20 bytes, por lo que podríamos estar trabajando con cantidades enormes
 
 # LEE EL ARCHIVO CVS SEPARÁNDOLO POR CHUNKS Y CON UN TAMAÑO DE (chunksize=5)
+archivo_csv = 'pokemon_data.csv'
+
+# Define el tamaño del chunk
+tamaño_chunk = 5
+
+# Utiliza un bucle for para leer el archivo CSV en chunks
 # ITERA POR LOS CHUNKS Y MUÉSTRALOS POR CONSOLA 
 
+for chunk in pd.read_csv(archivo_csv, chunksize=tamaño_chunk):
+    print(chunk)
 
