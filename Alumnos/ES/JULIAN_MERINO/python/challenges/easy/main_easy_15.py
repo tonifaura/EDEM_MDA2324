@@ -1,17 +1,13 @@
 """
-Reto 16
+Reto 15
 
-Crea un script que sea capaz de restar dos fechas y muestra el resultado por consola
+Escribe una función que reciba una muestra de números en una lista y devuelva otra lista con sus cuadrados.
 """
+def squares(list):
+    sq_list = list.copy()
+    for i in range(len(list)):
+        sq_list[i] = sq_list[i] ** 2
+    print(sq_list)
 
-#For this, we need the function date from datetime library:
-from datetime import date
-#date works with yyyy/mm/dd (note: remove leading zeroes from month and day)
-
-#Let's do a function for this
-def subt_dates():
-    date1 = date(2023, 12, 8)
-    date2 = date(2023, 12, 7)
-    return date1 - date2
-
-print(subt_dates())
+list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+squares(list)
