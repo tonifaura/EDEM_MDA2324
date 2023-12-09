@@ -41,7 +41,7 @@ def del_cust(nif: str, list):
             print(f'Customer {customer_book[i].name} {customer_book[i].surname} with NIF: {customer_book[i].nif} removed.')
             del customer_book[i]
         else:
-            print(f'Customer {customer_book[i].nif} not found.')
+            print(f'Customer {nif} not found.')
 
 def search_cust(nif: str, list):
     found = False
