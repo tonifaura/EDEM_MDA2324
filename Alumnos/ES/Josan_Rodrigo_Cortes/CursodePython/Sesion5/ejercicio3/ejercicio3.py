@@ -7,39 +7,48 @@ Camión'''
 from ejercicio2 import Automovil
 	
 class Moto(Automovil):
-    def __init__(self, marca, modelo, color, matricula, id_seguro, titular, velocidad, ruedas, tipodemoto):
-        # Llamamos al constructor de la clase base (Automovil)
-        super().__init__(marca, modelo, color, matricula, id_seguro, titular, velocidad, ruedas)
-        # Atributo adicional específico de la clase Moto
-        self.tipo_moto = tipodemoto
 
-    # Métodos adicionales o sobrescritos específicos de la clase Moto
+    tipodemoto:str
+
+    def __init__(self, marca, modelo, color, matricula, id_seguro, titular, velocidad, ruedas, tipodemoto):
+        super().__init__(marca, modelo, color, matricula, id_seguro, titular, velocidad, ruedas)
+        
+        self.tipodemoto = tipodemoto
+
+    
     def realizar_acrobacia(self):
         print(f"La moto ha realizado una acrobacia.")
 			
 
 
 class Camion(Automovil):
+
+    capacidad_carga:int
+
     def __init__(self, marca, modelo, color, matricula, id_seguro, titular, velocidad, ruedas, capacidad_carga):
-        # Llamamos al constructor de la clase base (Automovil)
         super().__init__(marca, modelo, color, matricula, id_seguro, titular, velocidad, ruedas)
-        # Atributo adicional específico de la clase Camion
+        
         self.capacidad_carga = capacidad_carga
 
-    # Métodos adicionales o sobrescritos específicos de la clase Camion
+    
     def cargar_mercancia(self):
         print(f"El camión ha cargado mercancía.")
 
 
 
+moto1= Moto(marca="Honda", modelo="CBR", color="Rojo", matricula="ABC123", id_seguro="12345",
+                    titular="Juan", velocidad=0, ruedas=2, tipodemoto="Deportiva")
 
-# Crear una instancia de Moto
-moto_ejemplo = Moto(marca="Honda", modelo="CBR", color="Rojo", matricula="ABC123", id_seguro="12345",
-                    titular="Juan", velocidad=0, ruedas=2, tipo_moto="Deportiva")
 
-# Acceder a atributos y métodos de la clase base
-print(moto_ejemplo.velocidad)  # Imprimir velocidad
-moto_ejemplo.arrancar()         # Llamar al método arrancar de la clase base
+print(moto1.velocidad)  
+moto1.arrancar()
+print(moto1.velocidad)  
+moto1.realizar_acrobacia()
+ 
 
-# Llamar a métodos específicos de la clase Moto
-moto_ejemplo.realizar_acrobacia()
+camion1=Camion(marca="Iveco",modelo="Star",color="Blanco",matricula="111111",id_seguro="222222",
+               titular="Ana",velocidad=0,ruedas=8,capacidad_carga=20000)
+
+camion1.arrancar()
+print(camion1.velocidad)
+camion1.cargar_mercancia()
