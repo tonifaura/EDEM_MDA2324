@@ -106,10 +106,10 @@ Entregas Fin de Semana
 </tr>
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/FS/Adriana_Campos'>Adriana_campos</a></td>
+<td>❌</td>
 <td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
+<td>❌</td>
+<td>❌</td>
 <td>✅</td>
 <td>✅</td>
 </tr>
@@ -117,7 +117,7 @@ Entregas Fin de Semana
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/FS/CARLOS-FERRER-SANCHEZ'>Carlos-ferrer-sanchez</a></td>
 <td>✅</td>
 <td>✅</td>
-<td>✅</td>
+<td>❌</td>
 <td>✅</td>
 <td>✅</td>
 <td>✅</td>
@@ -133,7 +133,7 @@ Entregas Fin de Semana
 </tr>
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/FS/ELOY-MARTINEZ-GOMEZ'>Eloy-martinez-gomez</a></td>
-<td>✅</td>
+<td>❌</td>
 <td>✅</td>
 <td>✅</td>
 <td>✅</td>
@@ -147,7 +147,10 @@ Entregas Fin de Semana
 <td>✅</td>
 <td>✅</td>
 <td>❌</td>
-<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
 </tr>
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/FS/JACKELINE-ROMERO-MATEGO'>Jackeline-romero-matego</a></td>
@@ -223,7 +226,7 @@ Entregas Fin de Semana
 </tr>
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/FS/Stas Korotchenko'>Stas korotchenko</a></td>
-<td>✅</td>
+<td>❌</td>
 <td>✅</td>
 <td>✅</td>
 <td>✅</td>
@@ -283,8 +286,8 @@ Entregas Entre Semana
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/ES/CARLOS_BUENROSTRO_VALVERDE'>Carlos_buenrostro_valverde</a></td>
 <td>❌</td>
 <td>❌</td>
-<td>✅</td>
-<td>✅</td>
+<td>❌</td>
+<td>❌</td>
 <td>❌</td>
 <td>❌</td>
 </tr>
@@ -293,7 +296,7 @@ Entregas Entre Semana
 <td>✅</td>
 <td>❌</td>
 <td>✅</td>
-<td>✅</td>
+<td>❌</td>
 <td>✅</td>
 <td>❌</td>
 </tr>
@@ -327,7 +330,7 @@ Entregas Entre Semana
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/ES/INES_SOLER'>Ines_soler</a></td>
 <td>✅</td>
-<td>✅</td>
+<td>❌</td>
 <td>✅</td>
 <td>✅</td>
 <td>❌</td>
@@ -335,15 +338,17 @@ Entregas Entre Semana
 </tr>
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/ES/JULIAN_MERINO'>Julian_merino</a></td>
+<td>❌</td>
+<td>❌</td>
 <td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
 </tr>
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/ES/Javier_Ruiz'>Javier_ruiz</a></td>
+<td>❌</td>
+<td>❌</td>
 <td>✅</td>
 <td>❌</td>
 <td>✅</td>
@@ -353,16 +358,16 @@ Entregas Entre Semana
 </tr>
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/ES/Jorge_Dominguez'>Jorge_dominguez</a></td>
+<td>❌</td>
+<td>❌</td>
 <td>✅</td>
 <td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
+<td>❌</td>
+<td>❌</td>
 </tr>
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/ES/Josan_Rodrigo_Cortes'>Josan_rodrigo_cortes</a></td>
-<td>✅</td>
+<td>❌</td>
 <td>❌</td>
 <td>✅</td>
 <td>❌</td>
