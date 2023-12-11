@@ -80,7 +80,7 @@ print(f'  ')
 print(f'  ')
 
 
-import requestS
+import requests
 
 def obtener_datos():
     url = "https://randomuser.me/api"
