@@ -1,17 +1,21 @@
 import json
 import random
 from faker import Faker
+import unicodedata
 
 def generar_datos_fake(cantidad):
     faker = Faker(['es-ES'])
     alumnos = []
 
-    for data in range(20):
+    for data in range(cantidad):
+        nombre = unicodedata.normalize('NFKD', faker.first_name()).encode('ascii', 'ignore').decode('utf-8')
+        apellido = unicodedata.normalize('NFKD', faker.last_name()).encode('ascii', 'ignore').decode('utf-8')
+
         alumno = {
             'NIF': faker.nif(),
-            'Nombre': faker.first_name(),
-            'Apellidos': faker.last_name(),
-            'Teléfono': faker.phone_number(),
+            'Nombre': nombre,
+            'Apellidos': apellido,
+            'Telefono': faker.phone_number(),
             'Email': faker.email(),
             'Aprobado': random.choice([True, False])
         }
