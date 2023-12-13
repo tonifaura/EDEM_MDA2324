@@ -1,0 +1,7 @@
+docker exec ubuntu ls         # Listar archivos en el directorio actual
+docker exec ubuntu pwd        # Mostrar el directorio de trabajo actual
+docker exec ubuntu ps         # Mostrar procesos en ejecución
+docker exec ubuntu ifconfig   # Mostrar información de red
+docker exec ubuntu apt-get update    # Actualizar los repositorios de paquetes
+docker exec ubuntu apt-get install nano    # Instalar el editor de texto nano
+docker exec ubuntu /bin/bash  # Iniciar un shell interactivo
