@@ -1,84 +1,50 @@
-# EXCERCISE 1 Confluent Cloud + Python 
+# Exercise 3: Python App to Cloud
 
 ## Target
-Send messaged with Python from your computer into Kafka Cloud.
+Send messages from your computer, from a Python App, messages to Confluent Kafka Cloud.
 
-## Run
-Simple scenario: 1 zookeeper + 1 Kafka broker.
+## Steps
 
-Start the ZooKeeper and Kafka container.
+We will now create the topic to which we will send the messages. Click on the "Topics" tab on the left side of the screen and then click on "Create Topic".
+   ![images/imgage1.png](images/image1.png)
 
-```sh
-$ docker-compose up -d
-```
+<br><br>
 
-Status: 
-
-```sh
-$ docker-compose ps
-      Name                  Command            State                     Ports
--------------------------------------------------------------------------------------------------
-lab1_kafka_1       /etc/confluent/docker/run   Up      0.0.0.0:9092->9092/tcp
-lab1_zookeeper_1   /etc/confluent/docker/run   Up      0.0.0.0:2181->2181/tcp, 2888/tcp, 3888/tcp
-```
-
-### Command Line Producer
-
-Run the command line producer:
-
-```sh
-$ docker-compose exec kafka kafka-console-producer --topic myTopic --broker-list localhost:9092
->hi
->dlp
->
+Change the Topic name to "topic_java" and the Partitions to 1. Click on Create with defaults.
+   ![images/imgage2.png](images/image2.png)
 
 
-Alternative:
+## Python App
 
-$ docker-compose exec kafka kafka-console-producer --topic myTopic --broker-list localhost:9092
->{messageID:1, message:"hi"}
->{messageID:2, message:"dlp"}
->
-
-```
-
-Read topic content:
-
-```sh
-$ docker-compose exec kafka kafka-console-consumer --topic myTopic --from-beginning --bootstrap-server localhost:9092
-hi
-dlp
-```
-
-
-Alternative:
-
-```sh
-$ docker-compose exec kafka kafka-console-consumer --topic myTopic --from-beginning --bootstrap-server localhost:9092
->{messageID:1, message:"hi"}
->{messageID:2, message:"dlp"}
->
-```
-
-
---------------------------------------------------------------
-
-
-
-### Python Example
-
+### Python libraries installation
 Before running the example, you need to install the python kafka client library:
 
 ```sh
 $ pip install kafka-python
 $ pip install confluent_kafka
 ```
+<br><br>
+
+### Set up Python credentials from Confluent Cloud
+Click "Learn" button. Then Click on Python image.
+![images/imgage3.png](images/image3.png)
+
+<br><br>
+
+Once you choose an environment/cluser. you will be shown a screen with instructions. You only need generate a new API 
+access key:
+![images/imgage4.png](images/image4.png)
+
+<br><br>
+Enter a description and save the credentials in your computer.
+![images/imgage5.png](images/image5.png)
 
 
-The example is based on two python scripts:
+<br><br>
 
-* Producer: The producer will generate 100 messages and send them to the `myTopic`. 
-* Consumer: Consume and log messages from `myTopic`.  
+### Modify Apo Python to use your new API credentials
+Modify the file client.properties and put your credentials.
+![img.png](images/image6.png)
 
 ### Run the python scripts 
 Execute the Consumer: run the script consumer.py
@@ -87,15 +53,12 @@ Execute the Producer: run the script producer.py
 
 #### Exercises 
 
-* Modify the python Producer script (producer.py) and send different messages. Verify in the Consumer (command line or 
-  Consumer script) that you can read/consume the new messages.
-*  Use a messages more complex than a String. For example a JSON message like this one => {"name":"John", "age": 26} 
+* Modify the python Producer script (producer.py) and send different messages. Verify in the Confluent topic's Cloud
+* and in the Python Consumer App that the new messages arrive.
+* 
+* Use a messages more complex than a String. For example a JSON message like this one => {"name":"John", "age": 26} 
 where you can increment the message JSON attribute "age" number in each sent message.
+* 
+* Create a new topic in Confluen Cloud. Adapt the Produce and Consumer Python Apps to use this new topic. Test it 
+* end to end.
 
-### Clean up
-
-Shut down Docker Compose
-
-```sh
-$ docker-compose down
-```

@@ -1,4 +1,4 @@
-# EXCERCISE 1 Confluent Kafka Cloud/Login
+# Exercise 1: Confluent Kafka Cloud - Login
 
 Create an account into Confluent Kafka Cloud.
 
@@ -23,12 +23,3 @@ Create an account into Confluent Kafka Cloud.
 
 6. Now the environment is created and you can click on "keep exploring on my own".
    ![images/imgage6.png](images/image6.png)
-
-7. We will now create the topic to which we will send the messages. Click on the "Topics" tab on the left side of the screen and then click on "Create Topic".
-   ![images/imgage7.png](images/image7.png)
-
-8. Change the Topic name to "topic_java" and the Partitions to 1. Click on Create with defaults.
-   ![images/imgage8.png](images/image8.png)
-
-9. Now the topic has been created. Confluent allows now to define a schema for the messages, but for this excercise we will not use it. Click on Skip for now.
-   ![images/imgage9.png](images/image9.png)
