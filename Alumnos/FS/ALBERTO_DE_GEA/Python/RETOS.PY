@@ -213,4 +213,3 @@ miLista = ['Alberto',
 print("Alumnos del curso:")
 for alumnos in miLista:
   print(alumnos)
-  
