@@ -51,14 +51,25 @@ Execute the Consumer: run the script consumer.py
 Execute the Producer: run the script producer.py
 
 
-#### Exercises 
+#### More Exercises 
 
+##### Exercise 3.1
 * Modify the python Producer script (producer.py) and send different messages. Verify in the Confluent topic's Cloud
 * and in the Python Consumer App that the new messages arrive.
-* 
+
+##### Exercise 3.2
 * Use a messages more complex than a String. For example a JSON message like this one => {"name":"John", "age": 26} 
 where you can increment the message JSON attribute "age" number in each sent message.
-* 
+
+##### Exercise 3.3
 * Create a new topic in Confluen Cloud. Adapt the Produce and Consumer Python Apps to use this new topic. Test it 
 * end to end.
+
+##### Exercise 3.4 TEAM WORK :)!!!!!
+* Make a Development Team composed by 2-3 colleagues. From each of your computer run the Python Producer Application to
+* just ONLY ONE Cloud server. To do that, you will need to use the same API credentials. Verify that you can see in the
+* Cloud how the messages from different computers are arriving. 
+* 
+*Then start in the different computers the Consumer, and verify you read messages in your computer produced by other 
+colleagues in their computers.
 
