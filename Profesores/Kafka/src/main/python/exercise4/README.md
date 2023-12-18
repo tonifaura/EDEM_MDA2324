@@ -1,4 +1,4 @@
-# Exercise 3: Python App to Cloud
+# Exercise 4: Python App to Kakfa running in Docker
 
 ## Objectives
 
@@ -19,19 +19,8 @@ Start the ZooKeeper and Kafka container.
 $ docker-compose up -d
 ```
 
-Status:
-
-```sh
-$ docker-compose ps
-      Name                  Command            State                     Ports
--------------------------------------------------------------------------------------------------
-lab1_kafka_1       /etc/confluent/docker/run   Up      0.0.0.0:9092->9092/tcp
-lab1_zookeeper_1   /etc/confluent/docker/run   Up      0.0.0.0:2181->2181/tcp, 2888/tcp, 3888/tcp
-```
-
 ## Command Line , create a new Kafka topic
-
-Run the command line producer:
+Using the terminal create the topic 'ventas'
 
 ```sh
 docker-compose exec kafka kafka-topics --create --topic ventas --partitions 1 --replication-factor 1 --if-not-exists --bootstrap-server localhost:9092
