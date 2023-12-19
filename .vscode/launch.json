@@ -9,7 +9,6 @@
             "type": "python",
             "request": "launch",
             "program": "${file}",
-            "cwd": "${fileDirname}",  // Asegúrate de que esta línea esté presente
             "console": "integratedTerminal",
             "justMyCode": true
         }

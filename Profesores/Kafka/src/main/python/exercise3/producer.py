@@ -22,10 +22,10 @@ producer = Producer(read_ccloud_config("client.properties"))
 # Send 100 messages where the key is the index and the message to send is "test message - index"
 # the topic name is myTopic
 
-topic_kafka = 'topic_java'
+topic_kafka = 'whatsapp'
 
 for e in range(100):
-    data = {"name":"John", "age": 26 + e}
+    data = {"Es mejor estar solo que estar con alguien que tiene un máscara puesta, baby": "Anuel Real Hasta La Muerte ¿oite bebé?"}
     data_str = dumps(data)  # Serialize dictionary to a string
     data_bytes = data_str.encode('utf-8')  # Encode string to bytes
     key = str(e).encode('utf-8')
