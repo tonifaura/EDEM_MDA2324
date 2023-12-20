@@ -5,9 +5,9 @@
 1) Run Zookeeper + Kafka
 2) Produce messages from the command line
 3) Consume/Read messages from the command line
-4) Produce messages from a Java application.
-5) Consume/Read messages from a Java application.
-6) Modify the Java Producer and/or Consumer Java application.
+4) Produce messages from a Python application.
+5) Consume/Read messages from a Python application.
+6) Modify the Python Producer and/or Consumer Python application.
 
 
 ## Run Kafka in your computer with Docker
@@ -26,18 +26,23 @@ Using the terminal create the topic 'ventas'
 docker-compose exec kafka kafka-topics --create --topic ventas --partitions 1 --replication-factor 1 --if-not-exists --bootstrap-server localhost:9092
 ```
 
-## Run the Producer Python App from VisualStudio
-
-## Run the Consumer Python App from VisualStudio
+Produce messsages from the command line
+```sh
+docker-compose exec kafka kafka-console-producer --topic ventas --broker-list localhost:9092
+```
 
 ## Console Kafka commands
 Read topic content:
 
 ```sh
 $ docker-compose exec kafka kafka-console-consumer --topic ventas --from-beginning --bootstrap-server localhost:9092
-hi
-dlp
 ```
+
+## Run the Producer Python App from VisualStudio
+
+## Run the Consumer Python App from VisualStudio
+
+
 
 #### More Exercises
 ##### Exercise 4.1 
