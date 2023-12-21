@@ -7,7 +7,7 @@
 
 
 ## Run Kafka in your computer with Docker
-Simple scenario: 1 zookeeper + 1 Kafka broker.
+Simple scenario: 1 zookeeper + 1 Kafka broker + 1 Ksql server + 1 Ksql CLI.
 
 Start the ZooKeeper and Kafka container.
 
