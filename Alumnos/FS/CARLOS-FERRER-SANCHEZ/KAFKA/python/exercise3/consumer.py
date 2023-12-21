@@ -1,5 +1,6 @@
 from kafka import KafkaConsumer
 from json import loads
+
 from confluent_kafka import Consumer
 
 
@@ -19,7 +20,7 @@ props["group.id"] = "python-group-1"
 props["auto.offset.reset"] = "earliest"
 
 consumer = Consumer(props)
-consumer.subscribe(["topic_python"])
+consumer.subscribe(["topic_python1"])
 
 try:
     while True:
