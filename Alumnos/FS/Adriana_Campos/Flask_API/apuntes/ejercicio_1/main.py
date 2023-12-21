@@ -32,7 +32,11 @@ def user(user_id):
 
 
 
-
-
-
 app.run(host='0.0.0.0', port=99)
+
+
+
+# donde ver las paginas
+#>http://localhost:99/form
+#>http://localhost:99/login
+#>http://localhost:99/users/Nuria#
