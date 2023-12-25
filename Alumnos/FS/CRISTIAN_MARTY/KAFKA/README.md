@@ -53,7 +53,7 @@ Este aplicativo se enfoca en la adquisición, procesamiento y visualización en 
 Queries en Ksql
  ```sql
 -- Crea un STREAM para consumir datos del topic meteorologia_valencia
-CREATE STREAM meteorologia_stream (id_registro STRING, fecha_hora STRING, nombre_estacion STRING, nombre_ciudad STRING, temperatura INT, humedad INT, velocidad_viento) WITH (KAFKA_TOPIC='meteorologia_valencia', VALUE_FORMAT='JSON');
+CREATE STREAM meteorologia_stream (id_registro STRING, fecha_hora STRING, nombre_ciudad STRING, temperatura INT, humedad INT, velocidad_viento) WITH (KAFKA_TOPIC='meteorologia_valencia', VALUE_FORMAT='JSON');
 
 -- Crea una tabla temporal con los registros más recientes para cada id_registro y nombre_ciudad
 CREATE TABLE meteorologia_temporal AS
@@ -63,7 +63,7 @@ GROUP BY id_registro, nombre_ciudad;
 
 -- Seleccion de variables y filtrado para obtener solo los datos más recientes de cada ciudad
 CREATE STREAM METEOROLOGIA_BI_STREAM WITH (VALUE_FORMAT='JSON') AS
-SELECT m.id_registro, m.fecha_hora, m.nombre_estacion, m.nombre_ciudad, m.temperatura, m.humedad, m.velocidad_viento
+SELECT m.id_registro, m.fecha_hora, m.nombre_ciudad, m.temperatura, m.humedad, m.velocidad_viento
 FROM meteorologia_stream m
 INNER JOIN meteorologia_temporal t
 ON m.id_registro = t.id_registro AND m.nombre_ciudad = t.nombre_ciudad AND m.fecha_hora = t.fecha_hora;
