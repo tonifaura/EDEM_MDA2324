@@ -74,7 +74,7 @@ SELECT * FROM METEOROLOGIA_BI_STREAM;
 
 ```
 
-Estructura de datos de en el topic METEOROLOGIA_BI_STREAM luego de la transformación solo con las variables seleccionadas y los datos mas recientes.
+Estructura de datos en el topic METEOROLOGIA_BI_STREAM luego de la transformación solo con las variables seleccionadas y los datos mas recientes.
 
 ```json
 [
