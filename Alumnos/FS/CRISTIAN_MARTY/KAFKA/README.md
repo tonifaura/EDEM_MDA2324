@@ -66,7 +66,7 @@ CREATE STREAM METEOROLOGIA_BI_STREAM WITH (VALUE_FORMAT='JSON') AS
 SELECT m.id_registro, m.fecha_hora, m.nombre_ciudad, m.temperatura, m.humedad, m.velocidad_viento
 FROM meteorologia_stream m
 INNER JOIN meteorologia_temporal t
-ON m.id_registro = t.id_registro AND m.nombre_ciudad = t.nombre_ciudad AND m.fecha_hora = t.fecha_hora;
+ON m.id_registro = t.id_registro;
 
 -- Envia datos transformados al topic METEOROLOGIA_BI_STREAM
 CREATE STREAM METEOROLOGIA_BI_STREAM_FINAL WITH (VALUE_FORMAT='JSON') AS
