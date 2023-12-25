@@ -77,66 +77,68 @@ SELECT * FROM METEOROLOGIA_BI_STREAM;
 Estructura de datos de en el topic METEOROLOGIA_BI_STREAM luego de la transformación solo con las variables seleccionadas y los datos mas recientes.
 
 ```json
-{
-  "ROWTIME": 1703517663471,
-  "ROWKEY": "null",
-  "ID_REGISTRO": "9b6464ab-b4ed-4028-b3e3-c2d822770c05",
-  "FECHA_HORA": "2023-12-25 20:02:14",
-  "NOMBRE_CIUDAD": "Madrid",
-  "TEMPERATURA": 8,
-  "HUMEDAD": 94,
-  "VELOCIDAD_VIENTO": 10
-}
-{
-  "ROWTIME": 1703517633408,
-  "ROWKEY": "null",
-  "ID_REGISTRO": "2a8d87a8-6639-49a9-bc69-22f2829701db",
-  "FECHA_HORA": "2023-12-25 04:11:53",
-  "NOMBRE_CIUDAD": "Burgos",
-  "TEMPERATURA": -1,
-  "HUMEDAD": 46,
-  "VELOCIDAD_VIENTO": 1
-}
-{
-  "ROWTIME": 1703517635410,
-  "ROWKEY": "null",
-  "ID_REGISTRO": "32375e6f-e094-4fd1-acbc-1523db581a36",
-  "FECHA_HORA": "2023-12-25 14:31:45",
-  "NOMBRE_CIUDAD": "Valencia",
-  "TEMPERATURA": 5,
-  "HUMEDAD": 83,
-  "VELOCIDAD_VIENTO": 2
-}
-{
-  "ROWTIME": 1703517663471,
-  "ROWKEY": "null",
-  "ID_REGISTRO": "2f1e70a9-c423-4b41-a436-0218b11a5069",
-  "FECHA_HORA": "2023-12-25 20:02:14",
-  "NOMBRE_CIUDAD": "Sevilla",
-  "TEMPERATURA": 8,
-  "HUMEDAD": 94,
-  "VELOCIDAD_VIENTO": 10
-}
-{
-  "ROWTIME": 15065177638914,
-  "ROWKEY": "null",
-  "ID_REGISTRO": "9b6464ab-b4ed-4028-b3e3-c2d822770c05",
-  "FECHA_HORA": "2023-12-25 20:08:11",
-  "NOMBRE_CIUDAD": "Maálaga",
-  "TEMPERATURA": 5,
-  "HUMEDAD": 77,
-  "VELOCIDAD_VIENTO": 4
-}
-{
-  "ROWTIME": 456651778838314,
-  "ROWKEY": "null",
-  "ID_REGISTRO": "f3c6bc82-7c9d-4a61-b40c-ddfad23d0b1c",
-  "FECHA_HORA": "2023-12-25 23:07:06",
-  "NOMBRE_CIUDAD": "Saragoza",
-  "TEMPERATURA": 4,
-  "HUMEDAD": 57,
-  "VELOCIDAD_VIENTO": 4
-}
+[
+  {
+    "ROWTIME": 1703517663471,
+    "ROWKEY": "null",
+    "ID_REGISTRO": "9b6464ab-b4ed-4028-b3e3-c2d822770c05",
+    "FECHA_HORA": "2023-12-25 20:02:14",
+    "NOMBRE_CIUDAD": "Madrid",
+    "TEMPERATURA": 8,
+    "HUMEDAD": 94,
+    "VELOCIDAD_VIENTO": 10
+  },
+  {
+    "ROWTIME": 1703517633408,
+    "ROWKEY": "null",
+    "ID_REGISTRO": "2a8d87a8-6639-49a9-bc69-22f2829701db",
+    "FECHA_HORA": "2023-12-25 04:11:53",
+    "NOMBRE_CIUDAD": "Burgos",
+    "TEMPERATURA": -1,
+    "HUMEDAD": 46,
+    "VELOCIDAD_VIENTO": 1
+  },
+  {
+    "ROWTIME": 1703517635410,
+    "ROWKEY": "null",
+    "ID_REGISTRO": "32375e6f-e094-4fd1-acbc-1523db581a36",
+    "FECHA_HORA": "2023-12-25 14:31:45",
+    "NOMBRE_CIUDAD": "Valencia",
+    "TEMPERATURA": 5,
+    "HUMEDAD": 83,
+    "VELOCIDAD_VIENTO": 2
+  },
+  {
+    "ROWTIME": 1703517663471,
+    "ROWKEY": "null",
+    "ID_REGISTRO": "2f1e70a9-c423-4b41-a436-0218b11a5069",
+    "FECHA_HORA": "2023-12-25 20:02:14",
+    "NOMBRE_CIUDAD": "Sevilla",
+    "TEMPERATURA": 8,
+    "HUMEDAD": 94,
+    "VELOCIDAD_VIENTO": 10
+  },
+  {
+    "ROWTIME": 15065177638914,
+    "ROWKEY": "null",
+    "ID_REGISTRO": "9b6464ab-b4ed-4028-b3e3-c2d822770c05",
+    "FECHA_HORA": "2023-12-25 20:08:11",
+    "NOMBRE_CIUDAD": "Maálaga",
+    "TEMPERATURA": 5,
+    "HUMEDAD": 77,
+    "VELOCIDAD_VIENTO": 4
+  },
+  {
+    "ROWTIME": 456651778838314,
+    "ROWKEY": "null",
+    "ID_REGISTRO": "f3c6bc82-7c9d-4a61-b40c-ddfad23d0b1c",
+    "FECHA_HORA": "2023-12-25 23:07:06",
+    "NOMBRE_CIUDAD": "Saragoza",
+    "TEMPERATURA": 4,
+    "HUMEDAD": 57,
+    "VELOCIDAD_VIENTO": 4
+  }
+]
 
 
 ```
