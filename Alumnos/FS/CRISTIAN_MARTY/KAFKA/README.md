@@ -45,7 +45,7 @@ Este aplicativo se enfoca en la adquisición, procesamiento y visualización en 
   - Zaragoza
 - Envío de datos procesados al topic 'meteorologia_valencia'.
 
-### 2. Procesamiento con Ksql
+### 3. Procesamiento con Ksql
 - Filtrado de datos por fecha y hora para obtener siempre el timestamp mas reciente.
 - Selección de variables: Ciudad, Temperatura, Humedad y Viento.
 - Envío de datos procesados al topic 'METEOROLOGIA_BI_STREAM'.
