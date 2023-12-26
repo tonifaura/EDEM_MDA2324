@@ -2,7 +2,7 @@ import os
 
 
 
-deliverables=["DOCKER","PYTHON","LINUX","NOTEBOOKS","AHORCADO","SQL"]
+deliverables=["DOCKER","PYTHON","LINUX","NOTEBOOKS","AHORCADO","SQL","FLASK","KAFKA","SPARK"]
 allowed=["DOCKER","PYTHON","LINUX","NOTEBOOKS","AHORCADO","SQL","README.MD","CHUCK"]
 
 
