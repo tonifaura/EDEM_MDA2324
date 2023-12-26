@@ -17,7 +17,7 @@ Este aplicativo se enfoca en la adquisición, procesamiento y visualización en 
   "id_registro": "f3c6bc82-7c9d-4a61-b40c-ddfad23d0b1c",
   "fecha_hora": "2023-12-25 21:39:11",
   "nombre_estacion": "sturno",
-  "nombre_ciudad": "Burgos",
+  "nombre_ciudad": "Pontevedra",
   "temperatura": -10,
   "humedad": 44,
   "velocidad_viento": 18,
@@ -44,6 +44,72 @@ Este aplicativo se enfoca en la adquisición, procesamiento y visualización en 
   - Burgos
   - Zaragoza
 - Envío de datos procesados al topic 'meteorologia_valencia'.
+
+```json
+[
+  {
+    "topic": "meteorologia_valencia",
+    "data": {
+      "id_registro": "5382a617-35d0-4722-9040-55a9ecd5c3bd",
+      "fecha_hora": "2023-12-26 08:24:58",
+      "nombre_estacion": "nihil",
+      "nombre_ciudad": "Madrid",
+      "temperatura": -10,
+      "humedad": 78,
+      "velocidad_viento": 16,
+      "direccion_viento": "Este",
+      "presion_atmosferica": 1009,
+      "precipitacion": 19,
+      "visibilidad": 6,
+      "nubosidad": 74,
+      "radiacion_solar": 978,
+      "indice_uv": 7,
+      "precipitacion_acumulada": 47
+    }
+  },
+  {
+    "topic": "meteorologia_valencia",
+    "data": {
+      "id_registro": "50369919-fc31-4aca-b5a1-924bec36e73f",
+      "fecha_hora": "2023-12-26 10:49:58",
+      "nombre_estacion": "rerum",
+      "nombre_ciudad": "Burgos",
+      "temperatura": 23,
+      "humedad": 40,
+      "velocidad_viento": 7,
+      "direccion_viento": "Sur",
+      "presion_atmosferica": 977,
+      "precipitacion": 0,
+      "visibilidad": 4,
+      "nubosidad": 72,
+      "radiacion_solar": 421,
+      "indice_uv": 3,
+      "precipitacion_acumulada": 44
+    }
+  },
+  {
+    "topic": "meteorologia_valencia",
+    "data": {
+      "id_registro": "30ac9271-4e0a-44c1-8505-74b989b577cc",
+      "fecha_hora": "2023-12-26 02:14:39",
+      "nombre_estacion": "recusandae",
+      "nombre_ciudad": "Sevilla",
+      "temperatura": 23,
+      "humedad": 55,
+      "velocidad_viento": 18,
+      "direccion_viento": "Este",
+      "presion_atmosferica": 1019,
+      "precipitacion": 19,
+      "visibilidad": 1,
+      "nubosidad": 70,
+      "radiacion_solar": 431,
+      "indice_uv": 9,
+      "precipitacion_acumulada": 91
+    }
+  }
+]
+
+```
 
 ### 3. Procesamiento con Ksql
 - Filtrado de datos por fecha y hora para obtener siempre el timestamp mas reciente.
@@ -92,7 +158,7 @@ Estructura de datos en el topic METEOROLOGIA_BI_STREAM luego de la transformaci�
     "ROWTIME": 1703517633408,
     "ROWKEY": "null",
     "ID_REGISTRO": "2a8d87a8-6639-49a9-bc69-22f2829701db",
-    "FECHA_HORA": "2023-12-25 04:11:53",
+    "FECHA_HORA": "2023-12-25 19:11:53",
     "NOMBRE_CIUDAD": "Burgos",
     "TEMPERATURA": -1,
     "HUMEDAD": 46,
@@ -102,7 +168,7 @@ Estructura de datos en el topic METEOROLOGIA_BI_STREAM luego de la transformaci�
     "ROWTIME": 1703517635410,
     "ROWKEY": "null",
     "ID_REGISTRO": "32375e6f-e094-4fd1-acbc-1523db581a36",
-    "FECHA_HORA": "2023-12-25 14:31:45",
+    "FECHA_HORA": "2023-12-25 22:31:45",
     "NOMBRE_CIUDAD": "Valencia",
     "TEMPERATURA": 5,
     "HUMEDAD": 83,
@@ -122,7 +188,7 @@ Estructura de datos en el topic METEOROLOGIA_BI_STREAM luego de la transformaci�
     "ROWTIME": 15065177638914,
     "ROWKEY": "null",
     "ID_REGISTRO": "9b6464ab-b4ed-4028-b3e3-c2d822770c05",
-    "FECHA_HORA": "2023-12-25 20:08:11",
+    "FECHA_HORA": "2023-12-25 23:08:11",
     "NOMBRE_CIUDAD": "Maálaga",
     "TEMPERATURA": 5,
     "HUMEDAD": 77,
