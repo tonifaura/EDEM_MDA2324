@@ -1,10 +1,10 @@
 #Crea un archivo Python que muestre por consola "¡Hola, Mundo!"
 #Ahora modifícalo para que muestre "¡Hola, [Nombre]" donde el nombre es el valor (str) de una variable
 
-print("¡Hola, Mundo!")
-nombre = "Pablo"
-
-print("¡Hola, " + nombre + "!")
+print(f"Hello World!")
+name= "Pablo"
+lastname="Ivorra"
+print(f"Hola {name} {lastname}!")
 
 
 

@@ -5,9 +5,28 @@
 #4.Finalmente, calcular la cantidad generada en los años especificados por el usuario
 
 print("Bienvenido al sistema de cálculo de inversiones.")
-dinero = float(input("Cuanto dinero tienes para invertir (€)? "))
-interes = float(input("Cual es el interés anual? \nEscribelo en decimal, ej 5% = 0.05. "))
-ano = int(input("Cuantos años quieres mantener la inversión? "))
-profit = dinero*interes*ano
 
-print(f"En {ano} años tendrás {profit}€ de interés")
+while True:
+    try:
+        dinero = float(input("¿Cuánto dinero tienes para invertir (€)? "))
+        break
+    except ValueError:
+        print("Por favor, introduce un número válido.")
+
+while True:
+    try:
+        interes = float(input("¿Cuál es el interés anual? \nEscríbelo en decimal, ej 5% = 0.05: "))
+        break
+    except ValueError:
+        print("Por favor, introduce un número en formato decimal válido.")
+
+while True:
+    try:
+        ano = int(input("¿Cuántos años quieres mantener la inversión? "))
+        break
+    except ValueError:
+        print("Por favor, introduce un número entero válido.")
+
+profit = dinero * interes * ano
+
+print(f"En {ano} años tendrás {profit}€ de interés.")
