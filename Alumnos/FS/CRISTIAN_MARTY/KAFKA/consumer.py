@@ -2,68 +2,76 @@ import time
 from confluent_kafka import Consumer, Producer, KafkaError
 from json import dumps, loads
 
-#----- Configuración del consumidor ---------
-config_consumer = {
-    'bootstrap.servers': 'localhost:9092',
-    'group.id': 'python-consumer-group',
-    'auto.offset.reset': 'earliest'
-}
+class MeteorologiaDataProcessor:
+    def __init__(self, consumer_config, producer_config, topic_consumer, topic_producer, cities_file_path):
+        self.consumer = Consumer(consumer_config)
+        self.producer = Producer(producer_config)
+        self.topic_consumer = topic_consumer
+        self.topic_producer = topic_producer
+        self.ciudades_deseadas = self.load_desired_cities(cities_file_path)
 
-# Crear un consumidor
-consumer = Consumer(config_consumer)
+    def load_desired_cities(self, file_path):
+        with open(file_path, 'r') as file:
+            return [line.strip().lower() for line in file]
 
-# Topico_Consumidor
-topic_consumer = 'meteorologia'
-consumer.subscribe([topic_consumer])
+    def ciudad_es_deseada(self, nombre_ciudad):
+        return nombre_ciudad.lower() in self.ciudades_deseadas
 
-# ------Configuración del productor-------
-config_producer = {
-    'bootstrap.servers': 'localhost:9092',
-    'client.id': 'python-producer'
-}
+    def process_message(self, msg_json):
+        if 'nombre_ciudad' in msg_json and self.ciudad_es_deseada(msg_json['nombre_ciudad']):
+            filtered_msg_str = dumps(msg_json)
+            filtered_msg_bytes = filtered_msg_str.encode('utf-8')
+            self.producer.produce(topic=self.topic_producer, value=filtered_msg_bytes)
+            print("Enviando datos a {} al tópico {}".format(filtered_msg_str, self.topic_producer))
 
-# Crear un productor
-producer = Producer(config_producer)
-topic_producer = 'meteorologia_valencia'
+    def consume_messages(self):
+        self.consumer.subscribe([self.topic_consumer])
 
-# Leer la lista de ciudades desde el archivo externo
-with open('ciudades_filtradas.txt', 'r') as file:
-    ciudades_deseadas = [line.strip().lower() for line in file]
+        try:
+            while True:
+                msg = self.consumer.poll(1.0)  # Lee nuevos mensajes cada 1 segundo
 
-def ciudad_es_deseada(nombre_ciudad):
-    return nombre_ciudad.lower() in ciudades_deseadas
+                if msg is not None:
+                    if msg.error():
+                        if msg.error().code() == KafkaError._PARTITION_EOF:
+                            print("No hay más mensajes en esta partición.")
+                        else:
+                            print("Error al recibir mensaje: {}".format(msg.error()))
+                    else:
+                        # Procesar el mensaje recibido.
+                        msg_value_str = msg.value().decode('utf-8')
+                        msg_json = loads(msg_value_str)
+                        self.process_message(msg_json)
 
-# Loop infinito de consumo de mensajes del topic
-try:
-    while True:
-        msg = consumer.poll(1.0)  # Lee nuevos mensajes cada 1 segundo
+        except KeyboardInterrupt:
+            pass
+        finally:
+            self.consumer.close()
 
-        if msg is None:
-            continue
-        if msg.error():
-            if msg.error().code() == KafkaError._PARTITION_EOF:
-                print("No hay más mensajes en esta partición.")
-            else:
-                print("Error al recibir mensaje: {}".format(msg.error()))
-        else:
-            # Procesar el mensaje recibido.
-            msg_value_str = msg.value().decode('utf-8')
+if __name__ == "__main__":
+    # Configuración del consumidor
+    consumer_config = {
+        'bootstrap.servers': 'localhost:9092',
+        'group.id': 'python-consumer-group',
+        'auto.offset.reset': 'earliest'
+    }
 
-            # Deserializar el mensaje JSON
-            msg_json = loads(msg_value_str)
+    # Configuración del productor
+    producer_config = {
+        'bootstrap.servers': 'localhost:9092',
+        'client.id': 'python-producer'
+    }
 
-            # Filtrar los mensajes donde el nombre_ciudad esté en la lista de ciudades deseadas
-            if 'nombre_ciudad' in msg_json and ciudad_es_deseada(msg_json['nombre_ciudad']):
-                # Serializar el mensaje filtrado de nuevo a cadena JSON
-                filtered_msg_str = dumps(msg_json)
-                filtered_msg_bytes = filtered_msg_str.encode('utf-8')
+    topic_consumer = 'meteorologia'
+    topic_producer = 'meteorologia_valencia'
+    cities_file_path = 'ciudades_filtradas.txt'
 
-                # Enviar el mensaje filtrado al nuevo tópico
-                producer.produce(topic=topic_producer, value=filtered_msg_bytes)
-                print("Enviando datos a {} al tópico {}".format(filtered_msg_str, topic_producer))
+    data_processor = MeteorologiaDataProcessor(consumer_config, producer_config, topic_consumer, topic_producer, cities_file_path)
 
-except KeyboardInterrupt:
-    pass
-finally:
-    # Cerrar el consumidor al detener la aplicación Python
-    consumer.close()
+    try:
+        data_processor.consume_messages()
+    except Exception as e:
+        print(f"Error: {e}")
+    finally:
+        # Cerrar el consumidor al detener la aplicación Python
+        data_processor.consumer.close()

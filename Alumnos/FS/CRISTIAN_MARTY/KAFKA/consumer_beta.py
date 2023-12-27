@@ -2,70 +2,75 @@ import time
 from confluent_kafka import Consumer, KafkaError
 from json import loads
 
-# Configuración del consumidor
-config_consumer = {
-    'bootstrap.servers': 'localhost:9092',
-    'group.id': 'python-consumer-group',
-    'auto.offset.reset': 'earliest'
-}
+class MeteorologiaRealTimeConsumer:
+    def __init__(self, bootstrap_servers='localhost:9092', group_id='python-consumer-group', auto_offset_reset='earliest'):
+        self.config = {
+            'bootstrap.servers': bootstrap_servers,
+            'group.id': group_id,
+            'auto.offset.reset': auto_offset_reset
+        }
+        self.consumer = Consumer(self.config)
+        self.topic_consumer = 'METEOROLOGIA_BI_STREAM'
+        self.city_data = {}
 
-# Crear un consumidor
-consumer = Consumer(config_consumer)
+    def subscribe_to_topic(self):
+        self.consumer.subscribe([self.topic_consumer])
 
-# Topico_Consumidor
-topic_consumer = 'METEOROLOGIA_BI_STREAM'
-consumer.subscribe([topic_consumer])
+    def print_bar(self, value, max_value):
+        bar_length = 20
+        scaled_value = int((value / max_value) * bar_length)
+        return '*' * scaled_value + '-' * (bar_length - scaled_value)
 
-# Datos en tiempo real
-city_data = {}
+    def process_message(self, msg_json):
+        city = msg_json['NOMBRE_CIUDAD']
+        temperature = msg_json.get('TEMPERATURA', 0)
+        humidity = msg_json.get('HUMEDAD', 0)
+        wind_speed = msg_json.get('VELOCIDAD_VIENTO', 0)
 
-def print_bar(value, max_value):
-    bar_length = 20
-    scaled_value = int((value / max_value) * bar_length)
-    return '*' * scaled_value + '-' * (bar_length - scaled_value)
+        self.city_data[city] = {'Temperature': temperature, 'Humidity': humidity, 'Wind Speed': wind_speed}
 
-# Loop infinito de consumo de mensajes del topic
-try:
-    while True:
-        msg = consumer.poll(1.0)  # Lee nuevos mensajes cada 1 segundo
+        # Limpiar la consola
+        print("\033c")
 
-        if msg is not None:
-            if msg.error():
-                if msg.error().code() == KafkaError._PARTITION_EOF:
-                    print("No hay más mensajes en esta partición.")
-                else:
-                    print("Error al recibir mensaje: {}".format(msg.error()))
-            else:
-                # Procesar el mensaje recibido.
-                msg_value_str = msg.value().decode('utf-8')
+        # Imprimir gráfico de barras en tiempo real
+        for city, data in self.city_data.items():
+            print(f"{city}:")
+            print(f"   Temperatura: {self.print_bar(data['Temperature'], 40)} {data['Temperature']}°C")
+            print(f"   Humedad:    {self.print_bar(data['Humidity'], 100)} {data['Humidity']}%")
+            print(f"   Viento:  {self.print_bar(data['Wind Speed'], 40)} {data['Wind Speed']} km/h")
+            print("\n")
 
-                # Deserializar el mensaje JSON
-                msg_json = loads(msg_value_str)
+    def consume_messages(self):
+        try:
+            while True:
+                msg = self.consumer.poll(1.0)  # Lee nuevos mensajes cada 1 segundo
 
-                # Actualizar datos en tiempo real
-                city = msg_json['NOMBRE_CIUDAD']
-                temperature = msg_json.get('TEMPERATURA', 0)
-                humidity = msg_json.get('HUMEDAD', 0)
-                wind_speed = msg_json.get('VELOCIDAD_VIENTO', 0)
+                if msg is not None:
+                    if msg.error():
+                        if msg.error().code() == KafkaError._PARTITION_EOF:
+                            print("No hay más mensajes en esta partición.")
+                        else:
+                            print("Error al recibir mensaje: {}".format(msg.error()))
+                    else:
+                        # Procesar el mensaje recibido.
+                        msg_value_str = msg.value().decode('utf-8')
 
-                city_data[city] = {'Temperature': temperature, 'Humidity': humidity, 'Wind Speed': wind_speed}
+                        # Deserializar el mensaje JSON
+                        msg_json = loads(msg_value_str)
 
-                # Limpiar la consola
-                print("\033c")
+                        # Procesar el mensaje
+                        self.process_message(msg_json)
 
-                # Imprimir gráfico de barras en tiempo real
-                for city, data in city_data.items():
-                    print(f"{city}:")
-                    print(f"   Temperatura: {print_bar(data['Temperature'], 40)} {data['Temperature']}°C")
-                    print(f"   Humedad:    {print_bar(data['Humidity'], 100)} {data['Humidity']}%")
-                    print(f"   Viento:  {print_bar(data['Wind Speed'], 40)} {data['Wind Speed']} km/h")
-                    print("\n")
+                        # Esperar antes de la próxima actualización
+                        time.sleep(1)
 
-                # Esperar antes de la próxima actualización
-                time.sleep(1)
+        except KeyboardInterrupt:
+            pass
+        finally:
+            # Cerrar el consumidor al detener la aplicación Python
+            self.consumer.close()
 
-except KeyboardInterrupt:
-    pass
-finally:
-    # Cerrar el consumidor al detener la aplicación Python
-    consumer.close()
+if __name__ == "__main__":
+    meteorologia_consumer = MeteorologiaRealTimeConsumer()
+    meteorologia_consumer.subscribe_to_topic()
+    meteorologia_consumer.consume_messages()
