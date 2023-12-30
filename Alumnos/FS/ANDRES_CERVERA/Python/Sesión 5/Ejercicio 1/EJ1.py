@@ -1,0 +1,107 @@
+# Lee el archivo CSV con Pandas de 'pokemon_data.csv' alojado en la carpeta de datos de este repositorio y realizar las siguientes operaciones
+
+import pandas as pd
+
+df = pd.read_csv("pokemon_modified.csv")
+
+
+#IMPRIMIR TODOS LOS VALORES
+print(df)
+
+#IMPRIMIR LOS PRIMEROS 5
+print(df)
+
+#IMPRIMIR LOS ÚLTIMOS 5
+print(df)
+
+#OBTENER NOMBRES DE LAS COLUMNAS
+print(df)
+
+#OBTENER TODOS LOS NOMBRES
+print(df)
+
+#OBTENER TODOS LOS NOMBRES Y VELOCIDADES
+print(df)
+
+#LOS PRIMEROS 5 NOMBRES USANDO [::]
+print(df)
+
+#OBTENER TODAS LAS FILAS
+print(df)
+
+#OBTENER UN RANGO DE FILAS
+print(df)
+
+#OBTENER EL NOMBRE DE LA FILA 10
+print(df)
+
+#ITERAR POR TODOS Y MOSTRAR EL ÍNDICE Y NOMBRE DE CADA FILA
+print(df)
+
+#POKEMONS DE TIPO 1 == WATER
+print(df)
+
+#ORDENACIÓN POR NOMBRE ASCENDENTE
+print(df)
+
+#CREAR UNA COLUMNA EXTRA CALCULADA
+#La columna debe ser la suma de HP + ATAQUE + DEFENSA + VELOCIDAD
+#La columna debe llamarse TOTAL
+print(df)
+
+#ELIMINAR LA COLUMNA TOTAL
+print(df)
+
+#FILTRAR POKEMONS DE TIPOS "GRASS" Y "POISON"
+print(df)
+
+#FILTRAR POKEMONS DE TIPO "FIRE" Ó "POISON
+print(df)
+
+#FILTRAR POKEMONS DE TIPO "GRASS" Y "POISON" Y UN HP >= 70
+print(df)
+
+#FILTRAR POKEMONS CON NOMBRE "MEGA"
+print(df)
+
+#FILTRAR POKEMONS SIN NOMBRE "MEGA"
+print(df)
+
+#FILTRAR POKEMONS CUYOS NOMBRES COMIENCEN CON "PI"
+print(df)
+
+#RENOMBRADO DE COLUMNA "FIRE" a "FLAME"
+print(df)
+
+#FILTRAR POKEMONS SIN NOMBRE "MEGA"
+print(df)
+
+#RENOMBRAR DE NUEVO A "FIRE" LA COLUMNA "FLAME" RECIÉN CAMBIADA
+print(df)
+
+#CAMBIAR A TODOS LOS POKEMON LEGENDARIOS A TIPO "FIRE"
+print(df)
+
+#(Agrupación - groupBy) ESTADÍSTICAS DE MEDIA POR TIPO DE POKEMON y ORDENADOS POR DEFENSA
+print(df)
+
+#(Agrupación - groupBy) ESTADÍSTICAS DE MEDIA POR TIPO DE POKEMON y ORDENADOS POR ATAQUE
+print(df)
+
+#(Agrupación - groupBy) ESTADÍSTICAS DE MEDIA POR TIPO DE POKEMON y ORDENADOS POR HP
+print(df)
+
+#(Agrupación - groupBy) ESTADÍSTICAS DE SUMA POR TIPO DE POKEMON
+print(df)
+
+#(Agrupación - groupBy) ESTADÍSTICAS DE NÚMERO DE POKEMONS POR TIPO 1DE POKEMON
+print(df)
+
+#(Agrupación - groupBy) ESTADÍSTICAS DE NÚMERO DE POKEMONS POR TIPO 1 y 2 DE POKEMON
+print(df)
+
+#LEE EL ARCHIVO CVS SEPARÁNDOLO POR CHUNKS Y CON UN TAMAÑO DE (chunksize=5)
+print(df)
+
+#ITERA POR LOS CHUNKS Y MUÉSTRALOS POR CONSOLA
+print(df)
