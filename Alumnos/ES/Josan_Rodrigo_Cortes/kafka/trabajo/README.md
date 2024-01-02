@@ -33,6 +33,14 @@ You will have to which use case to use, based on the previous list or a new one 
 You will have to perform the following tasks:
 
 ## Define your use case
+The use of case is to create a random users database. 
+
+From the producer´s phython script I fetched an api which genarates random users and their differents 
+features. The kafka´s topic 'randomuserdata' is define on it. As the api response is already a json file, I bring up some characteristcs from the user and join them as another json file, the one I´ll send to the consumer.
+As the producer is define, the consumer points to the same kafka´s topic, the one which decodifie the json from the producer.
+
+
+
 Define/explain the Target of your application from a Business Point of view.
 Find a dataset
 Define/explain the data model (the json messages to be processed, the intermediate json messages while processing/transforming the data), and the final json message.
@@ -42,7 +50,16 @@ You will have to provide the following:
 
 Basic explanation of:
 1. Use case
-2.Dataset selected 
+2. Dataset selected 
 2. Final architecture implemented 
 3. Json examples of your data json model 
 4. **Evidence** of the Application has run end to end providing the expected results. With screenshots of the different step: 1)the ingestion, 2) the processing with a Consumer, 3) the processing with KSQL, the final printing on screen on the expected outcome.
+
+-- Seleccionar todos los mensajes de la tabla
+SELECT * FROM my_table;
+
+-- Filtrar mensajes por país (sustituye 'Spain' por el país que desees)
+SELECT * FROM my_table WHERE pais = 'Spain';
+
+-- Filtrar mensajes por usuario (sustituye 'john_doe' por el nombre de usuario que desees)
+SELECT * FROM my_table WHERE username = 'john_doe';
