@@ -123,7 +123,13 @@ def mostrar_por_nif():
     NIF = input('NIF: ')
     for alumno in alumnos:
         if(alumno['NIF'] == NIF):
-            print(f'{alumno}\n')
+            print('Datos del alumno:')
+            print(f'NIF: {alumno["NIF"]}')
+            print(f'Nombre: {alumno["Nombre"]}')
+            print(f'Apellidos: {alumno["Apellidos"]}')
+            print(f'Teléfono: {alumno["Telefono"]}')
+            print(f'Email: {alumno["Email"]}')
+            print(f'Calificación: {alumno["Calificacion"]}')
             otra_operacion()
             return
     print(f'No se ha encontrado ningún alumno con ese NIF')   
@@ -135,7 +141,13 @@ def mostrar_por_email():
     email = input('Email: ')
     for alumno in alumnos:
         if(alumno['Email'] == email):
-            print(f'{alumno}\n')
+            print('Datos del alumno:')
+            print(f'NIF: {alumno["NIF"]}')
+            print(f'Nombre: {alumno["Nombre"]}')
+            print(f'Apellidos: {alumno["Apellidos"]}')
+            print(f'Teléfono: {alumno["Telefono"]}')
+            print(f'Email: {alumno["Email"]}')
+            print(f'Calificación: {alumno["Calificacion"]}')
             otra_operacion()
             return
     print(f'No se ha encontrado ningún alumno con ese Email')
