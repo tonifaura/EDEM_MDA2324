@@ -18,7 +18,7 @@ public class Consumer {
         Properties properties = new Properties();
         properties.put("bootstrap.servers", "localhost:9092");
         properties.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
-        properties.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+        properties.put("value.deserializer", "KAFKA.main.RateJsonDeserializer");
         properties.put("auto.offset.reset", "earliest");
         properties.put("group.id", "reviews");
 
