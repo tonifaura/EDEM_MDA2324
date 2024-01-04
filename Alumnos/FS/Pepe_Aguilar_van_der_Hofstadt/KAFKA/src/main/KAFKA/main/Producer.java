@@ -15,14 +15,14 @@ public class Producer {
         properties.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         properties.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
 
-        KafkaProducer<String, String> producer = new KafkaProducer<>(properties);
+        KafkaProducer<String, String> producer = new KafkaProducer<String, String>(properties);
 
         Random random = new Random();
 
         try {
             for (int i = 0; i < 100; i++) {
                 // Simulación de reseñas aleatorias para restaurantes
-               // String restaurant = restaurants[random.nextInt(restaurants.length)];
+                // String restaurant = restaurants[random.nextInt(restaurants.length)];
                 int option = random.nextInt(2);
                 String business = "";
                 if(option == 0){
@@ -32,9 +32,9 @@ public class Producer {
                     business = "Hotel";
                 }
                 String review = "Review for " + business + ": Rating - " + (random.nextInt(5) + 1);
-
+                System.out.println(review);
                 // Enviar reseña al tema "restaurant-reviews"
-                producer.send(new ProducerRecord<>("reviews", review));
+                producer.send(new ProducerRecord<String, String>("reviews", review));
 
                 Thread.sleep(100); // Esperar un breve periodo de tiempo entre reseñas
             }
