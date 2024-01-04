@@ -10,9 +10,7 @@ import org.apache.kafka.clients.consumer.KafkaConsumer;
 
 import java.time.Duration;
 import java.util.Arrays;
-
 import java.util.Properties;
-import java.util.UUID;
 
 public class Consumer {
 
@@ -20,23 +18,24 @@ public class Consumer {
         Properties properties = new Properties();
         properties.put("bootstrap.servers", "localhost:9092");
         properties.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
-        properties.put("value.deserializer", "org.apache.kafka.common.serialization.LongDeserializer");
+        properties.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+        properties.put("auto.offset.reset", "earliest");
         properties.put("group.id", "reviews");
 
-        KafkaConsumer<String, String> kafkaConsumer = new KafkaConsumer<String, String>(properties);
+        KafkaConsumer<String, String> kafkaConsumer = new KafkaConsumer<>(properties);
 
         kafkaConsumer.subscribe(Arrays.asList("reviews"));
 
-        try{
-            while (true){
+        try {
+            while (true) {
                 ConsumerRecords<String, String> records = kafkaConsumer.poll(Duration.ofMillis(100));
-                for (ConsumerRecord<String, String> record: records){
+                for (ConsumerRecord<String, String> record : records) {
                     System.out.println(String.format("Value: %s", record.value()));
                 }
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
-        }finally {
+        } finally {
             kafkaConsumer.close();
         }
     }

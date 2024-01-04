@@ -10,6 +10,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="KAFKAv2" />
+        <module name="entr01" />
       </profile>
     </annotationProcessing>
   </component>
