@@ -1,1 +1,0 @@
-// se lee de diferentes topics y se muestra la info del hotel

@@ -37,13 +37,13 @@ public class Producer {
                 else{
                     business_type = "Hotel";
                 }
-                int rating = (random.nextInt(10)+1);
+                int rating = (random.nextInt(11));
                 Rate review = new Rate(rateId, customerId, businessId, rating, business_type);
                 System.out.println(review);
-                // Enviar reseña al tema "restaurant-reviews"
+                // Enviar reseña al tema "reviews"
                 producer.send(new ProducerRecord<String, Rate>("reviews", review.getRateId(), review));
 
-                Thread.sleep(1000); // Esperar un breve periodo de tiempo entre reseñas
+                Thread.sleep(4000); // Esperar un breve periodo de tiempo entre reseñas
             }
         } catch (Exception e) {
             e.printStackTrace();
