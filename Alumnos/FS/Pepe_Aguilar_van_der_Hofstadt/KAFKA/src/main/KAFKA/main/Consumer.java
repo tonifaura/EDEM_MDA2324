@@ -43,14 +43,16 @@ public class Consumer {
             while (true) {
                 ConsumerRecords<String, Rate> records = kafkaConsumer.poll(Duration.ofMillis(100));
                 for (ConsumerRecord<String, Rate> record : records) {
-                    System.out.println(String.format("Value: %s", record.value()));
+                    System.out.println(String.format("Receive: Value: %s", record.value()));
                     Rate rate = record.value();
                     if(rate.getRating()>0 && rate.getRating()<=10) {    // filtra errores de puntuacion
                         if(Objects.equals(rate.getBusiness_type(), "Hotel")){       // envia los business hotel al topic hotel
                             producer.send(new ProducerRecord<String, Rate>("hotels", rate.getRateId(), rate));
+                            System.out.println(String.format("Send: Value: %s", rate));
                         }
                         else{
                             producer.send(new ProducerRecord<String, Rate>("restaurants", rate.getRateId(), rate));
+                            System.out.println(String.format("Send: Value: %s", rate));
                         }
                     }
                 }

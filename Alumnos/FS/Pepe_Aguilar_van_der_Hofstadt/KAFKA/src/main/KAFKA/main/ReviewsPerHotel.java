@@ -1,7 +1,6 @@
 // se lee de diferentes topics y se muestra la info del hotel
 package KAFKA.main;
 
-import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
@@ -12,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-public class ReviewsPerBusiness {
+public class ReviewsPerHotel {
     public static void main(String[] args) {
         // lectura de los hoteles
         Properties propertiesHotel = new Properties();

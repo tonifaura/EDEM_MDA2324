@@ -24,7 +24,7 @@ public class Producer {
         Random random = new Random();
 
         try {
-            for (int i = 0; i < 100; i++) {
+            for (int i = 100; i < 200; i++) {
                 // Simulación de reseñas aleatorias para restaurantes
                 // String restaurant = restaurants[random.nextInt(restaurants.length)];
                 String rateId = String.valueOf(i);
