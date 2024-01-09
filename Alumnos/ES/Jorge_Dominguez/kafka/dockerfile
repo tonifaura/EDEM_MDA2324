@@ -11,4 +11,4 @@ COPY producer_docker.py requirements.txt reviews.json client.properties ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Ejecuta el script al iniciar el contenedor
-CMD ["python", "producer_docker.py"]
+CMD ["python", "producer.py"]
