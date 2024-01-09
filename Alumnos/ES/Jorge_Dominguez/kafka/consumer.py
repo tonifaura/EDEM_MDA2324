@@ -1,32 +1,37 @@
 from confluent_kafka import Consumer, KafkaException
+from unidecode import unidecode
+from json import loads
+
+def sin_acentos(text):
+    return unidecode(text)
 
 def read_ccloud_config(config_file):
-    conf = {}
     with open(config_file) as fh:
-        for line in fh:
-            line = line.strip()
-            if len(line) != 0 and line[0] != "#":
-                parameter, value = line.strip().split('=', 1)
-                conf[parameter] = value.strip()
-    return conf
+        return dict(line.strip().split('=', 1) for line in fh if line.strip() and line[0] != "#")
 
-def consume_messages(consumer, topic):
-    consumer.subscribe([topic])
+def procesar_mensaje(message):
+    key = message.key().decode('utf-8')
+    value = loads(message.value().decode('utf-8'))
+    
+    print("Received message with key {} and value {}".format(key, value))
 
+def kafka_consumer(config, topic):
     try:
-        while True:
-            msg = consumer.poll(1.0)
+        consumer = Consumer(config)
+        consumer.subscribe([topic])
 
-            if msg is None:
+        while True:
+            message = consumer.poll(timeout=1.0)
+            if message is None:
                 continue
-            if msg.error():
-                if msg.error().code() == KafkaException._PARTITION_EOF:
+            if message.error():
+                if message.error().code() == KafkaException._PARTITION_EOF:
                     continue
                 else:
-                    print(msg.error())
+                    print(message.error())
                     break
 
-            print('Received message: {}'.format(msg.value().decode('utf-8')))
+            procesar_mensaje(message)
 
     except KeyboardInterrupt:
         pass
@@ -34,12 +39,12 @@ def consume_messages(consumer, topic):
         consumer.close()
 
 if __name__ == '__main__':
-    props = read_ccloud_config("client.properties")
-    props["group.id"] = "python-group-1"
-    props["auto.offset.reset"] = "earliest"
-
-    consumer = Consumer(props)
+    consumer_config = {
+        'bootstrap.servers': 'kafka:29092',  
+        'group.id': 'python-consumer',
+        'auto.offset.reset': 'earliest'
+    }
 
     topic_kafka = 'tripadvisor'
 
-    consume_messages(consumer, topic_kafka)
+    kafka_consumer(consumer_config, topic_kafka)

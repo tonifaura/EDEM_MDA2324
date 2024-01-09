@@ -39,16 +39,18 @@ def enviar_mensaje(producer, topic, num_messages=100, min_sleep_time=1, max_slee
         sleep_time = random.uniform(min_sleep_time, max_sleep_time)
         time.sleep(sleep_time)
 
-
     producer.flush()
     
     if producer.flush() != 0:
         print("Some messages failed to be delivered")
 
-# CÓDIGO KAFKA
-producer_conf = read_ccloud_config("client.properties")
+# Configuración del productor Kafka
+config = {
+    'bootstrap.servers': 'kafka:29092', 
+    'client.id': 'python-producer'
+}
 
-producer = Producer(producer_conf)
+producer = Producer(config)
 
 topic_kafka = 'tripadvisor'
 
