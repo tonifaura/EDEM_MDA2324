@@ -20,7 +20,7 @@ Cada vez que se produce una review, se actualiza el json (reviews.json), que pos
 
 Para usar en local, emplea producer.py y consumer.py, simple y sencillo.
 
-![Alt text](img/uno.png)
+![Alt text](./img/uno.png)
 
 Ya en docker, ejecuta el comando
 ```docker
