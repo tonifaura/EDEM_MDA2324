@@ -5,7 +5,7 @@
 In this project, random users will rate various hotels and restaurants (utilizing two different topics), and the reviews for the hotels will be continuously updated.
 
 ### Arquitecture scheme
-![imagen arquitectura](./img/image.png)
+![imagen arquitectura](image.png)
 
 ### Input Data
 
