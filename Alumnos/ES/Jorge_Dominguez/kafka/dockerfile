@@ -5,7 +5,7 @@ FROM python:3.8-slim
 WORKDIR /app
 
 # Copia los archivos necesarios al contenedor
-COPY producer_docker.py requirements.txt reviews.json client.properties ./
+COPY producer.py requirements.txt reviews.json client.properties ./
 
 # Instala las dependencias especificadas en requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
