@@ -36,9 +36,14 @@ def kafka_consumer(config, topic):
 
 if __name__ == '__main__':
     consumer_config = {
-        'bootstrap.servers': 'kafka:29092',  
-        'group.id': 'python-consumer',
+        'bootstrap.servers': 'localhost:9092',
+        'group.id': 'python-consumer-group',
         'auto.offset.reset': 'earliest'
+    }
+    
+    producer_config = {
+        'bootstrap.servers': 'localhost:9092',
+        'client.id': 'python-producer'
     }
 
     topic_kafka = 'tripadvisor'

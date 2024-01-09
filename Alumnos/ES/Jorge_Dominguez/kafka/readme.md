@@ -27,3 +27,21 @@ Ya en docker, ejecuta el comando
 docker-compose up -d
 ```
 y posteriormente el consumer_docker.py para escuchar.
+
+![Alt text](./img/dos.png)
+
+## KSQL
+Ejecutamos KSQL gracias al contenedor de docker, creamos un stream tripadvisor que lee el topic del producer, con el fin de guardar los datos en un dataframe.
+
+![Alt text](./img/tres.png)
+
+Y LUEGO PODEMOS YA EJECUTAR LAS QUERIES QUE QUERAMOS, EN ESTE CASO HE HECHO UNA SIMPLE YA QUE MI DATBASE NO DA MUCHO JUEGO:
+```ksql
+SELECT COUNT(*) AS total_reviews, AVG(estrellas) AS avg_estrellas
+FROM tripadvisor_stream
+GROUP BY 1
+EMIT CHANGES;
+```
+El resultado:
+
+![Alt text](./img/cuatro.png)
