@@ -5,7 +5,7 @@
 In this project, random users will rate various hotels and restaurants (utilizing two different topics), and the reviews for the hotels will be continuously updated.
 
 ### Arquitecture scheme
-![imagen arquitectura](img/image.png)
+![imagen arquitectura](https://github.com/a10pepo/EDEM_MDA2324/blob/kafka/Alumnos/FS/Pepe_Aguilar_van_der_Hofstadt/KAFKA/img/image.png)
 
 ### Input Data
 
