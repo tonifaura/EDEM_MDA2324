@@ -5,10 +5,6 @@ from json import loads
 def sin_acentos(text):
     return unidecode(text)
 
-def read_ccloud_config(config_file):
-    with open(config_file) as fh:
-        return dict(line.strip().split('=', 1) for line in fh if line.strip() and line[0] != "#")
-
 def procesar_mensaje(message):
     key = message.key().decode('utf-8')
     value = loads(message.value().decode('utf-8'))
