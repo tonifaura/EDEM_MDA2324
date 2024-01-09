@@ -5,12 +5,13 @@
 In this project, random users will rate various hotels and restaurants (utilizing two different topics), and the reviews for the hotels will be continuously updated.
 
 ### Arquitecture scheme
-![img.png](img/img_5.png)
+![imagen arquitectura](img/image.png)
 
 ### Input Data
 
 The producer will produce Random Data which consists of a Rate class.
 This class have this values:
+
 ![img.png](img/img.png)
 
 Each rate is uniquely identified by a rateID. 
@@ -38,15 +39,19 @@ the topics are 'restaurants' and 'hotels'.
 ### Reviews Per Hotel
 In this section, we adeptly handle comprehensive hotel information sourced from the 'hotels' topic. 
 We showcase the continuously updated ratings of hotels through a streaming process.
+
 ![img_4.png](img/img_4.png)
 
 ### KSQL examples
 topics:
-![img_1.png](img/img_6.png)
+
+![img_6.png](img/img_6.png)
 Reviews of the customer 1:
-![img_2.png](img/img_7.png)
+
+![img_7.png](img/img_7.png)
 Number of reviews of each restaurant:
-![img_3.png](img/img_8.png)
+
+![img_8.png](img/img_8.png)
 
 ## Conclusion
 
