@@ -189,7 +189,7 @@ Entregas Fin de Semana
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/FS/JESUS_JORNET_ORTI'>Jesus_jornet_orti</a></td>
 <td>❌</td>
 <td>❌</td>
-<td>❌</td>
+<td>✅</td>
 <td>❌</td>
 <td>❌</td>
 <td>❌</td>
