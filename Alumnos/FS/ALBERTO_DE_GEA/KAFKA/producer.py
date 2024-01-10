@@ -13,7 +13,7 @@ config = {
 producer = Producer(config)
 
 
-topic_kafka = 'palabras'
+topic_kafka = 'ALQUIMISTA'
 
 file1 = open('/Users/albertodegeapla/Documents/GitHub/EDEM_MDA2324/Alumnos/FS/ALBERTO_DE_GEA/KAFKA/el_alquimista_book.txt',encoding="utf8")
 Lines = file1.readlines()
