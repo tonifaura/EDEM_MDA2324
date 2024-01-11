@@ -1,10 +1,6 @@
+import time
 from json import dumps
 from confluent_kafka import Producer
-
-
-import time
-
-
 
 def read_ccloud_config(config_file):
     conf = {}
@@ -16,28 +12,36 @@ def read_ccloud_config(config_file):
                 conf[parameter] = value.strip()
     return conf
 
+def read_file_content(file_path):
+    with open(file_path, 'r', encoding='utf-8') as file:
+        for line in file:
+            yield line.strip()
+
+def print_and_produce_messages(file_path, topic_kafka):
+    producer = Producer(read_ccloud_config("postwork.properties"))
+
+    for e, line in enumerate(read_file_content(file_path)):
+        # Print the line
+        print(line)
+
+        # Send the line as a Kafka message
+        data = {'libro.txt': line}
+        data_str = dumps(data)
+        data_bytes = data_str.encode('utf-8')
+        key = str(e).encode('utf-8')
+        producer.produce(topic=topic_kafka, value=data_bytes, key=key)
+        print("")
+        time.sleep(4)  # Sleep for 4 seconds after printing each line
+
+    # After your loop where you send messages:
+    producer.flush()
+
+    # Optionally, you can check if there are any messages that failed to be delivered:
+    if producer.flush() != 0:
+        print("Some messages failed to be delivered")
+
+# Reemplaza 'libro.txt' y 'topic_postwork' con las rutas y nombres correctos
+print_and_produce_messages('libro.txt', 'topic_postwork')
 
 
-producer = Producer(read_ccloud_config("postwork.properties"))
 
-
-# Send 100 messages where the key is the index and the message to send is "test message - index"
-# the topic name is myTopic
-
-topic_kafka = 'topic_postwork'
-
-for e in range(100):
-    data = {'New message - ': e*4}
-    data_str = dumps(data)  # Serialize dictionary to a string
-    data_bytes = data_str.encode('utf-8')  # Encode string to bytes
-    key = str(e).encode('utf-8')
-    producer.produce(topic=topic_kafka, value=data_bytes, key=key)  # Send bytes
-    print("Sending data: {} to topic {}".format(data, topic_kafka))
-    time.sleep(3)
-
-# After your loop where you send messages:
-producer.flush()
-
-# Optionally, you can check if there are any messages that failed to be delivered:
-if producer.flush() != 0:
-    print("Some messages failed to be delivered")
