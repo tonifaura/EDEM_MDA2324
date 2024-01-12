@@ -2,9 +2,7 @@ import requests
 import json
 
 def creacion_streams():
-    # URL del servidor KSQL
-    ksql_url = "http://ksql-server:8088/ksql"  # URL cambiada para estar dockerizada. (Diferente si se ejecuta el script por fuera de docker)
-    # Headers para la solicitud
+    ksql_url = "http://ksql-server:8088/ksql"
     headers = {
         "Content-Type": "application/vnd.ksql.v1+json",
         "Accept": "application/vnd.ksql.v1+json"
@@ -18,8 +16,6 @@ def creacion_streams():
         else:
             print(f"Error executing command '{command}'")
             print(response.text)
-
-    # CREACIÓN DE STREAMS EN KSQL
     commands = [
         "CREATE STREAM emergencias_stream (tipo_emergencia VARCHAR, grado VARCHAR, cuerpo_necesario VARCHAR, localizacion VARCHAR, fecha VARCHAR, requiere_medico VARCHAR, contacto VARCHAR) WITH (KAFKA_TOPIC='T1_Recepcion_avisos', VALUE_FORMAT='JSON');",
         "CREATE STREAM Redireccion_Urgencias WITH (KAFKA_TOPIC='T2_Centro_112', VALUE_FORMAT='JSON') AS SELECT * FROM emergencias_stream WHERE grado='Urgencia extrema' OR grado='Urgente';",
@@ -32,7 +28,6 @@ def creacion_streams():
         "CREATE STREAM Redireccion_Policia WITH (KAFKA_TOPIC='T3.5_Policia', VALUE_FORMAT='JSON') AS SELECT * FROM Redireccion_No_Urgencias WHERE cuerpo_necesario ='Policia';",
         "CREATE STREAM Redireccion_Servicios_de_emergencia WITH (KAFKA_TOPIC='T3.6_Servicios_de_emergencia', VALUE_FORMAT='JSON') AS SELECT * FROM Redireccion_No_Urgencias WHERE cuerpo_necesario ='Servicios de emergencia';",
     ]
-
     for command in commands:
         send_ksql_command(command)
 
