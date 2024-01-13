@@ -237,7 +237,7 @@ Entregas Fin de Semana
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/FS/PABLO-PEREZ-ALVAREZ'>Pablo-perez-alvarez</a></td>
 <td>✅</td>
 <td>✅</td>
-<td>✅</td>
+<td>❌</td>
 <td>❌</td>
 <td>✅</td>
 <td>❌</td>
