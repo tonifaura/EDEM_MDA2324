@@ -2,8 +2,8 @@ import os
 
 
 
-deliverables=["DOCKER","PYTHON","LINUX","NOTEBOOKS","AHORCADO"]
-
+deliverables=["DOCKER","PYTHON","LINUX","NOTEBOOKS","AHORCADO","SQL","FLASK","KAFKA","SPARK"]
+allowed=["DOCKER","PYTHON","LINUX","NOTEBOOKS","AHORCADO","SQL","README.MD","CHUCK","FLASK", "SPARK", "KAFKA", "VALENBISI"]
 
 
 def check_class(folder_path):
@@ -21,22 +21,34 @@ def check_class(folder_path):
                     alumnos[alumno][element]=False
     return alumnos
 
+def check_names(folder_path):
+    for alumno in os.listdir(folder_path):
+        file_path = os.path.join(folder_path, alumno)
+        if os.path.isdir(file_path):
+            # list all files in directory
+            files = os.listdir(file_path)
+            for element in files:
+                if element.upper() not in allowed:
+                    print("File not allowed "+file_path+" Elment: "+element)
+
+
 
 def generate_table(clase,alumnos):
+    
     try:
-        table="<table><tr><th>Alumno</th>"
+        table="<table>\n<tr><th>Alumno</th>"
         for element in deliverables:
-            table+="<th>"+element+"</th>"
-        table+="</tr>"  
-        for alumno in alumnos:
-            table+="<tr><td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/"+clase+"/"+alumno+"'>"+str.capitalize(alumno)+"</a></td>"
+            table+="\n<th>"+element+"</th>"
+        table+="\n</tr>\n"  
+        for alumno in sorted(alumnos):
+            table+="<tr>\n<td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/"+clase+"/"+alumno+"'>"+str.capitalize(alumno)+"</a></td>"
             for element in deliverables:
                 if alumnos[alumno][element]:
-                    table+="<td>✅</td>"
+                    table+="\n<td>✅</td>"
                 else:
-                    table+="<td>❌</td>"
-            table+="</tr>"
-        table+="</table>"
+                    table+="\n<td>❌</td>"
+            table+="\n</tr>\n"
+        table+="</table>\n"
     except:
         print("error")
     return table
@@ -66,6 +78,8 @@ def modify_readme():
 
 
 if __name__ == '__main__':  
-    modify_readme()
+    check_names('Alumnos/ES')
+    check_names('Alumnos/FS')
+    modify_readme()    
     print("README.md updated")
 
