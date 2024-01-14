@@ -1,0 +1,53 @@
+openapi: 3.0.3
+info:
+  title: Api información del sensor de los robots
+  description: Esta Api nos proporciona la información almacenada en la base de datos de la empresa Ejemplo de cada uno de sus sensores
+  version: 1.0.0
+servers:
+  - url: https://ejemploSL/sensor/getLastMeassureBySensor/{sensor}
+tags:
+- name: sensor
+  description: Este endpoint maneja toda la información relacionada con un sensor
+
+paths:
+  /:
+    get:
+      tags:
+      - /{sensor}
+      summary: Obtiene la informacion almacenada de los datos de un sensor
+      parameters:
+        token:
+          in: header
+          description: identificador del sensor
+          required: true
+          schema:
+            getLastMeassureBySensor:
+              type: object
+              properties:
+              code:
+                type: string
+                description: id del sensor
+              fechamuestreo:
+                type: string
+              unidad:
+                type: string
+              medicion: 
+                type: string
+          requestBody:
+            content:
+              application/json:
+
+      responses:
+        200:
+          description: la informacion del sensor se obtuvo
+          content:
+            application/json:
+
+        400:
+          description:
+          
+        
+        404:
+          description: el sensor indicado no se encuentra
+            
+
