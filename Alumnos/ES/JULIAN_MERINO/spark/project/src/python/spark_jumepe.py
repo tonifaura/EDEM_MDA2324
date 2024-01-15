@@ -57,3 +57,10 @@ utmb_19allDF = utmb_19DF.join(utmb_19extraDF, "Rank")
 utmb_19allDF.show()
 utmb_18allDF = utmb_18DF.join(utmb_18extraDF, "Rank")
 utmb_18allDF.show()
+
+# Stacks
+utmb_allDF = utmb_23allDF.union(utmb_22allDF)
+utmb_allDF = utmb_allDF.union(utmb_21allDF)
+utmb_allDF = utmb_allDF.union(utmb_19allDF)
+utmb_allDF = utmb_allDF.union(utmb_18allDF)
+utmb_allDF.show(10000)
