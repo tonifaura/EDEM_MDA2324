@@ -13,4 +13,4 @@ La forma del json empleado ha sido la siguiente:
     }
 ```
 
-Además, después de haber ejecutado el docker-compose, se ha realizado unas brves consultas ksql para comprobar cual puede ser una de las utilidades y facilidades de obtención y consulta de la información recopilada.
+Además, después de haber ejecutado el docker-compose, se ha realizado unas breves consultas ksql para comprobar cual puede ser una de las utilidades y facilidades de obtención y consulta de la información recopilada.
