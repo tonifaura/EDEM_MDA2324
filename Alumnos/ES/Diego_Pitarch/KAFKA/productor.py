@@ -31,9 +31,9 @@ def print_and_produce_messages(file_path, topic_kafka):
         key = str(e).encode('utf-8')
         producer.produce(topic=topic_kafka, value=data_bytes, key=key)
         print("")
-        time.sleep(4)  # Sleep for 4 seconds after printing each line
+        time.sleep(2)  
 
-    # After your loop where you send messages:
+    
     producer.flush()
 
     # Optionally, you can check if there are any messages that failed to be delivered:

@@ -1,7 +1,8 @@
 from kafka import KafkaConsumer
 from json import loads
+import time
 
-from confluent_kafka import consumidor
+from confluent_kafka import Consumer
 
 
 def read_ccloud_config(config_file):
@@ -19,11 +20,12 @@ props = read_ccloud_config("postwork.properties")
 props["group.id"] = "python-group-1"
 props["auto.offset.reset"] = "earliest"
 
-consumer = consumidor(props)
+consumer = Consumer(props)
 consumer.subscribe(["topic_postwork"])
 
 try:
     while True:
+        time.sleep(4)  
         msg = consumer.poll(1.0)
         if msg is not None and msg.error() is None:
             print("key = {key:12} value = {value:12}".format(key=msg.key().decode('utf-8'), value=msg.value().decode('utf-8')))
