@@ -92,3 +92,27 @@ Top1_MaleDF.show()
 Top1_FemaleDF = Top3_byGender_byYearDF.filter(col("Gender") == "F").withColumn("WinnerRank", row_number().over(Window_Rank_Time)).filter(col("GenRank") == 1)
 #Top1_FemaleDF = Top1_FemaleDF.select("WinnerRank", *Top1_FemaleDF.columns).drop(Top1_FemaleDF.columns[-1])
 Top1_FemaleDF.show()
+
+#POSTGRESQL CONNECTION AND INGESTION
+from sqlalchemy import create_engine, Integer
+import psycopg2
+
+# Connection parameters
+db_params = {
+    'host': 'postgres',
+    'port': 5432,
+    'user': 'postgres',
+    'password': 'Welcome01',
+    'database': 'postgres',
+}
+
+# SQLAlchemy
+db_uri = f"postgresql+psycopg2://{db_params['user']}:{db_params['password']}@{db_params['host']}:{db_params['port']}/{db_params['database']}"
+engine = create_engine(db_uri)
+
+
+# DF stored in DB
+utmb_allDF.to_sql('utmb_all', engine, if_exists='replace', index=False)
+Top3_byGender_byYearDF.to_sql('Top3_byGender_byYear', engine, if_exists='replace', index=False)
+Top1_MaleDF.to_sql('Top1_Male', engine, if_exists='replace', index=False)
+Top1_FemaleDF.to_sql('Top1_Female', engine, if_exists='replace', index=False)

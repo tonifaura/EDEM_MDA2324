@@ -24,3 +24,16 @@ services:
       - SPARK_EXECUTOR_MEMORY=256m
     volumes:
       - ../project:/opt/project
+  # Postgres container
+  postgres:
+    container_name: postgres_spark
+    image: postgres:latest
+    restart: always    
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Welcome01
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:     
+      - ../project:/opt/project/resources/sql_spark.sql
