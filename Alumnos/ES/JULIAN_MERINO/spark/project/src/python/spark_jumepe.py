@@ -15,6 +15,7 @@ spark
 spark.conf.set("spark.sql.execution.arrow.enabled", "true")
 
 # Import sql functions
+from pyspark.sql import Window
 from pyspark.sql.functions import *
 
 ''' We have 10 Ultra-Trail du Mont Blanc (UTMB) datasets from 2018 to 2023 (no race in 2020 due to the COVID-19 pandemic), divided in basic info and extra info and obtained 
