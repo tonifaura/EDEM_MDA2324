@@ -65,3 +65,30 @@ utmb_allDF = utmb_allDF.union(utmb_21allDF)
 utmb_allDF = utmb_allDF.union(utmb_19allDF)
 utmb_allDF = utmb_allDF.union(utmb_18allDF)
 utmb_allDF.show(10000)
+
+# Let's now do some analysis: find the top 3 performers by gender and year:
+
+# First thing will be to make sure that columns "Rank", "Year" and "YOB" are integers:
+columns_to_int = ["Rank", "Year", "YOB"]
+for i in columns_to_int:
+  utmb_allDF = utmb_allDF.withColumn(i, col(i).cast("integer"))
+
+# Now we need to create a Window so that it frames the data by Gender and Year:
+Window_Gender_Year = Window.partitionBy("Gender", "Year").orderBy(col("Rank"))
+
+# And we pass it all
+Top3_byGender_byYearDF = utmb_allDF.withColumn("GenRank", row_number().over(Window_Gender_Year)).filter(col("GenRank") <= 3)
+Top3_byGender_byYearDF = Top3_byGender_byYearDF.select("GenRank", *Top3_byGender_byYearDF.columns)#.drop(Top3_byGender_byYearDF.columns[-1])
+Top3_byGender_byYearDF.show(30)
+
+# Now, let's see how the top performers (Rank #1) per gender compare, in separate DFs. First, we create an appropriate window:
+Window_Rank_Time = Window.partitionBy("GenRank").orderBy(col("Time"))
+
+# Men
+Top1_MaleDF = Top3_byGender_byYearDF.filter(col("Gender") == "M").withColumn("WinnerRank", row_number().over(Window_Rank_Time)).filter(col("GenRank") == 1)
+#Top1_MaleDF = Top1_MaleDF.select("WinnerRank", *Top1_MaleDF.columns).drop(Top1_MaleDF.columns[-1])
+Top1_MaleDF.show()
+# Women
+Top1_FemaleDF = Top3_byGender_byYearDF.filter(col("Gender") == "F").withColumn("WinnerRank", row_number().over(Window_Rank_Time)).filter(col("GenRank") == 1)
+#Top1_FemaleDF = Top1_FemaleDF.select("WinnerRank", *Top1_FemaleDF.columns).drop(Top1_FemaleDF.columns[-1])
+Top1_FemaleDF.show()
