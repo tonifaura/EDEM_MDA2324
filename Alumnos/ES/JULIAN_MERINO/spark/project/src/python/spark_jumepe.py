@@ -93,26 +93,38 @@ Top1_FemaleDF = Top3_byGender_byYearDF.filter(col("Gender") == "F").withColumn("
 #Top1_FemaleDF = Top1_FemaleDF.select("WinnerRank", *Top1_FemaleDF.columns).drop(Top1_FemaleDF.columns[-1])
 Top1_FemaleDF.show()
 
+# Print the Python version
+print("Python Version:", sys.version)
+
 #POSTGRESQL CONNECTION AND INGESTION
 from sqlalchemy import create_engine, Integer
 import psycopg2
+import java.sql
 
-# Connection parameters
-db_params = {
-    'host': 'postgres',
-    'port': 5432,
-    'user': 'postgres',
-    'password': 'Welcome01',
-    'database': 'postgres',
+db_properties = {
+    "driver": "org.postgresql.Driver",
+    "url": "jdbc:postgresql://postgres:5432/postgres",
+    "user": "postgres",
+    "password": "Welcome01",
 }
 
-# SQLAlchemy
-db_uri = f"postgresql+psycopg2://{db_params['user']}:{db_params['password']}@{db_params['host']}:{db_params['port']}/{db_params['database']}"
-engine = create_engine(db_uri)
+# Write DataFrames to PostgreSQL
+utmb_allDF.write.jdbc(url=db_properties["url"],
+                      table="utmb_all",
+                      mode="overwrite",  # Change to "append" if needed
+                      properties=db_properties)
 
+Top3_byGender_byYearDF.write.jdbc(url=db_properties["url"],
+                                  table="Top3_byGender_byYear",
+                                  mode="overwrite",  # Change to "append" if needed
+                                  properties=db_properties)
 
-# DF stored in DB
-utmb_allDF.to_sql('utmb_all', engine, if_exists='replace', index=False)
-Top3_byGender_byYearDF.to_sql('Top3_byGender_byYear', engine, if_exists='replace', index=False)
-Top1_MaleDF.to_sql('Top1_Male', engine, if_exists='replace', index=False)
-Top1_FemaleDF.to_sql('Top1_Female', engine, if_exists='replace', index=False)
+Top1_MaleDF.write.jdbc(url=db_properties["url"],
+                       table="Top1_Male",
+                       mode="overwrite",  # Change to "append" if needed
+                       properties=db_properties)
+
+Top1_FemaleDF.write.jdbc(url=db_properties["url"],
+                         table="Top1_Female",
+                         mode="overwrite",  # Change to "append" if needed
+                         properties=db_properties)

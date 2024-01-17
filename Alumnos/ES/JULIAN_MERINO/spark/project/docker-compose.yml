@@ -36,4 +36,4 @@ services:
     ports:
       - "5432:5432"
     volumes:     
-      - ../project:/opt/project/resources/sql_spark.sql
+      - ./resources/init.sql:/docker-entrypoint-initdb.d/init.sql
