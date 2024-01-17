@@ -1,77 +1,48 @@
-# Exercise 4: Python App to Kakfa running in Docker
+# Post Work: Data Processing with Kafka end to end.
 
-## Objectives
-
-1) Run Zookeeper + Kafka
-2) Produce messages from the command line
-3) Consume/Read messages from the command line
-4) Produce messages from a Python application.
-5) Consume/Read messages from a Python application.
-6) Modify the Python Producer and/or Consumer Python application.
+## Introduction
+**In this exercise you will be implementing a real use case, creating data in real-time and making it available for reporting, by using Kafka.**
 
 
-## Run Kafka in your computer with Docker
-Simple scenario: 1 zookeeper + 1 Kafka broker.
+To do so, 1) create input data, 2) send it to a topic, 3) process it with a Consumer, 4) and then process it with KSQL , 5) and then show the
+result on a termnial creen.
 
-Start the ZooKeeper and Kafka container.
-To execute below command, make sure you open the terminal under the folder "exercise4/"
-
-```sh
-docker-compose up -d
-```
+Feel free to exchange step 3) and 4).
 
 
-Using the terminal create the topic 'ventas'
+## The proposed architecture will be the following:
 
-```sh
-docker-compose exec kafka kafka-topics --create --topic ventas --partitions 1 --replication-factor 1 --if-not-exists --bootstrap-server localhost:9092
-```
+Data source --> Producer sends data to --> Apache Kafka Topic --> Consumer reads data, filters it, process it, modify it and then sends
+the processed data to another -> Apache Kafka Topic --> Process the data with KSQL and put it in another topic --> Consumer reads the data and
+print the final messages on the terminal screen(Visual Estudio)
 
-## Command Line: Producer
-Produce messsages from the command line
-```sh
-docker-compose exec kafka kafka-console-producer --topic ventas --broker-list localhost:9092
-```
+In any case, feel free to implement the use case using other alternatives, though at least 1) transforming data with a Consumer
+and 2) transforming data with KSQL.
 
-Send messages from the terminal.
+## Use case
+These are typical use cases:
 
-## Command Line: Consumer
-**Open TWO new console** and Consume the  topic content, executing below command on each new console:
+Transaction logging: Purchases, test scores, movies watched and movie latest location
+Tracking pretty much anything including order status, packages, etc.
+Storing health tracker data
+Weather service history
+Internet of things (IoT) status and event history
+You will have to which use case to use, based on the previous list or a new one you choose.
 
-```sh
-docker-compose exec kafka kafka-console-consumer --topic ventas --from-beginning --bootstrap-server localhost:9092
-```
+## Tasks
+You will have to perform the following tasks:
 
-## Do this exercise on your own
-**Now must have three consoles opened at the same time**, one to produce message and another to consume the messsages.
+## Define your use case
+Define/explain the Target of your application from a Business Point of view.
+Find a dataset
+Define/explain the data model (the json messages to be processed, the intermediate json messages while processing/transforming the data), and the final json message.
 
-===> Then, produce messages from one console and read the messages from the other two consoles.
+## Deliverables
+You will have to provide the following:
 
-## Run the Producer Python App from VisualStudio
-Open VisualStudio and run the producer.py App
-
-## Run the Consumer Python App from VisualStudio
-Open VisualStudio and run the consumer.py App
-
-
-#### More Exercises
-##### Exercise 4.1 
-Check that in the opened two consumer consoles, you are getting the messages produced by the Python Producer Application.
-
-Produce messages from the Producer console, and check that 1 ) you are getting the messages produced by the Python Producer Application.
-and 2) you are getting the messages from the Python Consumer Application.
-
-##### Exercise 4.2
-Create a new topic from the command line. Then modify the Producer App and the Consumer App to use the new topic.
-
-##### Exercise 4.4
-Read the messages also with the Kafka Admin screen at http://localhost:9021/clusters
-Check that this admin web console is very similar to the one we used in Confluent Cloud.
-
-### Clean up
-
-Shut down Docker Compose
-
-```sh
-docker-compose down
-```
+Basic explanation of:
+1. Use case
+2.Dataset selected 
+2. Final architecture implemented 
+3. Json examples of your data json model 
+4. **Evidence** of the Application has run end to end providing the expected results. With screenshots of the different step: 1)the ingestion, 2) the processing with a Consumer, 3) the processing with KSQL, the final printing on screen on the expected outcome.

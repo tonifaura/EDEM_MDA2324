@@ -9,8 +9,8 @@ services:
     ports:
       - 2181:2181
 
-  kafka: 
-    image: confluentinc/cp-kafka:7.3.3
+  kafka:
+    image: confluentinc/cp-kafka:latest
     depends_on:
       - zookeeper
     ports:
@@ -22,6 +22,32 @@ services:
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://kafka:9092"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  control-center:
+    image: confluentinc/cp-enterprise-control-center:latest
+    hostname: control-center
+    container_name: control-center
+    depends_on:
+      - kafka
+    ports:
+      - "9021:9021"
+    environment:
+      CONTROL_CENTER_BOOTSTRAP_SERVERS: 'kafka:29092'
+      CONTROL_CENTER_CONNECT_CONNECT-DEFAULT_CLUSTER: 'kafka-connect:8083'
+      CONTROL_CENTER_KSQL_KSQLDB1_URL: "http://ksql-server:8088"
+      CONTROL_CENTER_KSQL_KSQLDB1_ADVERTISED_URL: "http://localhost:8088"
+      CONTROL_CENTER_SCHEMA_REGISTRY_URL: "http://schema-registry:8081"
+      CONTROL_CENTER_REPLICATION_FACTOR: 1
+      CONTROL_CENTER_INTERNAL_TOPICS_PARTITIONS: 1
+      CONTROL_CENTER_MONITORING_INTERCEPTOR_TOPIC_PARTITIONS: 1
+      CONFLUENT_METRICS_TOPIC_REPLICATION: 1
+      CONTROL_CENTER_CONNECT_HEALTHCHECK_ENDPOINT: '/connectors'
+      PORT: 9021
 
   ksql-server:
     image: confluentinc/cp-ksql-server:latest
@@ -40,24 +66,33 @@ services:
     entrypoint: /bin/sh
     tty: true
 
-  control-center:
-    image: confluentinc/cp-enterprise-control-center:7.3.3
-    hostname: control-center
-    container_name: control-center
+  flask:
+    container_name: python
+    build:
+      context: .
+      dockerfile: dockerfile-flask
     depends_on:
       - kafka
       - ksql-server
-    ports:
-      - "9021:9021"
+      - ksql-cli
+      - control-center
+      - zookeeper
     environment:
-      CONTROL_CENTER_BOOTSTRAP_SERVERS: 'kafka:29092'
-      CONTROL_CENTER_CONNECT_CONNECT-DEFAULT_CLUSTER: 'kafka-connect:8083'
-      CONTROL_CENTER_KSQL_KSQLDB1_URL: "http://ksql-server:8088"
-      CONTROL_CENTER_KSQL_KSQLDB1_ADVERTISED_URL: "http://localhost:8088"
-      CONTROL_CENTER_SCHEMA_REGISTRY_URL: "http://schema-registry:8081"
-      CONTROL_CENTER_REPLICATION_FACTOR: 1
-      CONTROL_CENTER_INTERNAL_TOPICS_PARTITIONS: 1
-      CONTROL_CENTER_MONITORING_INTERCEPTOR_TOPIC_PARTITIONS: 1
-      CONFLUENT_METRICS_TOPIC_REPLICATION: 1
-      CONTROL_CENTER_CONNECT_HEALTHCHECK_ENDPOINT: '/connectors'
-      PORT: 9021
+      - KAFKA_BROKER=kafka:29092  
+    ports:
+      - "5000:5000"
+  
+  script_python:
+    container_name: python2
+    build:
+      context: .
+      dockerfile: dockerfile
+    depends_on:
+      - kafka
+      - ksql-server
+      - ksql-cli
+      - control-center
+      - zookeeper
+      - flask
+    environment:
+      - KAFKA_BROKER=kafka:29092
