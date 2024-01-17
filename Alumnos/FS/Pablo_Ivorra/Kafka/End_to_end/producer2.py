@@ -35,4 +35,4 @@ for e in range(100):
     producer.flush()
 
     # Esperar un tiempo antes de la próxima solicitud
-    time.sleep(1)
+    time.sleep(5)

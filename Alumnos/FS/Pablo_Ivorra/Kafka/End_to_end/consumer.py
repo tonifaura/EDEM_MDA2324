@@ -33,12 +33,27 @@ try:
             datos = json.loads(mensaje_json)
             
             # Accede a los valores específicos que necesitas
-            volume_24h_reported = datos.get("volume_24h_reported")
-            defi_market_cap = datos.get("defi_market_cap")
+            usd_info = datos.get("USD")
             
-            # Imprime los valores o realiza acciones adicionales según tus necesidades
-            print("Volume 24h Reported:", volume_24h_reported)
-            print("DeFi Market Cap:", defi_market_cap)
+            if usd_info is not None:  # Verifica que "usd_info" no sea None
+                total_market_cap = usd_info.get("total_market_cap")
+                total_volume_24h = usd_info.get("total_volume_24h")
+                total_volume_24h_reported = usd_info.get("total_volume_24h_reported")
+                altcoin_market_cap = usd_info.get("altcoin_market_cap")
+                altcoin_volume_24h = usd_info.get("altcoin_volume_24h")
+                altcoin_volume_24h_reported = usd_info.get("altcoin_volume_24h_reported")
+                timestamp = usd_info.get("timestamp")
+            
+                # Imprime los valores
+                print("Total Market Cap:", total_market_cap)
+                print("Total Volume 24h:", total_volume_24h)
+                print("Total Volume 24h Reported:", total_volume_24h_reported)
+                print("Altcoin Market Cap:", altcoin_market_cap)
+                print("Altcoin Volume 24h:", altcoin_volume_24h)
+                print("Altcoin Volume 24h Reported:", altcoin_volume_24h_reported)
+                print("Timestamp:", timestamp)
+            else:
+                print("El campo 'USD' no está presente en los datos recibidos")
 
 except KeyboardInterrupt:
     pass
@@ -46,5 +61,4 @@ except KeyboardInterrupt:
 finally:
     # Cierra el consumidor
     consumer.close()
-
 
