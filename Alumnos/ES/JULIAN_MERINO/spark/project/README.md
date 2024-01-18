@@ -7,7 +7,7 @@
     3.  Creates 1 DF per gender, which contains the top 1 athletes in the past 5 editions. 
     4.  Inserts the DFs into the PostgreSQL database using the PostgreSQL JDBC driver.
         1.  In order to successfully run the database data insertion, --jar parameter was entered in the execution command.
-4. Enter 'docker-compose up --build .d' to bring the container up. It will execute unattendedly (via entrypoint.sh) and the result can be checked using DBeaver (or any other PostgreSQL viewer) using the following connection parameters:
+4. Enter 'docker-compose up --build -d' to bring the container up. It will execute unattendedly (via entrypoint.sh) and the result can be checked using DBeaver (or any other PostgreSQL viewer) using the following connection parameters:
    1. host: localhost
    2. database: postgres
    3. username: postgres
