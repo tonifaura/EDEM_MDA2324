@@ -3,6 +3,7 @@ services:
   # Spark containers
   spark-master:
     image: bde2020/spark-master:latest
+    build: .
     ports:
       - "4040:4040"
       - "9090:9090"

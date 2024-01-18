@@ -1,28 +1,27 @@
-# Initialise Spark Session
+import sys
 from pyspark.sql import SparkSession
+from pyspark.sql import Window
+from pyspark.sql.functions import col, row_number
+from sqlalchemy import create_engine
 
-# Create the session
+# Initialize Spark and create the session
 spark = SparkSession \
-        .builder \
-        .appName("Window Partitioning") \
-        .master("local[*]") \
-        .getOrCreate()
-
-spark.version
-spark
+    .builder.appName("Window Partitioning") \
+    .master("local[*]") \
+    .config("spark.jars", "/opt/spark/jars/postgresql-42.7.1.jar") \
+    .getOrCreate()
 
 # For Pandas conversion optimization
 spark.conf.set("spark.sql.execution.arrow.enabled", "true")
 
-# Import sql functions
-from pyspark.sql import Window
-from pyspark.sql.functions import *
+spark.version
+spark
 
 ''' We have 10 Ultra-Trail du Mont Blanc (UTMB) datasets from 2018 to 2023 (no race in 2020 due to the COVID-19 pandemic), divided in basic info and extra info and obtained 
     from LiveTrail database, we want to find out some insights, such as the performance of those athletes that run the race over the 5 years considered (both by absolute rank and 
     compared to themselves), ranks by country and by team.
 '''
-# 1. We get the info from the datasets and pass them to DFs
+# 1. We get the info from the UTMB datasets and pass them to DFs
 
 utmb_18DF = spark.read.option("header", "true").option("delimiter", ",").csv("/opt/project/resources/utmb_18.csv")
 utmb_19DF = spark.read.option("header", "true").option("delimiter", ",").csv("/opt/project/resources/utmb_19.csv")
@@ -46,7 +45,6 @@ utmb_22extraDF.show()
 utmb_23extraDF.show()
 
 # 2. Join and stack the DFs so we have a single DF containing all the results.
-
 # Joins
 utmb_23allDF = utmb_23DF.join(utmb_23extraDF, "Rank")
 utmb_23allDF.show()
@@ -58,7 +56,6 @@ utmb_19allDF = utmb_19DF.join(utmb_19extraDF, "Rank")
 utmb_19allDF.show()
 utmb_18allDF = utmb_18DF.join(utmb_18extraDF, "Rank")
 utmb_18allDF.show()
-
 # Stacks
 utmb_allDF = utmb_23allDF.union(utmb_22allDF)
 utmb_allDF = utmb_allDF.union(utmb_21allDF)
@@ -78,7 +75,7 @@ Window_Gender_Year = Window.partitionBy("Gender", "Year").orderBy(col("Rank"))
 
 # And we pass it all
 Top3_byGender_byYearDF = utmb_allDF.withColumn("GenRank", row_number().over(Window_Gender_Year)).filter(col("GenRank") <= 3)
-Top3_byGender_byYearDF = Top3_byGender_byYearDF.select("GenRank", *Top3_byGender_byYearDF.columns)#.drop(Top3_byGender_byYearDF.columns[-1])
+#Top3_byGender_byYearDF = Top3_byGender_byYearDF.select("GenRank", *Top3_byGender_byYearDF.columns)#.drop(Top3_byGender_byYearDF.columns[-1])
 Top3_byGender_byYearDF.show(30)
 
 # Now, let's see how the top performers (Rank #1) per gender compare, in separate DFs. First, we create an appropriate window:
@@ -93,38 +90,15 @@ Top1_FemaleDF = Top3_byGender_byYearDF.filter(col("Gender") == "F").withColumn("
 #Top1_FemaleDF = Top1_FemaleDF.select("WinnerRank", *Top1_FemaleDF.columns).drop(Top1_FemaleDF.columns[-1])
 Top1_FemaleDF.show()
 
-# Print the Python version
-print("Python Version:", sys.version)
-
-#POSTGRESQL CONNECTION AND INGESTION
-from sqlalchemy import create_engine, Integer
-import psycopg2
-import java.sql
-
+# Ingest data into PostgreSQL
 db_properties = {
-    "driver": "org.postgresql.Driver",
-    "url": "jdbc:postgresql://postgres:5432/postgres",
-    "user": "postgres",
-    "password": "Welcome01",
-}
+"driver": "org.postgresql.Driver",
+"url": "jdbc:postgresql://postgres:5432/postgres",
+"user": "postgres",
+"password": "Welcome01",
+    }
 
-# Write DataFrames to PostgreSQL
-utmb_allDF.write.jdbc(url=db_properties["url"],
-                      table="utmb_all",
-                      mode="overwrite",  # Change to "append" if needed
-                      properties=db_properties)
-
-Top3_byGender_byYearDF.write.jdbc(url=db_properties["url"],
-                                  table="Top3_byGender_byYear",
-                                  mode="overwrite",  # Change to "append" if needed
-                                  properties=db_properties)
-
-Top1_MaleDF.write.jdbc(url=db_properties["url"],
-                       table="Top1_Male",
-                       mode="overwrite",  # Change to "append" if needed
-                       properties=db_properties)
-
-Top1_FemaleDF.write.jdbc(url=db_properties["url"],
-                         table="Top1_Female",
-                         mode="overwrite",  # Change to "append" if needed
-                         properties=db_properties)
+utmb_allDF.write.jdbc(url=db_properties["url"], table="utmb_all", mode="overwrite", properties=db_properties)
+Top3_byGender_byYearDF.write.jdbc(url=db_properties["url"], table="Top3_byGender_byYear", mode="overwrite", properties=db_properties)
+Top1_MaleDF.write.jdbc(url=db_properties["url"], table="Top1_Male", mode="overwrite", properties=db_properties)
+Top1_FemaleDF.write.jdbc(url=db_properties["url"], table="Top1_Female", mode="overwrite", properties=db_properties)

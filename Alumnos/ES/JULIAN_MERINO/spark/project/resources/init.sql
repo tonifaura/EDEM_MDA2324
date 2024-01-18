@@ -15,7 +15,6 @@ CREATE TABLE public.utmb_all (
 );
 
 CREATE TABLE public.Top3_byGender_byYear (
-    GenRank int4 NULL,
     Rank int4 NULL,
     YearComp int4 NULL,
     TimeComplete varchar(50) NULL,
@@ -24,11 +23,10 @@ CREATE TABLE public.Top3_byGender_byYear (
     Country varchar(50) NULL, 
     YOB int4 NULL, 
     Gender varchar(50) NULL,
-    NA int4 NULL
+    GenRank int4 NULL
 );
 
 CREATE TABLE public.Top1_Male (
-    GenRank int4 NULL,
     Rank int4 NULL,
     YearComp int4 NULL,
     TimeComplete varchar(50) NULL,
@@ -37,12 +35,11 @@ CREATE TABLE public.Top1_Male (
     Country varchar(50) NULL, 
     YOB int4 NULL, 
     Gender varchar(50) NULL,
-    NA int4 NULL,
+    GenRank int4 NULL,
     WinnerRank int4 NULL
 );
 
 CREATE TABLE public.Top1_Female (
-    GenRank int4 NULL,
     Rank int4 NULL,
     YearComp int4 NULL,
     TimeComplete varchar(50) NULL,
@@ -51,6 +48,6 @@ CREATE TABLE public.Top1_Female (
     Country varchar(50) NULL, 
     YOB int4 NULL, 
     Gender varchar(50) NULL,
-    NA int4 NULL,
+    GenRank int4 NULL,
     WinnerRank int4 NULL
 );

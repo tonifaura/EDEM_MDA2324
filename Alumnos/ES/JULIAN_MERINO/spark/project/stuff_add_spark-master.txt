@@ -1,7 +1,0 @@
-apk add python3-dev
-apk add build-base
-apk add postgresql-dev
-apk add krb5-dev
-pip3 install --upgrade pip
-pip3 install sqlalchemy
-pip3 install psycopg2
