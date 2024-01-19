@@ -43,3 +43,20 @@ services:
       CONFLUENT_METRICS_TOPIC_REPLICATION: 1
       CONTROL_CENTER_CONNECT_HEALTHCHECK_ENDPOINT: '/connectors'
       PORT: 9021
+
+  ksql-server:
+    image: confluentinc/cp-ksql-server:latest
+    depends_on:
+      - kafka
+    ports:
+      - 8088:8088
+    environment:
+      KSQL_BOOTSTRAP_SERVERS: kafka:29092
+      KSQL_LISTENERS: http://0.0.0.0:8088
+
+  ksql-cli:
+    image: confluentinc/cp-ksql-cli:latest
+    depends_on:
+      - ksql-server
+    entrypoint: /bin/sh
+    tty: true
