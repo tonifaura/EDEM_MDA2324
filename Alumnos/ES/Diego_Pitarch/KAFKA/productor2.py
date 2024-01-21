@@ -22,7 +22,7 @@ Lines = file1.readlines()
 count = 0
 # Strips the newline character
 for line in Lines:
-    time.sleep(2)
+    time.sleep(1)
     print( line.strip() + "\n")
     words = re.findall(r"[\w']+|[.,!?;]", line)
     for word in words:
