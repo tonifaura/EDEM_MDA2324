@@ -8,7 +8,7 @@ services:
       - "9090:9090"
       - "7077:7077"
     volumes:
-      - ../project:/opt/project
+      - /C/Users/josan/OneDrive/Escritorio/TrabajoSpark:/opt/project
     environment:
       - "SPARK_LOCAL_IP=spark-master"
 
@@ -23,7 +23,7 @@ services:
       - SPARK_DRIVER_MEMORY=128m
       - SPARK_EXECUTOR_MEMORY=256m
     volumes:
-      - ../project:/opt/project
+      - /C/Users/josan/OneDrive/Escritorio/TrabajoSpark:/opt/project
 
   # Zeppelin container
   zeppelin:
@@ -31,5 +31,5 @@ services:
     ports:
       - "8081:8080"
     volumes:
-      - C:\\Users\\josan\\Documents\\GitHub\\EDEM_MDA2324\\Alumnos\\ES\\Josan_Rodrigo_Cortes\\Spark\\e2e_spark\\PostWork\\Real Estate Dataset.csv
-      - C:\\Users\\josan\\Documents\\GitHub\\EDEM_MDA2324\\Alumnos\\ES\\Josan_Rodrigo_Cortes\\Spark\\e2e_spark\\PostWork\\TrabajoSpark.ipynb
+    - //c/Users/josan/Documents/GitHub/EDEM_MDA2324/Alumnos/ES/Josan_Rodrigo_Cortes/Spark/e2e_spark/RealEstateDataset.csv:/mynotebook
+    - //c/Users/josan/Documents/GitHub/EDEM_MDA2324/Alumnos/ES/Josan_Rodrigo_Cortes/Spark/e2e_spark/PostWork/TrabajoSpark.ipynb:/mynotebook
