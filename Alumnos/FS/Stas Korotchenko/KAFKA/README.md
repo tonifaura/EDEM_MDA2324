@@ -5,9 +5,12 @@
 ---
 1. `docker-compose up -d`
 2. Para crear los topics:
+   
     `docker-compose exec kafka kafka-topics --create --topic frase --partitions 1 --replication-factor 1 --if-not-exists --bootstrap-server localhost:9092`
     `docker-compose exec kafka kafka-topics --create --topic frase_likes_gt_2 --partitions 1 --replication-factor 1 --if-not-exists --bootstrap-server localhost:9092`
-3. Para la creación de streams, debemos entrar ksql-cli con el comando `docker exec -it ksql_cli-1 ksql http://ksql-server:8088`
+3. Para la creación de streams, debemos entrar ksql-cli con el comando
+   
+    `docker-compose exec ksql-cli ksql http://host.docker.internal:8088`
 4. Después, ejecutar el código para crear los streams y filtrar.
 
 ### 1. Adquisición de Datos:
@@ -25,8 +28,8 @@
   "favorites_count":2,
   "upvotes_count":0,
   "downvotes_count":0,
-  "author":"Tupac Shakur","
-  author_permalink":"tupac-shakur",
+  "author":"Tupac Shakur",
+  "author_permalink":"tupac-shakur",
   "body":"It's the game of life. Do I win or do I lose? One day they're gonna shut the game down. I gotta have as much fun and go around the board as many times as I can before it's my turn to leave."
   }
 }
@@ -38,6 +41,7 @@
 - Transmitir datos al topic 'frase_likes_gt_2'
 
 ### 3. Procesamiento con Ksql
+- Consumo de datos del topic 'frase_likes_gt_2'.
 - Filtrado de datos por author.
 
 Queries en Ksql
