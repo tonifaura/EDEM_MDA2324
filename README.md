@@ -134,7 +134,7 @@ Entregas Fin de Semana
 <td>✅</td>
 <td>✅</td>
 <td>❌</td>
-<td>✅</td>
+<td>❌</td>
 <td>❌</td>
 </tr>
 <tr>
@@ -291,7 +291,7 @@ Entregas Fin de Semana
 <td>✅</td>
 <td>❌</td>
 <td>❌</td>
-<td>✅</td>
+<td>❌</td>
 </tr>
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/FS/Stas Korotchenko'>Stas korotchenko</a></td>
