@@ -31,5 +31,5 @@ services:
     ports:
       - "8081:8080"
     volumes:
-    - //c/Users/josan/Documents/GitHub/EDEM_MDA2324/Alumnos/ES/Josan_Rodrigo_Cortes/Spark/e2e_spark/RealEstateDataset.csv:/mynotebook
-    - //c/Users/josan/Documents/GitHub/EDEM_MDA2324/Alumnos/ES/Josan_Rodrigo_Cortes/Spark/e2e_spark/PostWork/TrabajoSpark.ipynb:/mynotebook
+    - //c/Users/josan/Documents/GitHub/EDEM_MDA2324/Alumnos/ES/Josan_Rodrigo_Cortes/Spark/e2e_spark/RealEstateDataset.csv:/notebook
+    - //c/Users/josan/Documents/GitHub/EDEM_MDA2324/Alumnos/ES/Josan_Rodrigo_Cortes/Spark/e2e_spark/PostWork/TrabajoSpark.ipynb:/notebook
