@@ -8,7 +8,7 @@ cons_config = {
     'group.id': 'python-consumer-group',
     'auto.offset.reset': 'earliest'  
 }
-
+# Configuración del productor
 prod_config = {
     'bootstrap.servers': 'localhost:9092',
     'client.id': 'python-producer'
@@ -19,13 +19,13 @@ consumer = Consumer(cons_config)
 producer = Producer(prod_config)
 
 # Suscribirse a un tópico
-topic = 'sales'  # El nombre del tópico
+topic = 'sales'  
 consumer.subscribe([topic])
 
 # Loop infinito de consumo de mensajes del topic
 try:
     while True:
-        msg = consumer.poll(1.0)  # Lee nuevos mensajes cada 1 segundo
+        msg = consumer.poll(1.0)  
         
         if msg is None:
             continue

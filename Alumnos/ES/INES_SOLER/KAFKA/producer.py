@@ -11,14 +11,13 @@ config = {
 
 # Crear un productor
 producer = Producer(config)
-
 topic_kafka = 'sales'
 
 with open('sales_data.csv') as file:
     reader = csv.DictReader(file, delimiter=",")
     for count, line in enumerate(reader):
         time.sleep(2)
-        print(line)  # Imprimir el diccionario completo
+        print(line)
 
         # De diccionario a cadena JSON
         data_json = json.dumps(line)
@@ -30,6 +29,5 @@ with open('sales_data.csv') as file:
         producer.produce(topic=topic_kafka, value=data_bytes, key=key)
         producer.flush()
 
-# Check if there are any messages that failed to be delivered:
 if producer.flush() != 0:
     print("Some messages failed to be delivered")
