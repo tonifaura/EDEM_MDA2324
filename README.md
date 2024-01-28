@@ -550,4 +550,3 @@ Entregas Entre Semana
 <td>❌</td>
 </tr>
 </table>
-
