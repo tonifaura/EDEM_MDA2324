@@ -59,3 +59,8 @@ services:
     environment:
       - KAFKA_CLUSTERS_0_NAME=base
       - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka:29092
+# Producer (client) container
+  client:
+    build:
+      context: .
+      dockerfile: client/Dockerfile

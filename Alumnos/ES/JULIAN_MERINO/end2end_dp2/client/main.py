@@ -30,7 +30,7 @@ if __name__ == '__main__':
 
     # Config del Producer para el servidor Kafka
     config = {
-        'bootstrap.servers': 'localhost:9092',  # Ojo si se ejecuta en un container
+        'bootstrap.servers': 'kafka:29092',  # Ojo si se ejecuta en un container
         'client.id': 'python-producer'
     }
     # Crear un productor
