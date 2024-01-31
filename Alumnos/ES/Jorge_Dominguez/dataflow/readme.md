@@ -31,5 +31,5 @@ python3 EDEM_Dataflow_Streaming_Pipeline.py `
     --input_subscription "projects/id/subscriptions/sub" `
     --output_topic "projects/id/topics/topic" `
     --radar_id "jorge" `
-    --cars_api "https://europe-west1-long-flame-410209.cloudfunctions.net/car-license-plates-api"
+    --cars_api "car-api"
 ```

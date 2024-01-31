@@ -215,7 +215,7 @@ def run():
     parser.add_argument(
                 '--cars_api',
                 required=False,
-                default='https://europe-west1-long-flame-410209.cloudfunctions.net/car-license-plates-api',
+                default='url-car-api',
                 help="API for retrieving vehicle images.")
 
     args, pipeline_opts = parser.parse_known_args()
