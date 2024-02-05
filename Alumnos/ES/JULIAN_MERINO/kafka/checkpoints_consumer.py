@@ -19,16 +19,17 @@ def create_producer(bootstrap_servers):
     }
     return Producer(conf)
 
-def process_checkpoint(message, previous_checkpoint):
+def process_checkpoint(message, last_checkpoints):
     """Process a checkpoint message and calculate segment pace."""
     try:
         checkpoint_data = json.loads(message.value())
+        runner_id = checkpoint_data.get('runner_id')
 
-        # Extract relevant data
-        current_checkpoint_str = checkpoint_data.get('current_checkpoint', '00:00:00')
+        # Extract the last checkpoint for the runner_id
+        previous_checkpoint = last_checkpoints.get(runner_id, '00:00:00')
 
         # Convert time strings to timedelta objects
-        current_checkpoint = datetime.strptime(current_checkpoint_str, "%H:%M:%S")
+        current_checkpoint = datetime.strptime(checkpoint_data['current_checkpoint'], "%H:%M:%S")
         previous_checkpoint_time = datetime.strptime(previous_checkpoint, "%H:%M:%S")
 
         # Calculate time difference in minutes
@@ -52,7 +53,7 @@ def process_checkpoint(message, previous_checkpoint):
 
 def consume_messages(consumer, producer, input_topic, output_topic):
     """Consume messages from the input topic, process, and produce to the output topic."""
-    previous_checkpoint = '00:00:00'
+    last_checkpoints = {}
 
     consumer.subscribe([input_topic])
 
@@ -68,14 +69,14 @@ def consume_messages(consumer, producer, input_topic, output_topic):
                 print(msg.error())
                 break
 
-        checkpoint_data = process_checkpoint(msg, previous_checkpoint)
+        checkpoint_data = process_checkpoint(msg, last_checkpoints)
 
         if checkpoint_data:
             # Produce the processed message to the output topic
             producer.produce(output_topic, key=checkpoint_data['runner_id'], value=json.dumps(checkpoint_data))
 
-            # Update the previous_checkpoint for the next iteration
-            previous_checkpoint = checkpoint_data['current_checkpoint']
+            # Update the last checkpoint for the specific runner_id
+            last_checkpoints[checkpoint_data['runner_id']] = checkpoint_data['current_checkpoint']
 
             print(f"Processed message: {checkpoint_data}")
 
