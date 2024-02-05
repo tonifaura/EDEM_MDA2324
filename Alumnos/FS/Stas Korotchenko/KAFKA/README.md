@@ -1,4 +1,4 @@
-# CASO DE USO: Visualización Datos de Random Frases de API
+# Visualización Datos de Random Frases de API
 
 
 ## DESPLIEGUE DE LA APLICACIÓN:
@@ -12,6 +12,11 @@
    
     `docker-compose exec ksql-cli ksql http://host.docker.internal:8088`
 4. Después, ejecutar el código para crear los streams y filtrar.
+
+## CASO DE USO
+Con la ayuda de la API, obtenemos una frase aleatoria de personas famosas. En la estructura del archivo JSON que se muestra a continuación, observamos que cada frase tiene un campo "like". Por lo tanto, seleccionamos solo las frases que tienen más de 2 "likes". Luego, con la ayuda de ksql, queremos destacar la frase de una persona específica, por ejemplo, por su nombre.
+
+Aquí se practica el uso de la API, la transferencia de datos al tema, un filtrado simple, el envío a otro tema y el procesamiento mediante ksql.
 
 ### 1. Adquisición de Datos:
 
