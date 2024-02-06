@@ -139,7 +139,7 @@ Entregas Fin de Semana
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
 </tr>
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/FS/CARLOS-FERRER-SANCHEZ'>Carlos-ferrer-sanchez</a></td>
@@ -153,7 +153,7 @@ Entregas Fin de Semana
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
 </tr>
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/FS/CRISTIAN_MARTY'>Cristian_marty</a></td>
@@ -181,7 +181,7 @@ Entregas Fin de Semana
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#9bc99e'>✅</td>
 <td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
 </tr>
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/FS/FERNANDO-CABRERA-CARBONELL'>Fernando-cabrera-carbonell</a></td>
@@ -195,7 +195,7 @@ Entregas Fin de Semana
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
 </tr>
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/FS/JACKELINE-ROMERO-MATEGO'>Jackeline-romero-matego</a></td>
@@ -209,7 +209,7 @@ Entregas Fin de Semana
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
 </tr>
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/FS/JESUS_JORNET_ORTI'>Jesus_jornet_orti</a></td>
@@ -223,7 +223,7 @@ Entregas Fin de Semana
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
 </tr>
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/FS/JUAN CORNEJO'>Juan cornejo</a></td>
@@ -279,7 +279,7 @@ Entregas Fin de Semana
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
 </tr>
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/FS/Pablo Martí Nomdedeu'>Pablo martí nomdedeu</a></td>
@@ -307,7 +307,7 @@ Entregas Fin de Semana
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
 </tr>
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/FS/Pepe_Aguilar_van_der_Hofstadt'>Pepe_aguilar_van_der_hofstadt</a></td>
@@ -335,7 +335,7 @@ Entregas Fin de Semana
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
 </tr>
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/FS/Stas Korotchenko'>Stas korotchenko</a></td>
@@ -349,7 +349,7 @@ Entregas Fin de Semana
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#9bc99e'>✅</td>
 <td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
 </tr>
 </table>
 
