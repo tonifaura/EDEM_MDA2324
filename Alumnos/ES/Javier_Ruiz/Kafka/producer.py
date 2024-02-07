@@ -2,6 +2,7 @@ from flask import Flask, jsonify
 import requests
 from kafka.producer import KafkaProducer
 import json
+import time
 
 #API-get a AEMET + Envio a kafka topic
 # Configuraciones
@@ -9,7 +10,7 @@ AEMET_API_KEY = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXZpZXJ1aXppbXBvcnRAZ21haWwuY2
 KAFKA_BOOTSTRAP_SERVERS = 'localhost:9092'
 KAFKA_TOPIC = 'topic_tiempo'
 
-WEATHER_DATA_LIMIT = 100
+WEATHER_DATA_LIMIT = 200
 
 # Instancia flask
 app = Flask(__name__)
@@ -48,9 +49,11 @@ def parse_weather_data(data, limit=WEATHER_DATA_LIMIT):
     parsed_data_list = []
     for i, entry in enumerate(weather_data_list):
         parsed_data = {
-            "timestamp": entry.get("fint"),
+            "id": entry.get("idema"),
             "location": entry.get("ubi"),
+            "timestamp": entry.get("fint"),
             "temperature": entry.get("ta"),
+            "precipitation": entry.get("prec"),
             "humidity": entry.get("hr"),
             "wind_speed": entry.get("vv")
         }
@@ -76,10 +79,11 @@ def senddata(weather_data):
         for entry in weather_data:
             producer.send(KAFKA_TOPIC, value=entry)
             print(f"Sending to Kafka: {entry}")
+            time.sleep(2)
     finally:
         producer.close()
 
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, threaded=True)
