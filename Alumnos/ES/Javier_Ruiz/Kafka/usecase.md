@@ -22,13 +22,18 @@ Also for process visualization and better understanding, I included a kafka-ui c
 
 ## Evidences of the Application running
 
+### API-get to AEMET working fine
 ![API-get to AEMET working fine](./Screenshots/api_get.jpg)
 
+### Producer running, terminal output
 ![Producer running, terminal output](./Screenshots/producer_running.jpg)
 
-![Consumer running, terminal output](./Screenshots/producer_result.jpg)
+### Consumer running, terminal output
+![Consumer running, terminal output](./Screenshots/consumer_result.jpg)
 
+### Making queries with KSQL
 ![Making queries with KSQL](./Screenshots/ksql_funciona.jpg)
 
-Extra
+## Extra
+### Visualizing producer in Kafka UI
 ![Visualizing producer in Kafka UI](./Screenshots/producer_kafkaui.jpg)
