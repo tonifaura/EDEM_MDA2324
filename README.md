@@ -431,7 +431,7 @@ Entregas Entre Semana
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
 </tr>
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/ES/CARLOS_BUENROSTRO_VALVERDE'>Carlos_buenrostro_valverde</a></td>
@@ -459,7 +459,7 @@ Entregas Entre Semana
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#9bc99e'>✅</td>
 <td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
 </tr>
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/ES/Francisco_Tudela'>Francisco_tudela</a></td>
@@ -470,7 +470,7 @@ Entregas Entre Semana
 <td bgcolor='#dee2d0'>✅</td>
 <td bgcolor='#a5cbaa'>❌</td>
 <td bgcolor='#a5cbaa'>❌</td>
-<td bgcolor='#9bc99e'>❌</td>
+<td bgcolor='#9bc99e'>✅</td>
 <td bgcolor='#9bc99e'>✅</td>
 <td bgcolor='#779777'>❌</td>
 <td bgcolor='#779777'>❌</td>
@@ -512,10 +512,10 @@ Entregas Entre Semana
 <td bgcolor='#dee2d0'>✅</td>
 <td bgcolor='#a5cbaa'>✅</td>
 <td bgcolor='#a5cbaa'>✅</td>
-<td bgcolor='#9bc99e'>❌</td>
+<td bgcolor='#9bc99e'>✅</td>
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
 </tr>
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/ES/JULIAN_MERINO'>Julian_merino</a></td>
@@ -543,7 +543,7 @@ Entregas Entre Semana
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
 </tr>
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/ES/Jorge_Dominguez'>Jorge_dominguez</a></td>
@@ -557,7 +557,7 @@ Entregas Entre Semana
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#9bc99e'>✅</td>
 <td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
 </tr>
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/ES/Josan_Rodrigo_Cortes'>Josan_rodrigo_cortes</a></td>
@@ -599,7 +599,7 @@ Entregas Entre Semana
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#9bc99e'>✅</td>
 <td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
 </tr>
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/ES/NACHO_REYES'>Nacho_reyes</a></td>
@@ -638,10 +638,10 @@ Entregas Entre Semana
 <td bgcolor='#dee2d0'>✅</td>
 <td bgcolor='#a5cbaa'>✅</td>
 <td bgcolor='#a5cbaa'>❌</td>
-<td bgcolor='#9bc99e'>❌</td>
+<td bgcolor='#9bc99e'>✅</td>
 <td bgcolor='#9bc99e'>✅</td>
 <td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
 </tr>
 </table>
 
