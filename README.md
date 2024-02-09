@@ -389,7 +389,7 @@ Entregas Entre Semana
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
 </tr>
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/ES/ANTONIO_FAURA'>Antonio_faura</a></td>
@@ -445,7 +445,7 @@ Entregas Entre Semana
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#9bc99e'>✅</td>
 <td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
 </tr>
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/ES/Diego_Pitarch'>Diego_pitarch</a></td>
@@ -487,7 +487,7 @@ Entregas Entre Semana
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#9bc99e'>✅</td>
 <td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
 </tr>
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/ES/HUGO_MARIA'>Hugo_maria</a></td>
@@ -529,7 +529,7 @@ Entregas Entre Semana
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
 </tr>
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/ES/Javier_Ruiz'>Javier_ruiz</a></td>
@@ -585,7 +585,7 @@ Entregas Entre Semana
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
 </tr>
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/ES/Miguel_Herrero'>Miguel_herrero</a></td>
@@ -627,7 +627,7 @@ Entregas Entre Semana
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
 </tr>
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/ES/Yael_Larrosa'>Yael_larrosa</a></td>
