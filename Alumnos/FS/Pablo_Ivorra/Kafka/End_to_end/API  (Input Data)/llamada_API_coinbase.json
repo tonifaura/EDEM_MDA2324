@@ -3,7 +3,7 @@
         "name": "Test de solicitud exitosa",
         "request": {
             "method": "GET",
-            "url": "https://pro-api.coinmarketcap.com/v1/global-metrics/quotes/latest?CMC_PRO_API_KEY=0c58c479-77a7-40d6-a7cd-21eeb593f831"
+            "url": "https://pro-api.coinmarketcap.com/v1/global-metrics/quotes/latest?CMC_PRO_API_KEY=******"
         },
         "response": {
             "status": 200,
@@ -22,7 +22,7 @@
         "name": "Test de solicitud fallida",
         "request": {
             "method": "GET",
-            "url": "https://pro-api.coinmarketcap.com/v1/global-metrics/quotes/latest?CMC_PRO_API_KEY=0c58c479-77a7-40d6-a7cd-21eeb593f831"
+            "url": "https://pro-api.coinmarketcap.com/v1/global-metrics/quotes/latest?CMC_PRO_API_KEY=*******"
         },
         "response": {
             "status": 401,

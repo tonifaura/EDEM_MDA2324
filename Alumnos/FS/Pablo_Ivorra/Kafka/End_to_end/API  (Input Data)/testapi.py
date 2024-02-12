@@ -3,7 +3,7 @@ import requests
 
 class APITestCase(unittest.TestCase):
     def test_successful_request(self):
-        url = "https://pro-api.coinmarketcap.com/v1/global-metrics/quotes/latest?CMC_PRO_API_KEY=0c58c479-77a7-40d6-a7cd-21eeb593f831"
+        url = "****"
         response = requests.get(url)
         self.assertEqual(response.status_code, 200)
         data = response.json()
@@ -13,7 +13,7 @@ class APITestCase(unittest.TestCase):
         self.assertIn("total_market_cap", data["data"]["quote"]["USD"])
 
     def test_failed_request(self):
-        url = "https://pro-api.coinmarketcap.com/v1/global-metrics/quotes/latest?CMC_PRO_API_KEY=invalid_api_key"
+        url = "***"
         response = requests.get(url)
         self.assertEqual(response.status_code, 401)
         data = response.json()
