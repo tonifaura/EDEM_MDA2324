@@ -1,6 +1,7 @@
 import time
 from json import dumps
 from confluent_kafka import Producer
+import requests
 
 # Configuración del productor
 config = {
@@ -11,25 +12,27 @@ config = {
 # Crear un productor
 producer = Producer(config)
 
+# URL de la API
+api_url = 'https://pro-api.coinmarketcap.com/v1/global-metrics/quotes/latest?CMC_PRO_API_KEY=0c58c479-77a7-40d6-a7cd-21eeb593f831'
 
-# Send 100 messages where the key is the index and the message to send is "test message - index"
-# the topic name is myTopic
-
-topic_kafka = 'ventas'
+# Nombre del topic
+topic_kafka = 'marketcap'
 
 for e in range(100):
-    data = {'Nueva Venta - ': e*4}
-    data_str = dumps(data)  # Serialize dictionary to a string
-    data_bytes = data_str.encode('utf-8')  # Encode string to bytes
-    key = str(e).encode('utf-8')
-    producer.produce(topic=topic_kafka, value=data_bytes, key=key)  # Send bytes
-    print("Sending data: {} to topic {}".format(data, topic_kafka))
-    time.sleep(1)
+    # Realizar solicitud a la API
+    response = requests.get(api_url)
+    
+    # Obtener datos de la respuesta de la API
+    data = response.json()
+    
+    # Convertir los datos a formato JSON
+    message = dumps(data)
+    
+    # Enviar el mensaje
+    producer.produce(topic_kafka, message)
 
-# After your loop where you send messages:
-producer.flush()
+    # Asegurarse de que todos los mensajes se han enviado
+    producer.flush()
 
-# Optionally, you can check if there are any messages that failed to be delivered:
-if producer.flush() != 0:
-    print("Some messages failed to be delivered")
-
+    # Esperar un tiempo antes de la próxima solicitud
+    time.sleep(10)

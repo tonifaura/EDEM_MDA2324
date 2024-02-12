@@ -1,77 +1,30 @@
-# Exercise 4: Python App to Kakfa running in Docker
+# APP PARA CLASIFICAR CRIPTOMONEDAS POR TIPO DE MONEDA USANDO KAFKA
 
-## Objectives
+1) Run docker-compose up -d
+   
+2) Lanzamos primer productor, que escribe el mensaje completo de la API sobre el topic marketcap --> run producer.py
 
-1) Run Zookeeper + Kafka
-2) Produce messages from the command line
-3) Consume/Read messages from the command line
-4) Produce messages from a Python application.
-5) Consume/Read messages from a Python application.
-6) Modify the Python Producer and/or Consumer Python application.
+   Lanzamos primer consumidor que lee ese topic --> run consumerMarketcap.py
 
+   ![alt text](image.png)
 
-## Run Kafka in your computer with Docker
-Simple scenario: 1 zookeeper + 1 Kafka broker.
+3) Lanzamos segundo productor, que filtra los JSON del topic y los escribe sobre el topic marketcap_filtro --> run producerMarketcapFiltered.py
+   
+   Lo consumimos para ver el mensaje filtrado --> run consumerMarketcapFiltered.py
 
-Start the ZooKeeper and Kafka container.
-To execute below command, make sure you open the terminal under the folder "exercise4/"
+   ![alt text](image-1.png)
 
-```sh
-docker-compose up -d
-```
+4) Lanzamos KSQL y mandamos al topic marketcap_usd_stream los mensajes con valor Coin = 'USD' 
+   
+    KSQL --> docker-compose exec ksql-cli ksql http://host.docker.internal:8088
 
+    CREATE STREAM MARKETCAP_FILTRO_STREAM (Timestamp VARCHAR, Coin VARCHAR, Eth_dominance DOUBLE, Btc_dominance DOUBLE) \
+    WITH (KAFKA_TOPIC='marketcap_filtro', VALUE_FORMAT='JSON'); --> Creamos el stream asociado al topic origen
 
-Using the terminal create the topic 'ventas'
+    CREATE STREAM MARKETCAP_USD_STREAM AS \
+    SELECT * FROM MARKETCAP_FILTRO_STREAM \
+    WHERE Coin = 'USD'; --> Creamos el stream final con los valores de Coin que nos interesan
 
-```sh
-docker-compose exec kafka kafka-topics --create --topic ventas --partitions 1 --replication-factor 1 --if-not-exists --bootstrap-server localhost:9092
-```
+5) Consumimos el topic y vemos el resultado final --> run ./consumerUSD.py
 
-## Command Line: Producer
-Produce messsages from the command line
-```sh
-docker-compose exec kafka kafka-console-producer --topic ventas --broker-list localhost:9092
-```
-
-Send messages from the terminal.
-
-## Command Line: Consumer
-**Open TWO new console** and Consume the  topic content, executing below command on each new console:
-
-```sh
-docker-compose exec kafka kafka-console-consumer --topic ventas --from-beginning --bootstrap-server localhost:9092
-```
-
-## Do this exercise on your own
-**Now must have three consoles opened at the same time**, one to produce message and another to consume the messsages.
-
-===> Then, produce messages from one console and read the messages from the other two consoles.
-
-## Run the Producer Python App from VisualStudio
-Open VisualStudio and run the producer.py App
-
-## Run the Consumer Python App from VisualStudio
-Open VisualStudio and run the consumer.py App
-
-
-#### More Exercises
-##### Exercise 4.1 
-Check that in the opened two consumer consoles, you are getting the messages produced by the Python Producer Application.
-
-Produce messages from the Producer console, and check that 1 ) you are getting the messages produced by the Python Producer Application.
-and 2) you are getting the messages from the Python Consumer Application.
-
-##### Exercise 4.2
-Create a new topic from the command line. Then modify the Producer App and the Consumer App to use the new topic.
-
-##### Exercise 4.4
-Read the messages also with the Kafka Admin screen at http://localhost:9021/clusters
-Check that this admin web console is very similar to the one we used in Confluent Cloud.
-
-### Clean up
-
-Shut down Docker Compose
-
-```sh
-docker-compose down
-```
+    ![alt text](image-2.png)

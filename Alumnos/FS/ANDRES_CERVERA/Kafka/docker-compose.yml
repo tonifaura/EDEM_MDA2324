@@ -55,6 +55,7 @@ services:
       KSQL_LISTENERS: http://0.0.0.0:8088
 
   ksql-cli:
+    container_name: ksql-cli
     image: confluentinc/cp-ksql-cli:latest
     depends_on:
       - ksql-server
