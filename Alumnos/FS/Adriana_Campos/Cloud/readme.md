@@ -22,3 +22,8 @@ gcloud compute instances create "vm-test-1" \
 
 # Person 2
 # ejecutar
+
+
+
+
+
