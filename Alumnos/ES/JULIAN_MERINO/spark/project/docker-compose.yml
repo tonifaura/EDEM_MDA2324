@@ -2,7 +2,8 @@ version: '3'
 services:
   # Spark containers
   spark-master:
-    image: spark-master:latest
+    image: bde2020/spark-master:latest
+    build: .
     ports:
       - "4040:4040"
       - "9090:9090"
@@ -13,7 +14,7 @@ services:
       - "SPARK_LOCAL_IP=spark-master"
 
   spark-worker:
-    image: spark-worker:latest
+    image: bde2020/spark-worker:latest
     depends_on:
       - spark-master
     environment:
@@ -24,3 +25,16 @@ services:
       - SPARK_EXECUTOR_MEMORY=256m
     volumes:
       - ../project:/opt/project
+  # Postgres container
+  postgres:
+    container_name: postgres_spark
+    image: postgres:latest
+    restart: always    
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Welcome01
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:     
+      - ./resources/init.sql:/docker-entrypoint-initdb.d/init.sql
