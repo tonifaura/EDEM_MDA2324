@@ -5,7 +5,7 @@ from apache_beam.io.gcp.internal.clients import bigquery
 import json
 from datetime import datetime
 
-#################################################### Adriana ###################################################
+
 project_id = 'woven-justice-411714'
 topic_name= 'camara'
 table_name = "woven-justice-411714:ejemplo.camara"

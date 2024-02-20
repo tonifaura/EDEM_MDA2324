@@ -44,37 +44,39 @@ beam.options.pipeline_options.PipelineOptions.allow_non_parallel_instruction_out
 DataflowRunner.__test__ = False
 
 
-# ...
+""" Helpful functions """
 def ParsePubSubMessage(message):
 
-    # Decode PubSub message in order to deal with it
-    decoded_message = message.data.decode('utf-8')
+    # Decode PubSub message in order to deal with
+    pubsub_message = message.decode('utf-8')
     
     # Convert string decoded in JSON format
-    json_message = json.loads(decoded_message)
+    msg = json.loads(pubsub_message)
+
+    logging.info("New message in PubSub: %s", msg)
 
     # Return function
-    return json_message
+    return msg
 
-def getVehicleImage(item, api_url):
+def getVehicleImage(item,api_url):
 
     import requests
     import io
 
     # API call to simulate a photo captured by the radar
-    response = requests.get(api_url)
-    response.raise_for_status()
-    
-    # Read the image (using io.BytesIO) from the Google Cloud Storage URL obtained in the previous step.
-    image_bytes = io.BytesIO(response.content)
+    image_service = requests.get(api_url)
+    image_url = json.loads(image_service.content.decode('utf-8'))['image_url']
 
-    # Append image_url to the payload
-    item['image_url'] = api_url
+    #Read image from URL
+    image_response = requests.get(image_url)
+    image_bytes = io.BytesIO(image_response.content).read()
 
-    # Return
-    return item, image_bytes
+    #Append image_url to the payload
+    item ['image_url'] = image_url
 
-# ...
+    logging.info(image_url)
+
+    return item, image_bytes   
 
 class CloudVisionModelHandler(ModelHandler):
 
@@ -83,6 +85,7 @@ class CloudVisionModelHandler(ModelHandler):
         """Initiate the Google Vision API client."""
 
         from google.cloud import vision
+        from google.cloud.vision_v1.types import Feature
         
         client = vision.ImageAnnotatorClient()
         return client
@@ -91,6 +94,8 @@ class CloudVisionModelHandler(ModelHandler):
 
         from google.cloud import vision
         from google.cloud.vision_v1.types import Feature
+
+        from apache_beam.runners import DataflowRunner
 
         feature = Feature()
         feature.type_ = Feature.Type.TEXT_DETECTION
@@ -103,8 +108,8 @@ class CloudVisionModelHandler(ModelHandler):
 
         model_responses = model.batch_annotate_images(request=batch_image_request).responses
 
-        # Deal with the model's response to extract the text we need
-        # ToDo: Complete this section
+        response = model_responses[0].text_annotations
+        output_dict = item_list[0]
         
         yield output_dict, response
 
@@ -116,9 +121,9 @@ class OutputFormatDoFn(beam.DoFn):
 
         if len(texts) > 0 :
 
-            # Set the pattern to recognize the license plate among the texts the model might find.
+            license_plate = [text.description for text in texts if text.description.isalnum() and not (text.description.isalpha() or text.description.isdigit())]
 
-            # ToDo: Complete this section
+            output_dict['license_plate'] = license_plate[0] if len(license_plate) > 0 else "not recognized"
             
             yield output_dict
 
@@ -127,18 +132,19 @@ class OutputFormatDoFn(beam.DoFn):
             output_dict['license_plate'] = "no texts found"
             yield output_dict
         
+
+# DoFn
+
 class getVehicleDoFn(beam.DoFn):
 
     def process(self, element):
 
         # Get vehicle_id from input payload
-        vehicle_id = element['vehicle_id']
-        yield vehicle_id, element
+        yield element['vehicle_id'], element
 
-# DoFn
 class avgSpeedDoFn(beam.DoFn):
 
-    def __init__(self, radar_id):
+    def __init__(self,radar_id):
 
         self.countFinedVehicles = Metrics.counter('main', 'Count of fined vehicles.')
         self.countNonFinedVehicles = Metrics.counter('main', 'Count of non-fined vehicles.')
@@ -146,10 +152,11 @@ class avgSpeedDoFn(beam.DoFn):
 
     def process(self, element):
 
+        import apache_beam as beam
+        
         key, payload = element
-        # Calculate the average speed per vehicle
-        speeds = [entry['speed'] for entry in payload]
-        avg_speed = sum(speeds) / len(speeds)
+
+        avg_speed = sum(e["speed"] for e in payload)/len(payload)
 
         output_dict = {
             "radar_id": self.radar_id,
@@ -158,37 +165,24 @@ class avgSpeedDoFn(beam.DoFn):
             "coordinates": payload[-1]['location']
         }
 
-        # Create two distinct PCollections, one for fined vehicles and another for those 
-        # that have not been fined, so we can process the data differently.
-
         if avg_speed > 40:
 
             output_dict['is_Ticketed'] = True
-            self.countFinedVehicles.inc()
 
-            # ToDo: Complete this section
+            #Metrics
+            # self.countFinedVehicles.inc()
+
+            yield beam.pvalue.TaggedOutput("fined_vehicles", output_dict)
         
         else:
 
             output_dict['is_Ticketed'] = False
             output_dict['license_plate'] = None
-            self.countNonFinedVehicles.inc()
 
-            # ToDo: Complete this section
+            #Metrics
+            # self.countNonFinedVehicles.inc()
 
-        yield output_dict
-
-# ...
-
-
-
-
-
-
-
-
-
-
+            yield beam.pvalue.TaggedOutput("non_fined_vehicles", output_dict)
 
 
 """ Dataflow Process """
@@ -210,7 +204,7 @@ def run():
     
     parser.add_argument(
                 '--output_topic',
-                required=True,
+                required=False,
                 help='PubSub Topic which will be the sink for our data.')
 
     parser.add_argument(
@@ -220,7 +214,8 @@ def run():
 
     parser.add_argument(
                 '--cars_api',
-                required=True,
+                required=False,
+                default='https://europe-west1-long-flame-410209.cloudfunctions.net/car-license-plates-api',
                 help="API for retrieving vehicle images.")
 
     args, pipeline_opts = parser.parse_known_args()
@@ -233,8 +228,6 @@ def run():
         save_main_session=True, streaming=True, project=args.project_id)
 
     # Pipeline
-
-     # Pipeline
 
     with beam.Pipeline(argv=pipeline_opts,options=options) as p:
 
@@ -252,26 +245,27 @@ def run():
             
             data 
                 | "Extract vehicle id data" >> beam.ParDo(getVehicleDoFn())
-                | "User-window based on each vehicle" >> beam.WindowInto(window.FixedWindows(10))
+                | "User-window based on each vehicle" >> beam.WindowInto(window.Sessions(15),timestamp_combiner=window.TimestampCombiner.OUTPUT_AT_EOW)
                 | "Group by ID" >> beam.GroupByKey()
-                | "Avg Speed" >> beam.ParDo(avgSpeedDoFn(args.radar_id))
+                | "Avg Speed" >> beam.ParDo(avgSpeedDoFn(radar_id=args.radar_id)).with_outputs('fined_vehicles', 'non_fined_vehicles')
         
         )
 
         (
-            processed_data
-                | "Capture Vehicle image" >> beam.Map(lambda x: getVehicleImage(x, args.cars_api))
+            processed_data.fined_vehicles
+                | "Capture Vehicle image" >> beam.Map(getVehicleImage, api_url=args.cars_api)
                 | "Model Inference" >> RunInference(model_handler=CloudVisionModelHandler())
                 | "Output Format" >> beam.ParDo(OutputFormatDoFn())
-                | "Encode fined_vehicles to Bytes" >> beam.Map(lambda x: json.dumps(x).encode('utf-8'))
+                | "Encode fined_vehicles to Bytes" >> beam.Map(lambda x: json.dumps(x).encode("utf-8"))
                 | "Write fined_vehicles to PubSub" >> beam.io.WriteToPubSub(topic=args.output_topic)
         )
 
         (
-            processed_data
-                | "Encode non_fined_vehicles to Bytes" >> beam.Map(lambda x: json.dumps(x).encode('utf-8'))
+            processed_data.non_fined_vehicles 
+                | "Encode non_fined_vehicles to Bytes" >> beam.Map(lambda x: json.dumps(x).encode("utf-8"))
                 | "Write non_fined_vehicles to PubSub" >> beam.io.WriteToPubSub(topic=args.output_topic)
         )
+        
 
 if __name__ == '__main__':
 

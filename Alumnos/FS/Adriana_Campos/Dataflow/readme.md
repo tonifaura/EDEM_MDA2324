@@ -23,7 +23,7 @@ Requisitos del caso
 
 
 ```
-generador.py \
+python generador.py \
     --project_id woven-justice-411714 \
     --topic_name camera \
     --initial_coordinates "37.7749,-122.4194"  \
@@ -31,18 +31,14 @@ generador.py \
 ```
 
 ```
-python EDEM_Dataflow_Streaming_Pipeline.py \
-    --project_id <PROJECT_ID> \
-    --input_subscription <YOUR_INPUT_PUBSUB_SUBSCRIPTION_NAME> \
-    --output_topic <YOUR_OUTPUT_PUBSUB_TOPIC_NAME> \
-    --radar_id <YOUR_RADAR_ID> \
-    --cars_api <API_URL> \
-    --runner DataflowRunner \
-    --job_name <YOUR_DATAFLOW_JOB> \
-    --region <YOUR_REGION_ID> \
-    --temp_location gs://<YOUR_BUCKET_NAME>/tmp \
-    --staging_location gs://<YOUR_BUCKET_NAME>/stg \
-    --requirements_file <YOUR_REQUIREMENTS_FILE>
+
+python Dataflow_Streaming_Pipeline.py \
+    --project_id woven-justice-411714  \
+    --input_subscription 'projects/woven-justice-411714/subscriptions/camera-sub' \
+    --output_topic 'projects/woven-justice-411714/topics/camara-output' \
+    --radar_id adriana \
+    --cars_api https://console.cloud.google.com/storage/browser/output-camara
+
 ```
 
 
