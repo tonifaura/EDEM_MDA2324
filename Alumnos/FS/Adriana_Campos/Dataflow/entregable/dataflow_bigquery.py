@@ -7,9 +7,9 @@ from datetime import datetime
 
 
 project_id = 'woven-justice-411714'
-topic_name= 'camara'
+topic_name= 'camara-output'
 table_name = "woven-justice-411714:ejemplo.camara"
-suscripcion ='projects/woven-justice-411714/subscriptions/camera-sub'
+suscripcion ='projects/woven-justice-411714/subscriptions/camara-output-sub'
 bucket_name='bucket-camara'
 
 # Recibe datos
@@ -32,15 +32,17 @@ class DecodeMessage(beam.DoFn):
     
 
 
-#{'vehicle_id': 'ggKTJj', 'speed': 28.460354735881825, 'latitude': 35.2931, 'longitude': -119.6356}
-    
+#{"radar_id": "adriana", "vehicle_id": "yaZ67o", "avg_speed": 32.665949301019054, "coordinates": [39.4699, -0.3763], "is_Ticketed": false, "license_plate": null}
+
 # Nueva definición del esquema para BigQuery
 new_table_schema_personas = bigquery.TableSchema()
 new_table_fields_personas = [
+    bigquery.TableFieldSchema(name='radar_id', type='STRING', mode='NULLABLE'),
     bigquery.TableFieldSchema(name='vehicle_id', type='STRING', mode='NULLABLE'),
     bigquery.TableFieldSchema(name='speed', type='FLOAT', mode='NULLABLE'),
-    bigquery.TableFieldSchema(name='latitude', type='FLOAT', mode='NULLABLE'),
-    bigquery.TableFieldSchema(name='longitude', type='FLOAT', mode='NULLABLE')
+    bigquery.TableFieldSchema(name='coordinates', type='STRING', mode='NULLABLE'),
+    bigquery.TableFieldSchema(name='is_Ticketed', type='BOOLEAN', mode='NULLABLE'),
+    bigquery.TableFieldSchema(name='license_plate', type='STRING', mode='NULLABLE'),
 ]
 new_table_schema_personas.fields.extend(new_table_fields_personas)
 
@@ -48,7 +50,7 @@ options = PipelineOptions(
     streaming=True,
     runner='DataflowRunner',
     project=project_id,
-    region='europe-west1',
+    region='europe-west4',
     temp_location=f"gs://{bucket_name}/tmp",
     staging_location=f"gs://{bucket_name}/staging",
     enable_streaming_engine=True
@@ -66,4 +68,5 @@ with beam.Pipeline(options=options) as p:
             create_disposition=beam.io.BigQueryDisposition.CREATE_NEVER,
             write_disposition=beam.io.BigQueryDisposition.WRITE_APPEND
         )
+    #data | "Print Result" >> beam.Map(print)
     )

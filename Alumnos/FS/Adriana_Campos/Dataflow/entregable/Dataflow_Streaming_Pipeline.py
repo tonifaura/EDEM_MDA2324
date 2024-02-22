@@ -53,7 +53,7 @@ def ParsePubSubMessage(message):
     # Convert string decoded in JSON format
     msg = json.loads(pubsub_message)
 
-    logging.info("New message in PubSub: %s", msg)
+    #logging.info("New message in PubSub: %s", msg)
 
     # Return function
     return msg
@@ -238,6 +238,7 @@ def run():
                 | "Read From PubSub" >> beam.io.ReadFromPubSub(subscription=args.input_subscription)
                 | "Parse JSON messages" >> beam.Map(ParsePubSubMessage)
         )
+        #data | "Print Result" >> beam.Map(print)
 
         """ Part 02: Get the aggregated data of the vehicle within the section. """
 
@@ -258,6 +259,7 @@ def run():
                 | "Output Format" >> beam.ParDo(OutputFormatDoFn())
                 | "Encode fined_vehicles to Bytes" >> beam.Map(lambda x: json.dumps(x).encode("utf-8"))
                 | "Write fined_vehicles to PubSub" >> beam.io.WriteToPubSub(topic=args.output_topic)
+                | "Print Last fined_vehicles" >> beam.Map(print)  # Imprimir el último fined_vehicles
         )
 
         (
