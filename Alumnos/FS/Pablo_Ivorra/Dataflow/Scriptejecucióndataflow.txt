@@ -1,0 +1,7 @@
+python3 Dataflow.py \
+    --project_id jbg-edem \
+    --input_subscription projects/jbg-edem/subscriptions/newyorktaxi-sub \
+    --output_topic projects/jbg-edem/topics/newyorktaxi \
+    --radar_id 2 \
+    --cars_api https://europe-west1-long-flame-410209.cloudfunctions.net/car-license-plates-api
+    --runner DataflowRunner
