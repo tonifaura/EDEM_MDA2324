@@ -22,24 +22,30 @@ import string
 import json
 import time
 
+
+#project_id = 'woven-justice-411714'
+#topic_name = 'camara-multas'
+#initial_coordinates= "39.4699,-0.3763" 
+#final_coordinates = "39.4699,-0.3763"
+
 #Input arguments
 parser = argparse.ArgumentParser(description=('Vehicle Data Generator'))
 
 parser.add_argument(
                 '--project_id',
-                required=True,
+                default='woven-justice-411714',
                 help='GCP cloud project name.')
 parser.add_argument(
                 '--topic_name',
-                required=True,
+                default='camara-multas',
                 help='PubSub topic name.')
 parser.add_argument(
                 '--initial_coordinates',
-                required=True,
+                default='39.4699,-0.3763', 
                 help='Coordinates for the initial point of the section.')
 parser.add_argument(
                 '--final_coordinates',
-                required=True,
+                default='39.4699,-0.3763',
                 help='Coordinates for the final point of the section.')
 
 args, opts = parser.parse_known_args()

@@ -21,13 +21,20 @@ Requisitos del caso
 
 # Generador 
 
+```
+python generator.py \
+    --project_id <PROJECT_ID> \
+    --topic_name <INPUT_PUBSUB_TOPIC_ID> \
+    --initial_coordinates <COORDINATES_INITIAL_POINT> \
+    --final_coordinates <COORDINATES_FINAL_POINT>
+```
 
 ```
-python generador_BQ.py \
+python generador.py \
     --project_id woven-justice-411714 \
-    --topic_name camera \
-    --initial_coordinates "37.7749,-122.4194"  \
-    --final_coordinates "34.0522,-118.2437"
+    --topic_name camara-multas \
+    --initial_coordinates "39.4699,-0.3763" \
+    --final_coordinates "39.4699,-0.3763"
 ```
 
 ```
