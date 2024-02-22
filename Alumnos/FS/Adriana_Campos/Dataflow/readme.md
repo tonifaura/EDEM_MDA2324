@@ -23,7 +23,7 @@ Requisitos del caso
 
 
 ```
-python generador.py \
+python generador_BQ.py \
     --project_id woven-justice-411714 \
     --topic_name camera \
     --initial_coordinates "37.7749,-122.4194"  \
