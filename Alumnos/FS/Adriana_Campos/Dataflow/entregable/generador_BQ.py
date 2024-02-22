@@ -1,4 +1,13 @@
+
+
 """ 
+
+python generador.py \
+    --project_id woven-justice-411714 \
+    --topic_name camera \
+    --initial_coordinates "37.7749,-122.4194"  \
+    --final_coordinates "34.0522,-118.2437"
+
 Script: Vehicle Data Generator
 
 Description: The generator will publish new records simulating 
@@ -10,8 +19,6 @@ Professor: Javi Briones
 
 """ Import libraries """
 
-
-
 from google.cloud import pubsub_v1
 import threading
 import argparse
@@ -22,6 +29,8 @@ import string
 import json
 import time
 
+
+    
 #Input arguments
 parser = argparse.ArgumentParser(description=('Vehicle Data Generator'))
 
@@ -129,6 +138,7 @@ def getVehicleLocation(i_coord: tuple, f_coord: tuple, points: int):
 
     return coordinates
 
+# ...
 
 def vehicleData(project_id: str, topic_name: str, i_coord: tuple, f_coord: tuple):
 
@@ -148,24 +158,28 @@ def vehicleData(project_id: str, topic_name: str, i_coord: tuple, f_coord: tuple
     # Simulate Vehicle ID
     vehicle_ids: str = getVehicleId()
 
-    # Get Vehicle Location
+    # Get Vehicle Location
     coordinates: list = getVehicleLocation(
-        i_coord=i_coord,f_coord=f_coord, points=10)
+        i_coord=i_coord, f_coord=f_coord, points=10)
 
     # Vehicle Payload
     try:
 
-        for id in vehicle_ids: 
+        for id in vehicle_ids:
 
             for item in coordinates:
 
                 # Capture Vehicle Speed for each point
                 speed: int = getVehicleSpeed()
 
+                # Separate latitude and longitude
+                latitude, longitude = item
+
                 vehicle_payload = {
                     "vehicle_id": id,
                     "speed": speed,
-                    "location": item
+                    "latitude": latitude,
+                    "longitude": longitude
                 }
 
                 print(vehicle_payload)
@@ -174,6 +188,13 @@ def vehicleData(project_id: str, topic_name: str, i_coord: tuple, f_coord: tuple
 
     except Exception as err:
         logging.error("Error while inserting data into the PubSub Topic: %s", err)
+
+# ...
+
+
+
+
+
 
 
 def run_generator(project_id: str, topic_name: str, i_coord: tuple, f_coord:tuple):
