@@ -1,42 +1,38 @@
+import time
 from json import dumps
 from confluent_kafka import Producer
-import time
+import re
 
+# Configuración del productor
+config = {
+    'bootstrap.servers': 'localhost:9092',  # Cambia esto con la dirección de tu servidor Kafka
+    'client.id': 'python-producer'
+}
 
+# Crear un productor
+producer = Producer(config)
 
-def read_ccloud_config(config_file):
-    conf = {}
-    with open(config_file) as fh:
-        for line in fh:
-            line = line.strip()
-            if len(line) != 0 and line[0] != "#":
-                parameter, value = line.strip().split('=', 1)
-                conf[parameter] = value.strip()
-    return conf
-
-
-
-producer = Producer(read_ccloud_config("postwork.properties"))
-
-
-# Send 100 messages where the key is the index and the message to send is "test message - index"
-# the topic name is myTopic
 
 topic_kafka = 'topic_postwork'
 
-for e in range(100):
-    data = {'New message - ': e*4}
-    data_str = dumps(data)  # Serialize dictionary to a string
-    data_bytes = data_str.encode('utf-8')  # Encode string to bytes
-    key = str(e).encode('utf-8')
-    producer.produce(topic=topic_kafka, value=data_bytes, key=key)  # Send bytes
-    print("Sending data: {} to topic {}".format(data, topic_kafka))
-    time.sleep(3)
+file1 = open('/Users/balmagostr/Documents/GitHub/EDEM_MDA2324/Alumnos/ES/BALMA_AGOST/KAFKA/libro.txt', encoding="utf8")
 
-# After your loop where you send messages:
-producer.flush()
+Lines = file1.readlines()
+ 
+count = 0
+# Strips the newline character
+for line in Lines:
+    time.sleep(1)
+    print( line.strip() + "\n")
+    words = re.findall(r"[\w']+|[.,!?;]", line)
+    for word in words:
+        data_bytes = word  # Encode string to bytes
+        key = str(count)
+        producer.produce(topic=topic_kafka, value=data_bytes, key=key)  # Send bytes
+        # After your loop where you send messages:
+        producer.flush()
+      
 
 # Optionally, you can check if there are any messages that failed to be delivered:
 if producer.flush() != 0:
     print("Some messages failed to be delivered")
-

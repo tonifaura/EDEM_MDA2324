@@ -1,5 +1,6 @@
 from kafka import KafkaConsumer
 from json import loads
+import time
 
 from confluent_kafka import Consumer
 
@@ -24,6 +25,7 @@ consumer.subscribe(["topic_postwork"])
 
 try:
     while True:
+        time.sleep(4)  
         msg = consumer.poll(1.0)
         if msg is not None and msg.error() is None:
             print("key = {key:12} value = {value:12}".format(key=msg.key().decode('utf-8'), value=msg.value().decode('utf-8')))
