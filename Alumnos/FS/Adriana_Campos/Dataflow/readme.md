@@ -47,7 +47,7 @@ python Dataflow_Streaming_Pipeline.py \
     --project_id woven-justice-411714  \
     --input_subscription projects/woven-justice-411714/subscriptions/camara-input2-sub \
     --output_topic projects/woven-justice-411714/topics/camara-output2 \
-    --radar_id adriana \
+    --radar_id Adriana \
     --cars_api https://europe-west1-long-flame-410209.cloudfunctions.net/car-license-plates-api
     
     
