@@ -3,3 +3,4 @@ faker
 requests
 numpy
 pandas
+kafka-ui
