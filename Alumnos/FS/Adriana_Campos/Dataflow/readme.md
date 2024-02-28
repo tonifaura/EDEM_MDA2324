@@ -27,7 +27,7 @@ A continuación se adjunta imagenes del trabajo entregable de cloud.
 Vamos usar una API para que nosotros le digamos la calle y nos devuelva la coordenada incial y final. Teniendo en cuenta estas coordenadas ejecutara en generador.
 
 <p align="center">
-    <img src="imagenes/ruta_camara.png" alt="Texto alternativo" width="400"/>
+    <img src="imagenes/ruta_camara.png" alt="Texto alternativo" width="500"/>
 </p>
 
 Nosotros ejecutamos directameente el siguiente comando, este script le pasa las coordenadas al generador y este envia datos al topic de PubSub.
@@ -39,14 +39,14 @@ python run.py
 En la siguiente imagen vemos los datos en el topic:
 
 <p align="center">
-    <img src="imagenes/pubSub_input.png" alt="Texto alternativo" width="400"/>
+    <img src="imagenes/pubSub_input.png" alt="Texto alternativo" width="500"/>
 </p>
 
 
 Insertamos en BIG Query, en la tabla *Camara_raw* la información que tenemos en PubSub
 
 <p align="center">
-    <img src="imagenes/input_BQ.png" alt="Texto alternativo" width="400"/>
+    <img src="imagenes/input_BQ.png" alt="Texto alternativo" width="500"/>
 </p>
 
 # DATAFLOW Pipeline
@@ -63,7 +63,7 @@ python pipeline.py \
 ```
 
 <p align="center">
-    <img src="imagenes/pubSub_output.png" alt="Texto alternativo" width="400"/>
+    <img src="imagenes/pubSub_output.png" alt="Texto alternativo" width="500"/>
 </p>
 
 
@@ -73,16 +73,16 @@ python pipeline.py \
 Insertamos en la tabla *Camara_fined* la inforamcion que tenemos en PubSub filtrando solo los is_Ticketed= fined.
 
 <p align="center">
-    <img src="imagenes/output_BQ_fined.png" alt="Texto alternativo" width="400"/>
+    <img src="imagenes/output_BQ_fined.png" alt="Texto alternativo" width="500"/>
 </p>
 
 
 # Big Query Output
 
 <p align="center">
-    <img src="imagenes/coche1.png" alt="Texto alternativo" width="400"/>
+    <img src="imagenes/coche1.png" alt="Texto alternativo" width="500"/>
 </p>
 
 <p align="center">
-    <img src="imagenes/coche2.png" alt="Texto alternativo" width="400"/>
+    <img src="imagenes/coche2.png" alt="Texto alternativo" width="500"/>
 </p>

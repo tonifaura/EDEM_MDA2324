@@ -16,7 +16,7 @@ def obtener_coordenadas(direccion):
 
 # Direcciones que deseas geocodificar
 initial_coordinates = 'Avinguda de Vicent Andrés Estellés 94, 46100 Burjassot, Valencia, Spain'
-final_coordinates = 'Benimàmet, Valencia, Spain'
+final_coordinates = 'Poliesportiu de Burjassot, Valencia, Spain'
 
 
 # Obtiene las coordenadas iniciales y finales
