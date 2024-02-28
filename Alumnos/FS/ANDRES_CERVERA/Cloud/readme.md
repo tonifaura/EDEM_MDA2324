@@ -9,5 +9,7 @@ Como lo estamos haciendo sobre el mismo proyecto, no hace falta otorgar permisos
 6. Creamos la cloud function con las variables de entorno y secretos correspondientes (function-1)
 7. Ahora con la función creada en cloud run, desplegamos una nueva revisión y le agregamos la instancia ya creada de postgres.
 8. Navegamos hasta el dockerfile desde la shell y ejecutamos la imagen docker. Luego cambiamos el tag y la desplegamos.
-9. Creamos el nuevo servicio en Cloud Run asociado a esa imagen
-10. Abrimos la URL y visualizamos Grafana
+9. Creamos el nuevo servicio en Cloud Run asociado a esa imagen.
+10. Lanzamos el generador y cargamos la base de datos postgres.
+11. Abrimos la URL de la imagen Grafana y visualizamos la interfaz. 
+12. Nos conectamos a la BD y generamos dashboards con los datos de la BD (añadir /cloudsql/ delante del nombre de la conexión)
