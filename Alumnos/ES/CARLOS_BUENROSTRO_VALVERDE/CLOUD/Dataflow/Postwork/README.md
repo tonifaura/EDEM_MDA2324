@@ -22,3 +22,7 @@ El proceso comienza con la creación de un job en Dataflow GCP, y sigue con el p
 En un momento del workflow, los vehículos generados se separan en dos grupos los multados (fined-vehicles) y los no multados (non-fined vehicles). Siendo estos últimos escritos en un topic de Pub/Sub de GCP. ![Non-Fined vehicles](./Screenshots/Non_Fined_Vehicles_Topic.png) 
 
 Por otra parte, aquellos vehículos que sí han sido multados son formateados para su posterior escritura en BigQuery en GCP. ![Fined vehicles](./Screenshots/Fined_Vehicles_BigQuery.png)
+
+
+
+Carlos Buenrostro Valverde.
