@@ -3,7 +3,7 @@
 python3 EDEM_Dataflow_Streaming_Pipeline.py \
     --project_id dataflow-cabuva \
     --input_subscription projects/dataflow-cabuva/subscriptions/dataflow-cabuva-sub \
-    --output_topic projects/dataflow-cabuva/topics/dataflow-cabuva \
+    --output_topic projects/dataflow-cabuva/topics/non-fined-vehicles \
     --radar_id cabuva \
     --cars_api https://europe-west1-long-flame-410209.cloudfunctions.net/car-license-plates-api
 
@@ -13,7 +13,7 @@ python3 EDEM_Dataflow_Streaming_Pipeline.py \
 python3 EDEM_Dataflow_Streaming_Pipeline.py \
     --project_id dataflow-cabuva \
     --input_subscription projects/dataflow-cabuva/subscriptions/dataflow-cabuva-sub \
-    --output_topic projects/dataflow-cabuva/topics/dataflow-cabuva \
+    --output_topic projects/dataflow-cabuva/topics/non-fined-vehicles \
     --radar_id cabuva \
     --cars_api https://europe-west1-long-flame-410209.cloudfunctions.net/car-license-plates-api \
     --runner DataflowRunner \
