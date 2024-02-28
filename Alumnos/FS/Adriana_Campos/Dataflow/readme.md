@@ -4,7 +4,6 @@ A continuación se adjunta imagenes del trabajo entregable de cloud.
 
 # Caso de uso
 
-El Ayuntamiento de Nueva York, del que formamos parte de su equipo de Datos, ha identificado un aumento significativo en el número de accidentes de tráfico en el distrito de Manhattan debido a la velocidad de los vehículos. Para abordar esta cuestión, se ha decidido implementar cámaras dotadas de Inteligencia Artificial para monitorizar la velocidad de los vehículos en tramos concretos.
 
 *Retos empresariales*
   
@@ -20,39 +19,70 @@ El Ayuntamiento de Nueva York, del que formamos parte de su equipo de Datos, ha 
 
 - El mensaje de notificación de multas ahora debería incluir la URL del Google Cloud Storage Bucket donde se almacena la imagen del vehículo , para verificar que el modelo ha capturado correctamente el texto de la matrícula. [Tarea (opcional)] .
 
-# Indicaciones
-
+# Arquitectura
 
 
 # Generador 
 
+Vamos usar una API para que nosotros le digamos la calle y nos devuelva la coordenada incial y final. Teniendo en cuenta estas coordenadas ejecutara en generador.
 
-Para ejecutar el generador escribimos por consola el siguiente código:
+<p align="center">
+    <img src="imagenes/ruta_camara.png" alt="Texto alternativo" width="400"/>
+</p>
+
+Nosotros ejecutamos directameente el siguiente comando, este script le pasa las coordenadas al generador y este envia datos al topic de PubSub.
 
 ```
-python generador.py \
-    --project_id woven-justice-411714  \
-    --topic_name camara-input2 \
-    --initial_coordinates "39.4699,-0.3763" \
-    --final_coordinates "39.4699,-0.3763"
+python run.py
 ```
 
+En la siguiente imagen vemos los datos en el topic:
+
+<p align="center">
+    <img src="imagenes/pubSub_input.png" alt="Texto alternativo" width="400"/>
+</p>
+
+
+Insertamos en BIG Query, en la tabla *Camara_raw* la información que tenemos en PubSub
+
+<p align="center">
+    <img src="imagenes/input_BQ.png" alt="Texto alternativo" width="400"/>
+</p>
 
 # DATAFLOW Pipeline
 
 Para ejecutar el dataflow escribimos por consola el siguiente código:
 
 ```
-python Dataflow_Streaming_Pipeline.py \
+python pipeline.py \
     --project_id woven-justice-411714  \
     --input_subscription projects/woven-justice-411714/subscriptions/camara-input2-sub \
-    --output_topic projects/woven-justice-411714/topics/camara-output2 \
-    --radar_id Adriana \
+    --output_topic projects/woven-justice-411714/topics/camara-fined-out \
+    --radar_id AdrianaC \
     --cars_api https://europe-west1-long-flame-410209.cloudfunctions.net/car-license-plates-api
-    
-    
 ```
 
-# Big Query
+<p align="center">
+    <img src="imagenes/pubSub_output.png" alt="Texto alternativo" width="400"/>
+</p>
 
-Insertamos en la tabla *Camara* la inforamcion que tenemos en PubSub
+
+
+
+
+Insertamos en la tabla *Camara_fined* la inforamcion que tenemos en PubSub filtrando solo los is_Ticketed= fined.
+
+<p align="center">
+    <img src="imagenes/output_BQ_fined.png" alt="Texto alternativo" width="400"/>
+</p>
+
+
+# Big Query Output
+
+<p align="center">
+    <img src="imagenes/coche1.png" alt="Texto alternativo" width="400"/>
+</p>
+
+<p align="center">
+    <img src="imagenes/coche2.png" alt="Texto alternativo" width="400"/>
+</p>
