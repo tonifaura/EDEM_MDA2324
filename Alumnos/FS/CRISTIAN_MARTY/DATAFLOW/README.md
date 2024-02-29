@@ -20,6 +20,11 @@
 ![Texto alternativo](img/output_camera_pubsub.png)
 
 
+## 4 -Output / Biguery
+
+![Texto alternativo](img/bigquerydata.png)
+
+
 ## 5 -Almacenamiento /Vehiculos Multados
 ![Texto alternativo](img/vehicles_storage.png)
 ![Texto alternativo](img/vehicle_storage_2.png)
