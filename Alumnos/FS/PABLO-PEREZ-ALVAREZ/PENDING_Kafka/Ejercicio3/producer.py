@@ -25,8 +25,8 @@ producer = Producer(read_ccloud_config("client.properties"))
 topic_kafka = 'topic_python'
 
 for e in range(100):
-    data = {'New message - ': e*4}
-    data_str = dumps(data)  # Serialize dictionary to a string
+    data = {'name': 'John', 'age': 26 + e}
+    data_str = dumps(data)  # Serialize dictionary to a JSON string
     data_bytes = data_str.encode('utf-8')  # Encode string to bytes
     key = str(e).encode('utf-8')
     producer.produce(topic=topic_kafka, value=data_bytes, key=key)  # Send bytes

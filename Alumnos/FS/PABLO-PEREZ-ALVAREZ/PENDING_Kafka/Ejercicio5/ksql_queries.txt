@@ -1,0 +1,20 @@
+
+SELECT palabra
+FROM palabras_stream
+WHERE word LIKE '%go'
+
+CREATE TABLE mi_ktable AS
+SELECT palabra,
+count(*)
+FROM palabras_stream
+GROUP BY palabra
+EMIT CHANGES;
+
+# Exercise 5.1.
+SELECT palabra
+FROM palabras_stream
+WHERE word LIKE 'ca%o' AND LENGTH(word) > 6;
+
+#Exercise 5.2.
+SELECT UCASE(palabra) as Mayusculas
+FROM palabras_stream;
