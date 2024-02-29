@@ -113,18 +113,18 @@ class CloudVisionModelHandler(ModelHandler):
 
         response = model_responses[0].text_annotations
         output_dict = item_list[0]
+
+        license_plate = [text.description for text in response if text.description.isalnum() and not (text.description.isalpha() or text.description.isdigit())]
         
-        yield output_dict, response
+        yield output_dict, license_plate
 
 class OutputFormatDoFn(beam.DoFn):
 
     def process(self, element):
 
-        output_dict, texts = element
+        output_dict, license_plate = element
 
-        if len(texts) > 0 :
-
-            license_plate = [text.description for text in texts if text.description.isalnum() and not (text.description.isalpha() or text.description.isdigit())]
+        if len(license_plate) > 0 :
 
             output_dict['license_plate'] = license_plate[0] if len(license_plate) > 0 else ""
             
@@ -263,7 +263,7 @@ def run():
                 | "Write to BigQuery" >> beam.io.WriteToBigQuery(
                     table = f"{project_id}:{dataset}.{table_name}", # Required Format: PROJECT_ID:DATASET.TABLE
                     schema = 'radar_id:STRING,vehicle_id:STRING,avg_speed:FLOAT,coordinates:STRING,is_Ticketed:BOOLEAN,license_plate:STRING,image_url:STRING', # Required Format: field:TYPE
-                    create_disposition=beam.io.BigQueryDisposition.CREATE_IF_NEEDED,
+                    create_disposition=beam.io.BigQueryDisposition.CREATE_NEVER,
                     write_disposition=beam.io.BigQueryDisposition.WRITE_APPEND
             )
         )
