@@ -245,6 +245,19 @@ def run():
 
         (
             processed_data.non_fined_vehicles 
+                | "Capture Vehicle image non_fined" >> beam.Map(getVehicleImage, api_url=args.cars_api)
+                | "Model Inference non_fined" >> RunInference(model_handler=CloudVisionModelHandler())
+                | "Output Format non_fined" >> beam.ParDo(OutputFormatDoFn())
+                | "Write to BigQuery non_fined" >> beam.io.WriteToBigQuery(
+                    table = "woven-justice-411714:ejemplo.camara_non_fined",
+                    schema = 'radar_id:STRING,vehicle_id:STRING,avg_speed:FLOAT,coordinates:STRING,is_Ticketed:BOOLEAN,license_plate:STRING,image_url:STRING',
+                    create_disposition=beam.io.BigQueryDisposition.CREATE_IF_NEEDED,
+                    write_disposition=beam.io.BigQueryDisposition.WRITE_APPEND
+            )
+        )
+
+        (
+            processed_data.non_fined_vehicles 
                 | "Encode non_fined_vehicles to Bytes" >> beam.Map(lambda x: json.dumps(x).encode("utf-8"))
                 | "Write non_fined_vehicles to PubSub" >> beam.io.WriteToPubSub(topic=args.output_topic)
         )

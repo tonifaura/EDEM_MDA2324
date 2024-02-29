@@ -21,6 +21,9 @@ A continuación se adjunta imagenes del trabajo entregable de cloud.
 
 # Arquitectura
 
+<p align="center">
+    <img src="imagenes/arquitectura.png" alt="Texto alternativo" width="500"/>
+</p>
 
 # Generador 
 
@@ -30,7 +33,7 @@ Vamos usar una API para que nosotros le digamos la calle y nos devuelva la coord
     <img src="imagenes/ruta_camara.png" alt="Texto alternativo" width="500"/>
 </p>
 
-Nosotros ejecutamos directameente el siguiente comando, este script le pasa las coordenadas al generador y este envia datos al topic de PubSub.
+Ejecutamos directamente el siguiente comando, este script le pasa las coordenadas al generador y este envia datos al topic de PubSub.
 
 ```
 python run.py
@@ -43,18 +46,18 @@ En la siguiente imagen vemos los datos en el topic:
 </p>
 
 
-Insertamos en BIG Query, en la tabla *Camara_raw* la información que tenemos en PubSub
+Insertamos en BIG Query, en la tabla *Camara_raw* la información que tenemos en PubSub:
 
 <p align="center">
     <img src="imagenes/input_BQ.png" alt="Texto alternativo" width="500"/>
 </p>
 
-# DATAFLOW Pipeline
+# Dataflow fined and not fined
 
 Para ejecutar el dataflow escribimos por consola el siguiente código:
 
 ```
-python pipeline.py \
+python Pipeline.py \
     --project_id woven-justice-411714  \
     --input_subscription projects/woven-justice-411714/subscriptions/camara-input2-sub \
     --output_topic projects/woven-justice-411714/topics/camara-fined-out \
@@ -70,14 +73,22 @@ python pipeline.py \
 
 
 
-Insertamos en la tabla *Camara_fined* la inforamcion que tenemos en PubSub filtrando solo los is_Ticketed= fined.
+Insertamos en la tabla *Camara_fined* la información que tenemos en PubSub filtrando solo los fined.
 
 <p align="center">
     <img src="imagenes/output_BQ_fined.png" alt="Texto alternativo" width="500"/>
 </p>
 
+Insertamos en la tabla *Camara_non_fined* la inforamcion que tenemos en PubSub filtrando solo los non fined.
+
+<p align="center">
+    <img src="imagenes/table_non_fined.png" alt="Texto alternativo" width="500"/>
+</p>
+
 
 # Big Query Output
+
+En la columna image_url podemos ver la imagen del coche.
 
 <p align="center">
     <img src="imagenes/coche1.png" alt="Texto alternativo" width="500"/>
