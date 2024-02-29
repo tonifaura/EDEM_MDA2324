@@ -1,21 +1,3 @@
-""" 
-Script: Dataflow Streaming Pipeline
-
-Description: This script will be responsible for processing 
-messages ingested by our messaging queue from the device and:
-
-    1. Calculate the average speed per vehicle in the section.
-
-    2. Invoke the Vision AI model if the speed exceeds the allowed limit in the section.
-
-    3. Finally, all the information will be sent to another topic for further analysis.
-
-EDEM. Master Data Analytics 2024
-Professor: Javi Briones
-"""
-
-""" Import libraries """
-
 # Import Beam Libraries
 
 import apache_beam as beam
@@ -41,7 +23,8 @@ import re
 import io
 
 beam.options.pipeline_options.PipelineOptions.allow_non_parallel_instruction_output = True
-DataflowRunner.__test__ = False
+DataflowRunner._test_ = False
+
 
 """ Helpful functions """
 def ParsePubSubMessage(message):
@@ -77,6 +60,12 @@ def getVehicleImage(item,api_url):
 
     return item, image_bytes   
 
+def format_coordinates(element):
+    if 'coordinates' in element and isinstance(element['coordinates'], (list, tuple) ) and len(element['coordinates']) == 2:
+        longitude, latitude = element['coordinates']
+        element['coordinates'] = f'POINT({longitude} {latitude})'
+    return element
+
 class CloudVisionModelHandler(ModelHandler):
 
     def load_model(self):
@@ -109,26 +98,26 @@ class CloudVisionModelHandler(ModelHandler):
 
         response = model_responses[0].text_annotations
         output_dict = item_list[0]
+
+        license_plate = [text.description for text in response if text.description.isalnum() and not (text.description.isalpha() or text.description.isdigit())]
         
-        yield output_dict, response
+        yield output_dict, license_plate
 
 class OutputFormatDoFn(beam.DoFn):
 
     def process(self, element):
 
-        output_dict, texts = element
+        output_dict, license_plate = element
 
-        if len(texts) > 0 :
+        if len(license_plate) > 0 :
 
-            license_plate = [text.description for text in texts if text.description.isalnum() and not (text.description.isalpha() or text.description.isdigit())]
-
-            output_dict['license_plate'] = license_plate[0] if len(license_plate) > 0 else ""
+            output_dict['license_plate'] = license_plate[0] if len(license_plate) > 0 else "not recognized"
             
             yield output_dict
 
         else:
 
-            output_dict['license_plate'] = ""
+            output_dict['license_plate'] = "no texts found"
             yield output_dict
         
 
@@ -143,7 +132,7 @@ class getVehicleDoFn(beam.DoFn):
 
 class avgSpeedDoFn(beam.DoFn):
 
-    def __init__(self,radar_id):
+    def _init_(self,radar_id):
 
         self.countFinedVehicles = Metrics.counter('main', 'Count of fined vehicles.')
         self.countNonFinedVehicles = Metrics.counter('main', 'Count of non-fined vehicles.')
@@ -161,7 +150,7 @@ class avgSpeedDoFn(beam.DoFn):
             "radar_id": self.radar_id,
             "vehicle_id": key,
             "avg_speed": avg_speed,
-            "coordinates": str(payload[-1]['location'])
+            "coordinates": payload[-1]['location']
         }
 
         if avg_speed > 40:
@@ -177,7 +166,6 @@ class avgSpeedDoFn(beam.DoFn):
 
             output_dict['is_Ticketed'] = False
             output_dict['license_plate'] = None
-            output_dict['image_url'] = None
 
             #Metrics
             # self.countNonFinedVehicles.inc()
@@ -256,12 +244,13 @@ def run():
                 | "Capture Vehicle image" >> beam.Map(getVehicleImage, api_url=args.cars_api)
                 | "Model Inference" >> RunInference(model_handler=CloudVisionModelHandler())
                 | "Output Format" >> beam.ParDo(OutputFormatDoFn())
+                | "Format Coordinates" >> beam.Map(format_coordinates)           
                 | "Write to BigQuery" >> beam.io.WriteToBigQuery(
                     table = "dataflow24177:dataflowdatos.dataflowtabla", # Required Format: PROJECT_ID:DATASET.TABLE
-                    schema = 'radar_id:STRING,vehicle_id:STRING,avg_speed:FLOAT,coordinates:STRING,is_Ticketed:BOOLEAN,license_plate:STRING,image_url:STRING', # Required Format: field:TYPE
+                    schema='radar_id:STRING,vehicle_id:STRING,avg_speed:FLOAT,coordinates:STRING,is_Ticketed:BOOLEAN,image_url:STRING,license_plate:STRING',  # Required Format: field:TYPE
                     create_disposition=beam.io.BigQueryDisposition.CREATE_NEVER,
                     write_disposition=beam.io.BigQueryDisposition.WRITE_APPEND
-            )
+                )
         )
 
         (
@@ -271,7 +260,7 @@ def run():
         )
         
 
-if __name__ == '__main__':
+if _name_ == '_main_':
 
     # Set Logs
     logging.getLogger().setLevel(logging.INFO)
