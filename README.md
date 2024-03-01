@@ -287,7 +287,7 @@ Entregas Fin de Semana
 <td bgcolor='#dee2d0'>❌</td>
 <td bgcolor='#dee2d0'>❌</td>
 <td bgcolor='#dee2d0'>✅</td>
-<td bgcolor='#a5cbaa'>❌</td>
+<td bgcolor='#a5cbaa'>✅</td>
 <td bgcolor='#a5cbaa'>✅</td>
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#9bc99e'>❌</td>
