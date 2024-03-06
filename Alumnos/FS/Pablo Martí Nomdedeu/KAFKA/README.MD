@@ -6,4 +6,4 @@ Esto es lo que he hecho:
     3. Lo he producido a traves de mi producer.py 
     4. He leído todo lo que había producido en el producer en una terminal con este código: docker-compose exec kafka kafka-console-consumer --topic ALQUIMISTA --from-beginning --bootstrap-server localhost:9092    
     5. He abierto Ksql. 
-    6. Por último, he realizado algunas querys (hay capturas de pantalla).
+    6. Por último, he realizado algunas queryS. Tienes capturas de pantalla.
