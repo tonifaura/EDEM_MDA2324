@@ -39,10 +39,13 @@ Implementar cámaras equipadas con Inteligencia Artificial para monitorear la ve
         Coordenada_fin: 40.7431° N, 73.9824° W
 
 Lanzamos el generador con esa ruta y comprobamos que se vayan generando rutas de coches en esa calle en el topic de pre-procesado.
-![alt text](image.png)
-
-![alt text](image.png)
-
 Se ha añadido un fragmento de código al generador para que de manera simultánea inserte los datos del pub-sub en una tabla de bigquery llamada pre-procesado.
 
-##
+![alt text](image.png)
+
+![alt text](image.png)
+
+![alt text](image.png)
+
+## DATAFLOW
+
