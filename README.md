@@ -127,7 +127,7 @@ Entregas Fin de Semana
 <td bgcolor='#9bc99e'>✅</td>
 <td bgcolor='#9bc99e'>✅</td>
 <td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
 <td bgcolor='#779777'>✅</td>
 </tr>
 <tr>
@@ -141,7 +141,7 @@ Entregas Fin de Semana
 <td bgcolor='#a5cbaa'>✅</td>
 <td bgcolor='#9bc99e'>✅</td>
 <td bgcolor='#9bc99e'>✅</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
 <td bgcolor='#779777'>✅</td>
 <td bgcolor='#779777'>✅</td>
 </tr>
@@ -153,11 +153,11 @@ Entregas Fin de Semana
 <td bgcolor='#dee2d0'>✅</td>
 <td bgcolor='#dee2d0'>✅</td>
 <td bgcolor='#a5cbaa'>✅</td>
-<td bgcolor='#a5cbaa'>❌</td>
+<td bgcolor='#a5cbaa'>✅</td>
 <td bgcolor='#9bc99e'>❌</td>
-<td bgcolor='#9bc99e'>❌</td>
+<td bgcolor='#9bc99e'>✅</td>
 <td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
 <td bgcolor='#779777'>✅</td>
 </tr>
 <tr>
@@ -171,9 +171,9 @@ Entregas Fin de Semana
 <td bgcolor='#a5cbaa'>✅</td>
 <td bgcolor='#9bc99e'>✅</td>
 <td bgcolor='#9bc99e'>✅</td>
-<td bgcolor='#779777'>❌</td>
 <td bgcolor='#779777'>✅</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
+<td bgcolor='#779777'>✅</td>
 </tr>
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/FS/ELOY-MARTINEZ-GOMEZ'>Eloy-martinez-gomez</a></td>
@@ -183,7 +183,7 @@ Entregas Fin de Semana
 <td bgcolor='#dee2d0'>✅</td>
 <td bgcolor='#dee2d0'>✅</td>
 <td bgcolor='#a5cbaa'>✅</td>
-<td bgcolor='#a5cbaa'>❌</td>
+<td bgcolor='#a5cbaa'>✅</td>
 <td bgcolor='#9bc99e'>✅</td>
 <td bgcolor='#9bc99e'>✅</td>
 <td bgcolor='#779777'>❌</td>
@@ -215,24 +215,24 @@ Entregas Fin de Semana
 <td bgcolor='#a5cbaa'>✅</td>
 <td bgcolor='#a5cbaa'>✅</td>
 <td bgcolor='#9bc99e'>❌</td>
-<td bgcolor='#9bc99e'>❌</td>
+<td bgcolor='#9bc99e'>✅</td>
 <td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
 <td bgcolor='#779777'>✅</td>
 </tr>
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/FS/JESUS_JORNET_ORTI'>Jesus_jornet_orti</a></td>
-<td bgcolor='#dee2d0'>❌</td>
+<td bgcolor='#dee2d0'>✅</td>
 <td bgcolor='#dee2d0'>✅</td>
 <td bgcolor='#dee2d0'>✅</td>
 <td bgcolor='#dee2d0'>✅</td>
 <td bgcolor='#dee2d0'>✅</td>
 <td bgcolor='#a5cbaa'>✅</td>
-<td bgcolor='#a5cbaa'>❌</td>
+<td bgcolor='#a5cbaa'>✅</td>
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
 <td bgcolor='#779777'>✅</td>
 </tr>
 <tr>
@@ -245,10 +245,10 @@ Entregas Fin de Semana
 <td bgcolor='#a5cbaa'>✅</td>
 <td bgcolor='#a5cbaa'>✅</td>
 <td bgcolor='#9bc99e'>✅</td>
-<td bgcolor='#9bc99e'>❌</td>
-<td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#9bc99e'>✅</td>
+<td bgcolor='#779777'>✅</td>
+<td bgcolor='#779777'>✅</td>
+<td bgcolor='#779777'>✅</td>
 </tr>
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/FS/Lucía-Esteve-Domínguez'>Lucía-esteve-domínguez</a></td>
@@ -260,9 +260,9 @@ Entregas Fin de Semana
 <td bgcolor='#a5cbaa'>✅</td>
 <td bgcolor='#a5cbaa'>✅</td>
 <td bgcolor='#9bc99e'>❌</td>
-<td bgcolor='#9bc99e'>❌</td>
+<td bgcolor='#9bc99e'>✅</td>
 <td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
 <td bgcolor='#779777'>✅</td>
 </tr>
 <tr>
@@ -287,8 +287,8 @@ Entregas Fin de Semana
 <td bgcolor='#dee2d0'>❌</td>
 <td bgcolor='#dee2d0'>❌</td>
 <td bgcolor='#dee2d0'>✅</td>
-<td bgcolor='#a5cbaa'>❌</td>
-<td bgcolor='#a5cbaa'>❌</td>
+<td bgcolor='#a5cbaa'>✅</td>
+<td bgcolor='#a5cbaa'>✅</td>
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#779777'>❌</td>
@@ -303,12 +303,12 @@ Entregas Fin de Semana
 <td bgcolor='#dee2d0'>✅</td>
 <td bgcolor='#dee2d0'>✅</td>
 <td bgcolor='#a5cbaa'>✅</td>
-<td bgcolor='#a5cbaa'>❌</td>
+<td bgcolor='#a5cbaa'>✅</td>
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#779777'>❌</td>
 <td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
 </tr>
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/FS/Pablo_Ivorra'>Pablo_ivorra</a></td>
@@ -322,7 +322,7 @@ Entregas Fin de Semana
 <td bgcolor='#9bc99e'>✅</td>
 <td bgcolor='#9bc99e'>✅</td>
 <td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
 <td bgcolor='#779777'>✅</td>
 </tr>
 <tr>
@@ -409,7 +409,7 @@ Entregas Entre Semana
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#779777'>✅</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
 <td bgcolor='#779777'>✅</td>
 </tr>
 <tr>
@@ -420,12 +420,12 @@ Entregas Entre Semana
 <td bgcolor='#dee2d0'>✅</td>
 <td bgcolor='#dee2d0'>✅</td>
 <td bgcolor='#a5cbaa'>✅</td>
-<td bgcolor='#a5cbaa'>❌</td>
+<td bgcolor='#a5cbaa'>✅</td>
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#9bc99e'>✅</td>
-<td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
+<td bgcolor='#779777'>✅</td>
+<td bgcolor='#779777'>✅</td>
 </tr>
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/ES/BALMA_AGOST'>Balma_agost</a></td>
@@ -438,9 +438,9 @@ Entregas Entre Semana
 <td bgcolor='#a5cbaa'>✅</td>
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#9bc99e'>✅</td>
+<td bgcolor='#779777'>✅</td>
 <td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
 </tr>
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/ES/BORJA_CABO'>Borja_cabo</a></td>
@@ -450,11 +450,11 @@ Entregas Entre Semana
 <td bgcolor='#dee2d0'>✅</td>
 <td bgcolor='#dee2d0'>✅</td>
 <td bgcolor='#a5cbaa'>✅</td>
-<td bgcolor='#a5cbaa'>❌</td>
+<td bgcolor='#a5cbaa'>✅</td>
 <td bgcolor='#9bc99e'>❌</td>
-<td bgcolor='#9bc99e'>❌</td>
-<td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#9bc99e'>✅</td>
+<td bgcolor='#779777'>✅</td>
+<td bgcolor='#779777'>✅</td>
 <td bgcolor='#779777'>✅</td>
 </tr>
 <tr>
@@ -468,7 +468,7 @@ Entregas Entre Semana
 <td bgcolor='#a5cbaa'>✅</td>
 <td bgcolor='#9bc99e'>✅</td>
 <td bgcolor='#9bc99e'>✅</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
 <td bgcolor='#779777'>✅</td>
 <td bgcolor='#779777'>✅</td>
 </tr>
@@ -483,7 +483,7 @@ Entregas Entre Semana
 <td bgcolor='#a5cbaa'>✅</td>
 <td bgcolor='#9bc99e'>✅</td>
 <td bgcolor='#9bc99e'>✅</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
 <td bgcolor='#779777'>✅</td>
 <td bgcolor='#779777'>✅</td>
 </tr>
@@ -525,11 +525,11 @@ Entregas Entre Semana
 <td bgcolor='#dee2d0'>✅</td>
 <td bgcolor='#dee2d0'>✅</td>
 <td bgcolor='#a5cbaa'>❌</td>
-<td bgcolor='#a5cbaa'>❌</td>
+<td bgcolor='#a5cbaa'>✅</td>
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#779777'>✅</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
 <td bgcolor='#779777'>✅</td>
 </tr>
 <tr>
@@ -544,7 +544,7 @@ Entregas Entre Semana
 <td bgcolor='#9bc99e'>✅</td>
 <td bgcolor='#9bc99e'>✅</td>
 <td bgcolor='#779777'>✅</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
 <td bgcolor='#779777'>✅</td>
 </tr>
 <tr>
@@ -558,8 +558,8 @@ Entregas Entre Semana
 <td bgcolor='#a5cbaa'>❌</td>
 <td bgcolor='#9bc99e'>✅</td>
 <td bgcolor='#9bc99e'>✅</td>
-<td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
+<td bgcolor='#779777'>✅</td>
 <td bgcolor='#779777'>✅</td>
 </tr>
 <tr>
@@ -569,12 +569,12 @@ Entregas Entre Semana
 <td bgcolor='#dee2d0'>✅</td>
 <td bgcolor='#dee2d0'>✅</td>
 <td bgcolor='#dee2d0'>✅</td>
-<td bgcolor='#a5cbaa'>❌</td>
+<td bgcolor='#a5cbaa'>✅</td>
 <td bgcolor='#a5cbaa'>❌</td>
 <td bgcolor='#9bc99e'>✅</td>
 <td bgcolor='#9bc99e'>✅</td>
-<td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
+<td bgcolor='#779777'>✅</td>
 <td bgcolor='#779777'>✅</td>
 </tr>
 <tr>
@@ -600,12 +600,12 @@ Entregas Entre Semana
 <td bgcolor='#dee2d0'>✅</td>
 <td bgcolor='#dee2d0'>✅</td>
 <td bgcolor='#a5cbaa'>✅</td>
-<td bgcolor='#a5cbaa'>❌</td>
+<td bgcolor='#a5cbaa'>✅</td>
 <td bgcolor='#9bc99e'>✅</td>
 <td bgcolor='#9bc99e'>❌</td>
-<td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
+<td bgcolor='#779777'>✅</td>
+<td bgcolor='#779777'>✅</td>
 </tr>
 <tr>
 <td><a href='https://github.com/a10pepo/EDEM_MDA2324/tree/main/Alumnos/ES/Luis_Segura'>Luis_segura</a></td>
@@ -618,7 +618,7 @@ Entregas Entre Semana
 <td bgcolor='#a5cbaa'>✅</td>
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#9bc99e'>✅</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
 <td bgcolor='#779777'>❌</td>
 <td bgcolor='#779777'>✅</td>
 </tr>
@@ -630,10 +630,10 @@ Entregas Entre Semana
 <td bgcolor='#dee2d0'>✅</td>
 <td bgcolor='#dee2d0'>✅</td>
 <td bgcolor='#a5cbaa'>✅</td>
-<td bgcolor='#a5cbaa'>❌</td>
+<td bgcolor='#a5cbaa'>✅</td>
 <td bgcolor='#9bc99e'>❌</td>
 <td bgcolor='#9bc99e'>✅</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
 <td bgcolor='#779777'>❌</td>
 <td bgcolor='#779777'>✅</td>
 </tr>
@@ -649,7 +649,7 @@ Entregas Entre Semana
 <td bgcolor='#9bc99e'>✅</td>
 <td bgcolor='#9bc99e'>✅</td>
 <td bgcolor='#779777'>✅</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
 <td bgcolor='#779777'>✅</td>
 </tr>
 <tr>
@@ -660,11 +660,11 @@ Entregas Entre Semana
 <td bgcolor='#dee2d0'>✅</td>
 <td bgcolor='#dee2d0'>✅</td>
 <td bgcolor='#a5cbaa'>✅</td>
-<td bgcolor='#a5cbaa'>❌</td>
+<td bgcolor='#a5cbaa'>✅</td>
 <td bgcolor='#9bc99e'>❌</td>
-<td bgcolor='#9bc99e'>❌</td>
-<td bgcolor='#779777'>❌</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#9bc99e'>✅</td>
+<td bgcolor='#779777'>✅</td>
+<td bgcolor='#779777'>✅</td>
 <td bgcolor='#779777'>✅</td>
 </tr>
 <tr>
@@ -679,7 +679,7 @@ Entregas Entre Semana
 <td bgcolor='#9bc99e'>✅</td>
 <td bgcolor='#9bc99e'>✅</td>
 <td bgcolor='#779777'>✅</td>
-<td bgcolor='#779777'>❌</td>
+<td bgcolor='#779777'>✅</td>
 <td bgcolor='#779777'>✅</td>
 </tr>
 </table>
