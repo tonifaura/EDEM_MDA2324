@@ -1,8 +1,10 @@
-version: '3'
+---
+version: '3.5'
 services:
-  # Spark containers
+  
+    # Spark containers
   spark-master:
-    image: metabrainz/spark-master:latest
+    image: bde2020/spark-master:latest 
     ports:
       - "4040:4040"
       - "9090:9090"
@@ -13,7 +15,7 @@ services:
       - "SPARK_LOCAL_IP=spark-master"
 
   spark-worker:
-    image: metabrainz/spark-worker:latest
+    image: bde2020/spark-worker:latest
     depends_on:
       - spark-master
     environment:
@@ -24,3 +26,15 @@ services:
       - SPARK_EXECUTOR_MEMORY=256m
     volumes:
       - ../project:/opt/project
+
+  # Jupyter container
+  jupyter:
+    image: jupyter/pyspark-notebook:latest
+    ports:
+      - "10000:8888"
+
+  
+
+# volumes:
+#   postgres:
+#   pgadmin:
