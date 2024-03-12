@@ -8,7 +8,7 @@ Implementar cámaras equipadas con Inteligencia Artificial para monitorizar la v
 
 ## REQUISITOS
 - Cada cámara se instalará en una sección particular y deberá calcular la velocidad promedio de cada vehículo.
-- La velocidad promedio en la sección no debe exceder los 25 km/h.
+- La velocidad promedio en la sección no debe exceder los 40 km/h.
 - Se debe capturar una imagen, obtener el número de matrícula y almacenar la foto analizada de todos los vehículos multados.
 <br>
 <br>
@@ -49,7 +49,6 @@ Implementar cámaras equipadas con Inteligencia Artificial para monitorizar la v
     pip install -U -r requirements.txt
     ```
 <br>
-<br>
 
 ## GENERADOR
 La calle sobre la que haremos el estudio es en la Avenida Lexington, una calle importante de Manhattan y muy transitada. Las coordenadas del tramo son las siguientes:
@@ -57,7 +56,7 @@ La calle sobre la que haremos el estudio es en la Avenida Lexington, una calle i
 - Coordenada_ini: 40.7128° N, 73.9790° W
 - Coordenada_fin: 40.7431° N, 73.9824° W
 
-Lanzamos el generador con esa ruta y comprobamos que se vayan generando rutas de coches en esa calle en el topic de pre-procesado. Se ha añadido un fragmento de código al generador para que de manera simultánea inserte los datos del pub-sub en una tabla de BigQuery llamada pre-procesado.
+Lanzamos el generador con esa ruta y comprobamos que se vayan generando rutas de coches en esa calle en el topic de pre-procesado. Se ha añadido un fragmento de código al generador para que de manera simultánea inserte los datos del topic en una tabla de BigQuery llamada pre-procesado.
 
 ### Generador
 
@@ -87,7 +86,7 @@ Lanzamos el generador con esa ruta y comprobamos que se vayan generando rutas de
 
 <br>
 
-- Se generan los mensajes correspondientes en el topic de salida (procesado), con la velocidad media de cada vehículo y si ha sido multado o no. A su vez, a los coches multados les genera una imagen de la API que hemos pasado como parámetro, simulando una captura de la cámara del radar. 
+- Se generan los mensajes correspondientes en el topic de salida (procesado), con la velocidad media de cada vehículo en dicho tramo y si ha sido multado o no. A su vez, a los coches multados les genera una imagen de la API que hemos pasado como parámetro, simulando una captura de la cámara del radar. 
   
 <img src="images/procesado.png" alt="Procesado" width="700"/>
 
@@ -124,4 +123,4 @@ Para terminar, se va a poner un ejemplo de un coche multado en concreto para obs
 
 <br>
 
-Vemos que el vehículo ha sido captado por la cámara con un exceso de velocidad, ha sido registrado en la tabla de coches multados y la matrícula corresponde con la que se observa en la imagen captada por la cámara.
+Vemos que el vehículo ha sido captado por la cámara con un exceso de velocidad en la media del tramo, ha sido registrado en la tabla de coches multados y la matrícula corresponde con la que se observa en la imagen captada por la cámara.
