@@ -1,14 +1,4 @@
-""" 
-Script: Vehicle Data Generator
 
-Description: The generator will publish new records simulating 
-different vehicles driving down the streets of NYC.
-
-EDEM. Master Data Analytics 2023/2024
-Professor: Javi Briones
-"""
-
-""" Import libraries """
 
 from google.cloud import pubsub_v1
 import threading
