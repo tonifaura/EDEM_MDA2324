@@ -53,7 +53,7 @@ def ParsePubSubMessage(message):
     # Convert string decoded in JSON format
     msg = json.loads(pubsub_message)
 
-    logging.info("New message in PubSub: %s", msg)
+    #logging.info("New message in PubSub: %s", msg)
 
     # Return function
     return msg
@@ -108,21 +108,21 @@ class CloudVisionModelHandler(ModelHandler):
 
         model_responses = model.batch_annotate_images(request=batch_image_request).responses
 
-        response = model_responses[0].text_annotations
+        response = model_responses[0].text_annotations #Tipo datos NO adecuado para serializar
         output_dict = item_list[0]
-        
-        yield output_dict, response
+
+        license_plate = [text.description for text in response if text.description.isalnum() and not (text.description.isalpha() or text.description.isdigit())]
+
+        yield output_dict, license_plate
 
 class OutputFormatDoFn(beam.DoFn):
 
     def process(self, element):
 
-        output_dict, texts = element
+        output_dict, license_plate = element
 
-        if len(texts) > 0 :
-
-            license_plate = [text.description for text in texts if text.description.isalnum() and not (text.description.isalpha() or text.description.isdigit())]
-
+        if len(license_plate) > 0 :
+            
             output_dict['license_plate'] = license_plate[0] if len(license_plate) > 0 else "not recognized"
             
             yield output_dict
@@ -162,7 +162,7 @@ class avgSpeedDoFn(beam.DoFn):
             "radar_id": self.radar_id,
             "vehicle_id": key,
             "avg_speed": avg_speed,
-            "coordinates": payload[-1]['location']
+            "coordinates": str(payload[-1]['location'])
         }
 
         if avg_speed > 40:
@@ -178,6 +178,7 @@ class avgSpeedDoFn(beam.DoFn):
 
             output_dict['is_Ticketed'] = False
             output_dict['license_plate'] = None
+            output_dict['image_url'] = None
 
             #Metrics
             # self.countNonFinedVehicles.inc()
@@ -204,7 +205,7 @@ def run():
     
     parser.add_argument(
                 '--output_topic',
-                required=False,
+                required=True,
                 help='PubSub Topic which will be the sink for our data.')
 
     parser.add_argument(
@@ -256,8 +257,12 @@ def run():
                 | "Capture Vehicle image" >> beam.Map(getVehicleImage, api_url=args.cars_api)
                 | "Model Inference" >> RunInference(model_handler=CloudVisionModelHandler())
                 | "Output Format" >> beam.ParDo(OutputFormatDoFn())
-                | "Encode fined_vehicles to Bytes" >> beam.Map(lambda x: json.dumps(x).encode("utf-8"))
-                | "Write fined_vehicles to PubSub" >> beam.io.WriteToPubSub(topic=args.output_topic)
+                | "Write fined_vehicles to BigQuery" >> beam.io.WriteToBigQuery(
+                    table='titanium-gantry-411715:dataflow.datos',
+                    schema='radar_id:STRING, vehicule_id:STRING, avg_speed:FLOAT, coordinates:STRING, is_Ticketed:BOOLEAN, image_url:STRING, license_plate:STRING',
+                    create_disposition=beam.io.BigQueryDisposition.CREATE_IF_NEEDED,
+                    write_disposition=beam.io.BigQueryDisposition.WRITE_APPEND
+            )
         )
 
         (
