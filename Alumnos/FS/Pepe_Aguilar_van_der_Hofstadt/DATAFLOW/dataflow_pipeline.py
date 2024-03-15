@@ -138,8 +138,6 @@ class avgSpeedDoFn(beam.DoFn):
 
         avg_speed = speed / n
 
-        print(avg_speed)
-
         output_dict = {
             "radar_id": self.radar_id,
             "vehicle_id": key,
@@ -153,13 +151,15 @@ class avgSpeedDoFn(beam.DoFn):
         if avg_speed > 40:
 
             output_dict['is_Ticketed'] = True
-
+            logging.info("FINED Car info: %s", output_dict)
             yield beam.pvalue.TaggedOutput("fined_vehicles", output_dict)
         
         else:
 
             output_dict['is_Ticketed'] = False
             output_dict['license_plate'] = None
+
+            logging.info("Car info: %s", output_dict)
 
             yield beam.pvalue.TaggedOutput("non_fined_vehicles", output_dict)
 
