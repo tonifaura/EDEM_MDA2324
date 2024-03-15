@@ -43,17 +43,20 @@ def getVehicleImage(item,api_url):
     import requests
     import io
 
-    img_service = requests.get(api_url)
-    img_url = json.loads(img_service.content.decode('utf-8'))[img_url]
+    # API call to simulate a photo captured by the radar
+    image_service = requests.get(api_url)
+    image_url = json.loads(image_service.content.decode('utf-8'))['image_url']
 
-    # Read the image (using io.BytesIO) from the Google Cloud Storage URL obtained in the previous step.
-    img_response = requests.get(img_url)
-    img = io.BytesIO(img_response.content).read()
+    #Read image from URL
+    image_response = requests.get(image_url)
+    image_bytes = io.BytesIO(image_response.content).read()
 
-    # Append image_url to the payload
-    item['image_url'] = img_url
+    #Append image_url to the payload
+    item ['image_url'] = image_url
 
-    return item, img 
+    logging.info(image_url)
+
+    return item, image_bytes
 
 
 class CloudVisionModelHandler(ModelHandler):
@@ -118,6 +121,8 @@ class getVehicleDoFn(beam.DoFn):
 
         yield element['vehicle_id'], element
  
+def coordinate_to_string(latitude_longitude):
+    return f"{latitude_longitude}"
 
 class avgSpeedDoFn(beam.DoFn):
 
@@ -140,12 +145,14 @@ class avgSpeedDoFn(beam.DoFn):
             n += 1
 
         avg_speed = speed / n
+          
+        coord = coordinate_to_string(payload[-1]['location'])
 
         output_dict = {
             "radar_id": self.radar_id,
             "vehicle_id": key,
             "avg_speed": avg_speed,
-            "coordinates": payload[-1]['location']
+            "coordinates": coord
         }
 
         # Create two distinct PCollections, one for fined vehicles and another for those 
