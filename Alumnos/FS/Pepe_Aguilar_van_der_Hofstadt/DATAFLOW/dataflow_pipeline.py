@@ -67,26 +67,29 @@ class CloudVisionModelHandler(ModelHandler):
         client = vision.ImageAnnotatorClient()
         return client
     
-    # def run_inference(self, batch, model, inference):
+    def run_inference(self, batch, model, inference):
 
-    #     from google.cloud import vision
-    #     from google.cloud.vision_v1.types import Feature
+        from google.cloud import vision
+        from google.cloud.vision_v1.types import Feature
 
-    #     feature = Feature()
-    #     feature.type_ = Feature.Type.TEXT_DETECTION
+        feature = Feature()
+        feature.type_ = Feature.Type.TEXT_DETECTION
 
-    #     images = [vision.Image(content=image_bytes) for (item, image_bytes) in batch]
-    #     item_list = [item for (item, image_bytes) in batch]
+        images = [vision.Image(content=image_bytes) for (item, image_bytes) in batch]
+        item_list = [item for (item, image_bytes) in batch]
 
-    #     image_requests = [vision.AnnotateImageRequest(image=image, features=[feature]) for image in images]
-    #     batch_image_request = vision.BatchAnnotateImagesRequest(requests=image_requests)
+        image_requests = [vision.AnnotateImageRequest(image=image, features=[feature]) for image in images]
+        batch_image_request = vision.BatchAnnotateImagesRequest(requests=image_requests)
 
-    #     model_responses = model.batch_annotate_images(request=batch_image_request).responses
+        model_responses = model.batch_annotate_images(request=batch_image_request).responses
 
-    #     # Deal with the model's response to extract the text we need
-    #     # ToDo: Complete this section
-        
-    #     yield output_dict, response
+        # Deal with the model's response to extract the text we need
+        resp = model_responses[0].text_annotations
+        output_dict = item_list[0]
+
+        response = [text.description for text in resp if text.description.isalnum() and not (text.description.isalpha() or text.description.isdigit())]
+
+        yield output_dict, response
 
 class OutputFormatDoFn(beam.DoFn):
 
@@ -214,7 +217,7 @@ def run():
         data = (
             p
                 | "Read From PubSub" >> beam.io.ReadFromPubSub(subscription=f'projects/{args.project_id}/subscriptions/{args.input_subscription}')
-                | "Parse JSON messages" >> beam.ParDo(ParsePubSubMessage)
+                | "Parse JSON messages" >> beam.Map(ParsePubSubMessage)
         )
 
         """ Part 02: Get the aggregated data of the vehicle within the section. """
