@@ -13,22 +13,32 @@ def game():
         'spock': ['scissors', 'rock']
     }
 
-    # player's choice
-    player = input("Enter your choice (rock, paper, scissors, lizard, spock): ")
-    if player not in choices:
-        print("Invalid choice. Please try again.")
-        return game()
+    # outcome count
+    outcomes = {
+        'rock': 0,
+        'paper': 0,
+        'scissors': 0,
+        'lizard': 0,
+        'spock': 0
+    }
 
-    # computer's choice
-    computer = random.choice(choices)
-    print("Computer chose: " + computer)
+    for _ in range(1000):
+        # player's choice
+        player = random.choice(choices)
 
-    # determine the winner
-    if player == computer:
-        print("It's a tie!")
-    elif computer in rules[player]:
-        print("You win!")
-    else:
-        print("You lose!")
+        # computer's choice
+        computer = random.choice(choices)
+
+        # determine the winner
+        if player == computer:
+            outcomes[player] += 1
+        elif computer in rules[player]:
+            outcomes[player] += 1
+        else:
+            outcomes[computer] += 1
+
+    # print the number of outcomes for each option
+    for choice, count in outcomes.items():
+        print(f"{choice}: {count}")
 
 game()
